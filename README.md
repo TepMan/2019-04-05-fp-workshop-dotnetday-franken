@@ -5,6 +5,7 @@
 
 - `npm install -g reveal-md`
 - `npm install -g decktape`
+- install [FiraCode](https://github.com/tonsky/FiraCode) system-wide
 
 # Normal usage
 
@@ -16,11 +17,13 @@
 
 - `npm run pdf`
 
+On Arch Linux the `decktape` command requires the CLI option `--chrome-arg=--no-sandbox` (for details see "Errors - No usable sandbox!" section in https://github.com/astefanutti/decktape)
+
 # Reveal-md basics
 
-`reveal-md` is a convenience wrapper around `revealJs` for people who prefer using markdown instead of plain html. The main advantages is that you only have your content in the Git repo (and none of the reveal-js framework).
+`reveal-md` is a convenience wrapper around `reveal-js` for people who prefer using markdown instead of plain html. The main advantages is that you only have your content in the Git repository (and none of the reveal-js framework).
 
-The basic command for starting a reveal-md presentation is `reveal-md your-content.md`.
+The basic command for starting a `reveal-md` presentation is `reveal-md your-content.md`.
 
 The presentation can be customized:
 
