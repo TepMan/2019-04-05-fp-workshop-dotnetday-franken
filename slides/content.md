@@ -9,7 +9,7 @@ revealOptions:
     transitionSpeed: slow
 
 ---
-<!-- .slide: data-background="images/age.png" -->
+<!-- .slide: data-background="images/road-3478977_1920.jpg" -->
 
 <h2 style="position: absolute; top: 390px; right: -150px; color: #ccc; text-transform: none;">Funktionale Programmierung</h2>
 
