@@ -1,7 +1,7 @@
 {
   "name": "dotnetdayfranken-fp-workshop",
   "version": "1.0.0",
-  "description": "",
+  "description": "slides for functional programming workshop",
   "main": "reveal.html",
   "scripts": {
     "demo":  "reveal-md demo.md -w --template reveal.html",
