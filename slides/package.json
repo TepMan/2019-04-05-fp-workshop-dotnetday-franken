@@ -9,8 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "pdf": "decktape --chrome-arg=--no-sandbox -s 1920x1080 -p 50 --load-pause 50 reveal http://localhost:1948/content.md#/ pdf/dotnetdayfranken-fp-workshop.pdf"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Functional Programming", "C#", "F#", "workshop", "slides"],
+  "author": "Patrick Drechsler, Martin Grotz",
   "license": "ISC",
   "dependencies": {
     "reveal-md": "^2.4.1"
