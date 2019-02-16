@@ -2,6 +2,10 @@
   font-size: 3.1em;
 }
 
+.reveal {
+  background: white;
+}
+
 .reveal h2 {
   font-size: 2.0em;
 }
