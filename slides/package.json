@@ -4,7 +4,7 @@
   "description": "slides for functional programming workshop",
   "main": "reveal.html",
   "scripts": {
-    "demo":  "reveal-md demo.md -w --template reveal.html",
+    "demo": "reveal-md demo.md -w --template reveal.html",
     "start": "reveal-md content.md -w --template reveal.html",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pdf": "decktape --chrome-arg=--no-sandbox -s 1920x1080 -p 50 --load-pause 50 reveal http://localhost:1948/content.md#/ pdf/dotnetdayfranken-fp-workshop.pdf"
@@ -19,6 +19,7 @@
   "author": "Patrick Drechsler, Martin Grotz",
   "license": "ISC",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "reveal-md": "^2.4.1"
   }
 }
