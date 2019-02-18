@@ -172,5 +172,27 @@ Schränken uns diese FP Paradigmen ein?
 
 Wie kann man mit diesem "Purismus" Software schreiben, die etwas tut?
 
+---
 
+# Let's code
 
+(almost)
+
+---
+
+One more thing: Die Fachlichkeit
+
+(laesstiges Detail...)
+
+---
+
+### Kontakt-App
+
+---
+
+soll folgendes machen
+
+- a
+- b
+- c
+- 
