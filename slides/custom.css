@@ -59,3 +59,7 @@
 .reveal pre code {
   max-height: 700px;
 }
+
+.reveal .small-font li {
+  font-size: smaller;
+}
