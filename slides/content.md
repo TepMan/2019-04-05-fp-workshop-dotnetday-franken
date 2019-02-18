@@ -86,22 +86,91 @@ Diese Notizen erscheinen nur als Speaker Notes (optional)
 - Pair Programming in der Gruppe
 
 
----
+----
 
 <img src="images/mob-programming-setup.png" class="borderless" style="height: 50%;">
 
----
+----
 
 - Driver: Sitzt an der Tastatur (darf nicht denken)
 - Navigator: Sagt dem Driver, was zu tun ist
 - Mob: Unterstuetzt den Navigator
 - Regelmaessiger Wechsel (3-5min)
 
----
+----
 
 ### "Assisted" Mob Programming
 
 - Facilitator unterstuetzt den Navigator
+
+---
+
+## FP 101
+
+- Immutability
+- Functions as First Class Citizens
+- Pure Functions (see Immutability)
+
+That's it!
+
+---
+
+#### Immutability in C# #
+
+
+```csharp
+public class Customer
+{
+  public string Name { get; set; }
+}
+```
+
+vs
+
+```csharp
+public class Customer
+{
+  public Customer(string name)
+  {
+    Name = name;
+  }
+  
+  public string Name { get; }
+}
+```
+
+---
+
+#### 1st class functions in C# #
+
+
+```csharp
+public class Customer
+{
+  public string DoMagic(bool isSomething, Func<string, string> func)
+  {
+    if (isSomething)
+      return func();
+    
+    return "failure";
+  }
+}
+```
+
+---
+
+#### Pure Functions in C# #
+
+- haben niemals Seiteneffekte!
+- sollten immer nach `static` umwandelbar sein
+
+---
+
+Schränken uns diese FP Paradigmen ein?
+
+---
+
+Wie kann man mit diesem "Purismus" Software schreiben, die etwas tut?
 
 
 
