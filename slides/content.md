@@ -39,8 +39,14 @@ Diese Notizen erscheinen nur als Speaker Notes (optional)
   </ul>
 </div>
 
-<div style="position: absolute; top: 500px; left: 400px">
-  <img src="images/redheads-logo.png" class="borderless" style="height: 100px;">
+<div style="position: absolute; top: 500px; left: 600px">
+  <img src="images/redheads-logo.png" class="borderless" style="height: 80px;">
+</div>
+
+<div style="position: absolute; top: 520px; left: -100px" class="small-font">
+  <i class="fa fa-twitter" aria-hidden="true"></i> @drechsler
+  <i class="fa fa-github" aria-hidden="true"></i> draptik
+  <!-- <img src="images/redheads-logo.png" class="borderless" style="height: 80px;"> -->
 </div>
 
 ---
