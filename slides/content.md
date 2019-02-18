@@ -73,6 +73,13 @@ Diese Notizen erscheinen nur als Speaker Notes (optional)
 </div>
 
 ---
+
+## Vorstellungsrunde
+## &
+## Erwartungen
+
+---
+
 ## Mob Programming
 
 - wir lernen gemeinsam
@@ -97,5 +104,4 @@ Diese Notizen erscheinen nur als Speaker Notes (optional)
 - Facilitator unterstuetzt den Navigator
 
 
----
-# Slide 3
+
