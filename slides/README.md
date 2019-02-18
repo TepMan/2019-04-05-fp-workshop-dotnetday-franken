@@ -15,6 +15,7 @@
 
 ## Exporting PDF from slide show
 
+- start the slide show (must be active!): `npm start &`
 - `npm run pdf`
 
 On Arch Linux the `decktape` command requires the CLI option `--chrome-arg=--no-sandbox` (for details see "Errors - No usable sandbox!" section in https://github.com/astefanutti/decktape)
