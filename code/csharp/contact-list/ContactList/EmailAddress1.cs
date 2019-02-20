@@ -3,9 +3,9 @@
 namespace ContactList
 {
     // This implementation throws an exception when the given email is invalid
-    public class EmailAddress
+    public class EmailAddress1
     {
-        public EmailAddress(string s)
+        public EmailAddress1(string s)
         {
             if (!IsValid(s))
             {
@@ -27,7 +27,7 @@ namespace ContactList
 
         public string Value { get; }
 
-        public static implicit operator string(EmailAddress valueObject)
+        public static implicit operator string(EmailAddress1 valueObject)
         {
             return valueObject.Value;
         }
