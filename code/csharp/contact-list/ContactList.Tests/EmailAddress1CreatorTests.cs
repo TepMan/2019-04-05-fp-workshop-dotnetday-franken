@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ContactList.Tests
 {
-    public class EmailAddressCreatorTests
+    public class EmailAddress1CreatorTests
     {
         [Fact]
         public void Valid_email_is_ok()
@@ -13,10 +13,10 @@ namespace ContactList.Tests
             var validEmail = "foo@bar.de";
 
             // Act
-            var result = EmailAddressCreator.CreateFrom(validEmail);
+            var result = EmailAddress1Creator.CreateFrom(validEmail);
 
             // Assert
-            result.Should().BeOfType<Maybe<EmailAddress>>();
+            result.Should().BeOfType<Maybe<EmailAddress1>>();
             result.HasValue.Should().BeTrue();
 
             // 1st "Value" is from Maybe, 2nd "Value" is content of EmailAddress
@@ -30,10 +30,10 @@ namespace ContactList.Tests
             var emptyString = string.Empty;
 
             // Act
-            var result = EmailAddressCreator.CreateFrom(emptyString);
+            var result = EmailAddress1Creator.CreateFrom(emptyString);
 
             // Assert
-            result.Should().BeOfType<Maybe<EmailAddress>>();
+            result.Should().BeOfType<Maybe<EmailAddress1>>();
             result.HasNoValue.Should().BeTrue();
         }
     }

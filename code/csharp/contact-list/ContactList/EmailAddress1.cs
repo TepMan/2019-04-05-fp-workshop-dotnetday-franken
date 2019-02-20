@@ -11,9 +11,9 @@ namespace ContactList
     // "value objects" are IMMUTABLE!
     //
     // HINT: Other languages have this data type built in (i.e. record types in F#)
-    public class EmailAddress
+    public class EmailAddress1
     {
-        public EmailAddress(string potentialEmailAddress)
+        public EmailAddress1(string potentialEmailAddress)
         {
             if (!IsValid(potentialEmailAddress))
             {
@@ -36,7 +36,7 @@ namespace ContactList
         }
 
         // Syntactic sugar...
-        public static implicit operator string(EmailAddress emailAddress)
+        public static implicit operator string(EmailAddress1 emailAddress)
         {
             return emailAddress.Value;
         }
