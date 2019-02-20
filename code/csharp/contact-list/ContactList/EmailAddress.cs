@@ -11,34 +11,34 @@ namespace ContactList
     // "value objects" are IMMUTABLE!
     //
     // HINT: Other languages have this data type built in (i.e. record types in F#)
-    public class EmailAddress1
+    public class EmailAddress
     {
-        public EmailAddress1(string s)
+        public EmailAddress(string potentialEmailAddress)
         {
-            if (!IsValid(s))
+            if (!IsValid(potentialEmailAddress))
             {
                 throw new ArgumentException();    
             }
 
-            Value = s;
+            Value = potentialEmailAddress;
         }
 
         public string Value { get; }
         
-        private bool IsValid(string s)
+        private bool IsValid(string potentialEmailAddress)
         {
-            if (string.IsNullOrWhiteSpace(s)) return false;
+            if (string.IsNullOrWhiteSpace(potentialEmailAddress)) return false;
 
-            try { new System.Net.Mail.MailAddress(s); }
+            try { new System.Net.Mail.MailAddress(potentialEmailAddress); }
             catch (Exception) { return false; }
             
             return true;
         }
 
         // Syntactic sugar...
-        public static implicit operator string(EmailAddress1 valueObject)
+        public static implicit operator string(EmailAddress emailAddress)
         {
-            return valueObject.Value;
+            return emailAddress.Value;
         }
     }
 }

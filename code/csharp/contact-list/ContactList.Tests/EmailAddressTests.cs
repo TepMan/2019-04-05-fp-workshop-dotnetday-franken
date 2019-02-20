@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ContactList.Tests
 {
-    public class EmailAddress1Tests
+    public class EmailAddressTests
     {
         [Fact]
         public void Valid_email_has_correct_value()
@@ -13,7 +13,7 @@ namespace ContactList.Tests
             var validEmail = "foo@bar.de";
 
             // Act
-            string result = new EmailAddress1(validEmail);
+            string result = new EmailAddress(validEmail);
 
             // Assert
             result.Should().Be(validEmail);
@@ -26,7 +26,7 @@ namespace ContactList.Tests
             var invalidEmail = "invalid";
 
             // Act
-            Action action = () => new EmailAddress1(invalidEmail);
+            Action action = () => new EmailAddress(invalidEmail);
 
             // Assert
             action.Should().Throw<Exception>();
