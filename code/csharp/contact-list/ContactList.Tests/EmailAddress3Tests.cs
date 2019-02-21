@@ -17,7 +17,11 @@ namespace ContactList.Tests
 
             // Assert
             // result.HasExpectedEmail(validEmail).Should().BeTrue();
-            result.IsOkAndHasValue<EmailAddress2>(EmailAddress2.Create(validEmail).Value).Should().BeTrue();
+
+            var isOkAndHasValue = 
+                result.IsOkAndHasValue<EmailAddress2>(EmailAddress2.Create(validEmail).Value);
+            
+            isOkAndHasValue.Should().BeTrue();
         }
     }
 }

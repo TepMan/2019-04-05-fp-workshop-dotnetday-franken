@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CSharpFunctionalExtensions;
 
 namespace ContactList
@@ -14,7 +15,7 @@ namespace ContactList
     //
     // Other alternative: EmailAddress1 -> throws Exception
     //
-    public class EmailAddress2
+    public class EmailAddress2 : ValueObject
     {
         private EmailAddress2(string potentialEmailAddress)
         {
@@ -51,6 +52,11 @@ namespace ContactList
             catch (Exception) { return false; }
             
             return true;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Value;
         }
 
         // Syntactic sugar...
