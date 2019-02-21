@@ -1,3 +1,4 @@
+using System;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using Xunit;
@@ -41,21 +42,31 @@ namespace ContactList.Tests
             result.Should().BeEqualToEmailString(validEmail);            
         }
 
-        [Fact]
-        public void Valid_email_is_ok_using_own_extension_fails()
+        [Theory]
+        [InlineData(true, "foo@bar.com", "foo@bar.com")]
+        [InlineData(false, "foo@bar.com", "foo@bar.com_x")]
+        [InlineData(false, "foo@bar.com", "")]
+        [InlineData(false, "foo@bar.com", (string)null)]
+        public void Valid_email_is_ok_using_own_extension_fails(bool shouldPass, string input, string other)
         {
-            // Arrange
-            var validEmail = "foo@bar.de";
+            var result = EmailAddress2.Create(input);
 
-            // Act
-            var result = EmailAddress2.Create(validEmail);
-
-            // Assert
-            // Red test:
-            // result.Should().BeEqualToEmailString(validEmail + "_Foo", "I am Chuck Norris");            
-            //
-            // Green test:
-            result.Should().BeEqualToEmailString(validEmail);            
+            if (shouldPass)
+            {
+                result.Should().BeEqualToEmailString(other);
+            }
+            else
+            {
+                // TODO implement `NotBeEqualToEmailString`
+                try
+                {
+                    result.Should().BeEqualToEmailString(other);    
+                }
+                catch (Exception)
+                {
+                    true.Should().BeTrue();
+                }
+            }
         }
     }
 }

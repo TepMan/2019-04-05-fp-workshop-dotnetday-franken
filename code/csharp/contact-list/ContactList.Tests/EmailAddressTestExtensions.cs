@@ -48,7 +48,7 @@ namespace ContactList.Tests
             Execute.Assertion
                 .BecauseOf(because, becauseArgs)
                 .ForCondition(!string.IsNullOrWhiteSpace(otherEmailString))
-                .FailWith("You can't assert another email if you don't pass a proper name")
+                .FailWith("You can't compare emails if you provide an empty email string.")
                 .Then
                 .Given(() => Subject.Value)
                 .ForCondition(email => email.Value == otherEmailString)
