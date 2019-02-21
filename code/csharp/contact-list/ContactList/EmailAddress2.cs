@@ -3,6 +3,17 @@ using CSharpFunctionalExtensions;
 
 namespace ContactList
 {
+    // This class mimics a "record type" wrapped in a Maybe (also called Option).
+    //
+    // An instance can only be created using the static "Create" method. 
+    //
+    // The static "Create" method returns a "Maybe<EmailAddress2>"
+    //
+    // The "Create" method will always return a valid answer of type Maybe<EmailAddress2> (and not throw an exception).
+    // Consumers of this class must handle the result.
+    //
+    // Other alternative: EmailAddress1 -> throws Exception
+    //
     public class EmailAddress2
     {
         private EmailAddress2(string potentialEmailAddress)
