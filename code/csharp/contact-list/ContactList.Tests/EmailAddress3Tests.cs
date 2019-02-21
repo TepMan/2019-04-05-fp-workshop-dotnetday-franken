@@ -16,6 +16,12 @@ namespace ContactList.Tests
             var result = EmailAddress2.Create(validEmail);
 
             // Assert
+            result.Should()
+                .NotBeNull()
+                .And.BeOfType<Maybe<EmailAddress2>>();
+                
+            result.Value.Value.Should().Be(validEmail);
+
             var isOkAndHasValue = 
                 result.IsOkAndHasValue<EmailAddress2>(EmailAddress2.Create(validEmail).Value);
             
@@ -45,7 +51,11 @@ namespace ContactList.Tests
             var result = EmailAddress2.Create(validEmail);
 
             // Assert
-            result.Should().BeEqualToEmailString(validEmail + "_Foo", "I am Chuck Norris");            
+            // Red test:
+            // result.Should().BeEqualToEmailString(validEmail + "_Foo", "I am Chuck Norris");            
+            //
+            // Green test:
+            result.Should().BeEqualToEmailString(validEmail);            
         }
     }
 }
