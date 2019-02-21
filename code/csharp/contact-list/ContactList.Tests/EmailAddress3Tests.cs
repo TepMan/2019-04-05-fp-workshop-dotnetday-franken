@@ -47,7 +47,7 @@ namespace ContactList.Tests
         [InlineData(false, "foo@bar.com", "foo@bar.com_x")]
         [InlineData(false, "foo@bar.com", "")]
         [InlineData(false, "foo@bar.com", (string)null)]
-        public void Valid_email_is_ok_using_own_extension_fails(bool shouldPass, string input, string other)
+        public void Email_extension_handles_input_as_expected(bool shouldPass, string input, string other)
         {
             var result = EmailAddress2.Create(input);
 
