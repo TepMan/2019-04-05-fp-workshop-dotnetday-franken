@@ -16,12 +16,36 @@ namespace ContactList.Tests
             var result = EmailAddress2.Create(validEmail);
 
             // Assert
-            // result.HasExpectedEmail(validEmail).Should().BeTrue();
-
             var isOkAndHasValue = 
                 result.IsOkAndHasValue<EmailAddress2>(EmailAddress2.Create(validEmail).Value);
             
             isOkAndHasValue.Should().BeTrue();
+        }
+
+        [Fact]
+        public void Valid_email_is_ok_using_own_extension()
+        {
+            // Arrange
+            var validEmail = "foo@bar.de";
+
+            // Act
+            var result = EmailAddress2.Create(validEmail);
+
+            // Assert
+            result.Should().BeEqualToEmailString(validEmail);            
+        }
+
+        [Fact]
+        public void Valid_email_is_ok_using_own_extension_fails()
+        {
+            // Arrange
+            var validEmail = "foo@bar.de";
+
+            // Act
+            var result = EmailAddress2.Create(validEmail);
+
+            // Assert
+            result.Should().BeEqualToEmailString(validEmail + "_Foo", "I am Chuck Norris");            
         }
     }
 }
