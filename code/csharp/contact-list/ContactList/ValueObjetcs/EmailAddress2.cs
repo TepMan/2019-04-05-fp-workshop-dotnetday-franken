@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using CSharpFunctionalExtensions;
 
-namespace ContactList
+namespace ContactList.ValueObjects
 {
     // This class mimics a "record type" wrapped in a Maybe (also called Option).
     //

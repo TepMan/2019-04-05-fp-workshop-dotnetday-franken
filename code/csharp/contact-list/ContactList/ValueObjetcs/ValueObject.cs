@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ContactList
+namespace ContactList.ValueObjects
 {
     // from https://enterprisecraftsmanship.com/2017/08/28/value-object-a-better-implementation/
     public abstract class ValueObject

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ContactList
+namespace ContactList.ValueObjects
 {
     // This implementation throws an exception when the given email is invalid
     // 

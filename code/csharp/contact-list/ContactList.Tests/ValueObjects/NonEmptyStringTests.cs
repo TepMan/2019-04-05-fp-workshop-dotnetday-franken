@@ -1,9 +1,10 @@
 using System;
+using ContactList.ValueObjects;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using Xunit;
 
-namespace ContactList.Tests
+namespace ContactList.Tests.ValueObjects
 {
     public class NonEmptyStringTests
     {
