@@ -1,32 +1,23 @@
 using CSharpFunctionalExtensions;
+using FluentAssertions;
+using Xunit;
 
 namespace ContactList.Tests
 {
     public class EmailAddress3Tests
     {
-        static class MaybeTestExtensions
+        [Fact]
+        public void Valid_email_is_ok()
         {
+            // Arrange
+            var validEmail = "foo@bar.de";
 
-            // workaround (no "this")
-            public static MaybeAssertions<T1> Should<T1>(Maybe<T1> instance)
-            {
-                return new MaybeAssertions<T1>(instance);
-            }
-        }
+            // Act
+            var result = EmailAddress2.Create(validEmail);
 
-        public class MaybeAssertions<T1>
-        {
-            private Maybe<T1> instance;
-
-            public MaybeAssertions(Maybe<T1> instance)
-            {
-                this.instance = instance;
-            }
-
-            public bool IsOkAndEquals(string value)
-            {
-                return instance.HasValue && instance.Value.Equals(value);
-            }
+            // Assert
+            // result.HasExpectedEmail(validEmail).Should().BeTrue();
+            result.IsOkAndHasValue<EmailAddress2>(EmailAddress2.Create(validEmail).Value).Should().BeTrue();
         }
     }
 }
