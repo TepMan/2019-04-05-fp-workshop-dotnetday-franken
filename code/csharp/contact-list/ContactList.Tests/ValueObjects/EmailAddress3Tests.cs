@@ -58,15 +58,7 @@ namespace ContactList.Tests.ValueObjects
             }
             else
             {
-                // TODO implement `NotBeEqualToEmailString`
-                try
-                {
-                    result.Should().BeEqualToEmailString(other);    
-                }
-                catch (Exception)
-                {
-                    true.Should().BeTrue();
-                }
+                result.Should().NotBeEqualToEmailString(other);
             }
         }
     }

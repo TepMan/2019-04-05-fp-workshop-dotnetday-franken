@@ -58,5 +58,19 @@ namespace ContactList.Tests.ValueObjects
 
             return new AndConstraint<EmailAddressAssertions>(this); 
         }
+
+        public AndConstraint<EmailAddressAssertions> NotBeEqualToEmailString(
+            string otherEmailString, 
+            string because = "", 
+            params object[] becauseArgs)
+        {
+            Execute.Assertion
+                .Given(() => Subject)
+                .ForCondition(maybeMail => maybeMail.HasNoValue || maybeMail.Value != otherEmailString)
+                .FailWith("Expected {context:email} not to be {0}{reason}, but found {1}", 
+                    otherEmailString, Subject.Value.Value);
+
+            return new AndConstraint<EmailAddressAssertions>(this); 
+        }
     }
 }
