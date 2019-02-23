@@ -9,6 +9,7 @@
     <Compile Include="ResultTestHelper.fs" />
     <Compile Include="NonEmptyStringTests.fs" />
     <Compile Include="EMailAddressTests.fs" />
+    <Compile Include="GermanZipCodeTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FsUnit.Xunit" Version="3.4.0" />

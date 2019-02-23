@@ -4,8 +4,13 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ResultExtensions.fs" />
+    <Compile Include="Util.fs" />
     <Compile Include="NonEmptyString.fs" />
     <Compile Include="EmailAddress.fs" />
+    <Compile Include="GermanZipCode.fs" />
+    <Compile Include="AddressData.fs" />
+    <Compile Include="PostalAddress.fs" />
     <Compile Include="Domain.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

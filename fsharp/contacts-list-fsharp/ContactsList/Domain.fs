@@ -3,11 +3,11 @@ module Domain
 open System
 open NonEmptyString
 open EmailAddress
+open PostalAddress
 
 type ContactMethod =
     | Email of EmailAddress
-    //| Snailmail of PostalAddress 
-    //| Phone of PhoneNumber
+    | Snailmail of PostalAddress 
 
 
 [<NoEquality; NoComparison>]
@@ -20,3 +20,12 @@ type Contact = {
     PrimaryContactMethod : ContactMethod
     OtherContactMethods : ContactMethod list
 }
+
+let add firstName lastName twitterProfileUrl dateOfBirth primaryContactMethod otherContactMethods =
+    () // TODO
+
+let delete id =
+    () // TODO
+
+let output () =
+    () // TODO
