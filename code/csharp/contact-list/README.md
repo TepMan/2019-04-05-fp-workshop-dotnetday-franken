@@ -22,3 +22,10 @@ dotnet add package CSharpFunctionalExtensions
 cd ../ContactList.Tests
 dotnet add package CSharpFunctionalExtensions
 ```
+
+# Functional libraries for C#
+
+- [CSharpFunctionalExtensions](https://github.com/vkhorikov/CSharpFunctionalExtensions): Basics, production ready
+- [la-yumba](https://github.com/la-yumba/functional-csharp-code): Basics, production ready, used in book "Functional Programming in C#"
+- [language-ext](https://github.com/louthy/language-ext): Full in FP, hardcore, almost Haskell (functor, monad, pattern matching, HKT)
+
