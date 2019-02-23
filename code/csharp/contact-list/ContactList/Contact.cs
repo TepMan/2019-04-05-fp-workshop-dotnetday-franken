@@ -5,6 +5,7 @@ using CSharpFunctionalExtensions;
 
 namespace ContactList
 {
+    // Mmh, not sure yet if this class should also be a Value Object...
     public class Contact
     {
         public Guid Id { get; set; }
@@ -14,9 +15,5 @@ namespace ContactList
         public Maybe<DateTime> DateOfBirth { get; set; }
         public ContactMethod PrimaryContactMethod { get; set; }
         public IEnumerable<ContactMethod> OtherContactMethods { get; set; }
-    }
-
-    public interface ContactMethod
-    {
     }
 }
