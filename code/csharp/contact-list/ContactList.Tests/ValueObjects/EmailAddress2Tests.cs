@@ -1,3 +1,4 @@
+using System;
 using ContactList.ValueObjects;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
@@ -46,6 +47,24 @@ namespace ContactList.Tests.ValueObjects
             // Assert
             result.Should().BeOfType<Maybe<EmailAddress2>>();
             result.HasNoValue.Should().BeTrue();
+        }
+
+        [Theory]
+        [InlineData(null, false)]
+        [InlineData("", false)]
+        [InlineData("invalid", false)]
+        [InlineData("a@b.c", true)]
+        public void CreateBang_returns_correct_result(string input, bool isValid)
+        {
+            if (isValid)
+            {
+                var result = EmailAddress2.CreateBang(input);    
+            }
+            else
+            {
+                Action action = () => EmailAddress2.CreateBang(input);
+                action.Should().Throw<ArgumentException>().WithMessage($"Invalid email address: {input}");
+            }
         }
     }
 }

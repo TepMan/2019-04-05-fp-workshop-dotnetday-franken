@@ -32,5 +32,29 @@ namespace ContactList.Tests.ValueObjects
                 result.HasNoValue.Should().BeTrue();
             }
         }
+
+        [Theory]
+        [InlineData("a", true)]
+        [InlineData("", false)]
+        [InlineData((string)null, false)]
+        public void NonEmptyString_creation_with_bang_works(string input, bool isValid)
+        {
+            if (isValid)
+            {
+                var result = NonEmptyString.CreateBang(input);
+                
+                // Assert
+                result.Should()
+                    .NotBeNull()
+                    .And.BeOfType<NonEmptyString>();
+
+                result.Value.Should().Be(input);
+            }
+            else
+            {
+                Action action = () => NonEmptyString.CreateBang(input);
+                action.Should().Throw<ArgumentException>().WithMessage("String may not be empty or null!");
+            }
+        }
     }
 }

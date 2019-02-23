@@ -21,7 +21,7 @@ namespace ContactList.ValueObjects
         {
             if (!IsValid(potentialEmailAddress))
             {
-                throw new ArgumentException();    
+                throw new ArgumentException($"Invalid email address: {potentialEmailAddress}");    
             }
 
             Value = potentialEmailAddress;
@@ -40,6 +40,11 @@ namespace ContactList.ValueObjects
                 result = Maybe<EmailAddress2>.None;
             }
             return result;            
+        }
+
+        public static object CreateBang(string input)
+        {
+            return new EmailAddress2(input);
         }
 
         public string Value { get; }

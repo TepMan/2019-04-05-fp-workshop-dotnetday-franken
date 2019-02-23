@@ -10,7 +10,7 @@ namespace ContactList.ValueObjects
         {
             if (string.IsNullOrWhiteSpace(potentialString))
             {
-                throw new ArgumentException();
+                throw new ArgumentException("String may not be empty or null!");
             }
 
             Value = potentialString;
@@ -31,6 +31,11 @@ namespace ContactList.ValueObjects
                 result = Maybe<NonEmptyString>.None;
             }
             return result;            
+        }
+
+        public static NonEmptyString CreateBang(string potentialString)
+        {
+            return new NonEmptyString(potentialString);
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

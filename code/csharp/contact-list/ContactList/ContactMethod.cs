@@ -13,4 +13,7 @@ namespace ContactList
     {
     }
 
+    public class EmailContact : ContactMethod
+    {
+    }
 }
