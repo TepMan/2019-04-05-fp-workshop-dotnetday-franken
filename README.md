@@ -1,46 +1,56 @@
-- Framework: [reveal-md](https://github.com/webpro/reveal-md)
-- PDF export: [desktape](https://github.com/astefanutti/decktape)
+# Historie und erste Grundlagen der FP 
 
-# Initial setup
+- Funktionen als first-class citizens 
+- Immutability
+- Pure Funktionen 
+- Daten und Transformationen 
 
-- `npm install -g reveal-md`
-- `npm install -g decktape`
-- install [FiraCode](https://github.com/tonsky/FiraCode) system-wide
+# Mob-Programming 
 
-# Normal usage
+- kurzes Intro zu "was ist Mob Programming" 
+- erspart Teilnehmer Setup 
+- alle Teilnehmer lernen das gleiche 
 
-## Starting the slide show
+# Vorstellung Beispielanwendung 
 
-- `npm start`
+Ein Adressbuch bzw. einer Kontaktliste. Da kann man mehrere Sachen nacheinander validieren (Verbinden von Options bzw. Results) und  man hat optionale Felder (Options).  
 
-## Exporting PDF from slide show
+Kontaktliste, man kann Einträge via Kommandozeile hinzufügen, Auflisten (mit verschiedenen Sortierungen?), Löschen. Jeder Eintrag hat einige Pflichtfelder: Vorname, Nachname, Kontaktmethode. Und dann noch optionale Felder (Geburtstag, Twitter-Link, weitere Kontaktmethoden). Die Daten werden serialisiert und in einer Datei abgelegt (das könnten wir vorher ausprogrammieren und dann nur als Modul anbieten). Das ganze mit Tests (entweder TDD oder nachträglich). 
 
-- `npm run pdf`
+# Umsetzung der Beispielanwendung in C# 
 
-On Arch Linux the `decktape` command requires the CLI option `--chrome-arg=--no-sandbox` (for details see "Errors - No usable sandbox!" section in https://github.com/astefanutti/decktape)
+(zumindest damit anfangen, mit soviel FP wie möglich, bis es zu doof wird) 
 
-# Reveal-md basics
+# Einführung in die Syntax von F# 
 
-`reveal-md` is a convenience wrapper around `reveal-js` for people who prefer using markdown instead of plain html. The main advantages is that you only have your content in the Git repository (and none of the reveal-js framework).
+- Significant whitespace 
+- Module & Reihenfolge der Dateien 
+- Basisdatentypen 
+- Funktionen 
+- Typ-Signaturen, und dann warum man sie nicht braucht (yay Type Inference) 
+- Pipeline-Operator 
 
-The basic command for starting a `reveal-md` presentation is `reveal-md your-content.md`.
+# Modellieren der Fachdomäne - Daten/Typen 
 
-The presentation can be customized:
+- Records 
+- Union Types 
+- Option 
+- Result(?) 
 
-- from the command line
-- from the header section in the markdown file
-- from a template file (i.e. reveal.html)
+# Modellieren der Fachdomäne - Funktionen und fortgeschrittene Typen 
 
-Customization options include:
+- Eingabedaten verarbeiten 
+- Opaque Types als Value Objects 
+- Validierungsfunktionen 
+- Anzeige der Ergebnisse als Tabelle (typsicheres printf) 
+- Sortierung der Ergebnisse 
 
-- css
-- reveal configs (i.e. plugins)
-- reveal themes
+# Implementierung der Funktionen 
 
-# Project structure
+- mit TDD? -> dann: Testing in F#, Vorteile von FP beim Testen 
+- Verbindung mehrere Validierungsergebnisse (je nachdem, wie tief wir hier reingehen wollen, bzw. ob überhaupt - map, apply, bind, Monaden, result/option Computational Expression) - böse gesagt ist das der Kern der praktischen FP-Programmierung, das ganze Monaden-Zeugs löst ja in erster Linie das "wie stecke ich Funktionen zusammen, die nicht zusammenpassen"-Problem 
 
-- `reveal.html`: reveal-md format of the standard `index.html` used by reveal-js: include reveal-plugins here
-- `package.json`: includes scripts for starting presentation and creating pdf
-- `content.md`: obvious...
-- `custom.css`: obvious...
+# Resourcen
+
+- Value Objects with C#: https://enterprisecraftsmanship.com/2017/08/28/value-object-a-better-implementation/ 
 

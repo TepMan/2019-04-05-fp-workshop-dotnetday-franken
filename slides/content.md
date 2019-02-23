@@ -9,7 +9,7 @@ revealOptions:
     transitionSpeed: slow
 
 ---
-<!-- .slide: data-background="images/age.png" -->
+<!-- .slide: data-background="images/road-3478977_1920.jpg" -->
 
 <h2 style="position: absolute; top: 390px; right: -150px; color: #ccc; text-transform: none;">Funktionale Programmierung</h2>
 
@@ -17,55 +17,182 @@ revealOptions:
 <p style="position: absolute; top: 520px; right: -145px; color: #ccc; text-transform: none; text-align: right" class="my-shadow">@drechsler<br/>Redheads Ltd.</p>
 
 Note:
-foo
-
----
-### ein Zitat sieht so aus
-
-> yan batlhchaj semi-mutual recursion 'ej qun qar bImejnIS 'ej natural transformation qeSmeylIj Suq deeper vaj functor. semi-mutual recursion rur [...]
-
-&mdash; zygohistomorphic prepromorphisms
-
-(official Haskell Documentation)
-
-[Klingon Translation]  <!-- .element: class="fragment" -->
+Diese Notizen erscheinen nur als Speaker Notes (optional)
 
 ---
 
-## Ein Slide "nach unten"
+<img src="images/drechsler-profile.jpg" class="borderless" style="position: relative; top: 10px; left: -400px; height: 250px">
+
+<div style="position: absolute; top: 100px; left: 200px; height: 1000px; width: 800px;">
+  <h4>Patrick Drechsler</h4>
+  <ul class="small-font" >
+    <li>Software Entwickler / Architekt</li>
+    <li>Beruflich: C# (und TS/JS)</li>
+    <li>Interessen:</li>
+    <ul>
+      <li>Software Crafting</li>
+      <li>Domain-Driven-Design</li>
+      <li>Funktionale Programmierung</li>
+    </ul>
+    
+    <li>...</li>
+  </ul>
+</div>
+
+<div style="position: absolute; top: 500px; left: 600px">
+  <img src="images/redheads-logo.png" class="borderless" style="height: 80px;">
+</div>
+
+<div style="position: absolute; top: 520px; left: -100px" class="small-font">
+  <i class="fa fa-twitter" aria-hidden="true"></i> @drechsler
+  <i class="fa fa-github" aria-hidden="true"></i> draptik
+  <!-- <img src="images/redheads-logo.png" class="borderless" style="height: 80px;"> -->
+</div>
+
+---
+
+<img src="images/grotz-profile.jpg" class="borderless" style="position: relative; top: 10px; left: -400px; height: 250px">
+
+<div style="position: absolute; top: 100px; left: 200px; height: 1000px; width: 800px;">
+  <h4>Martin Grotz</h4>
+  <ul class="small-font" >
+    <li>Software Entwickler</li>
+    <li>Interessen:</li>
+    <ul>
+      <li>Software Crafting</li>
+      <li>Domain-Driven-Design</li>
+      <li>Funktionale Programmierung</li>
+    </ul>
+    
+    <li>...</li>
+  </ul>
+</div>
+
+<div style="position: absolute; top: 500px; left: 400px">
+  <img src="images/redheads-logo.png" class="borderless" style="height: 100px;">
+</div>
+
+---
+
+## Vorstellungsrunde
+## &
+## Erwartungen
+
+---
+
+## Mob Programming
+
+- wir lernen gemeinsam
+- Pair Programming in der Gruppe
+
 
 ----
 
-## Dinge platzieren
- 
-Muss man mit plain HTML machen...
-
-<img src="images/Csharp_Logo.png" class="borderless" style="position: relative; top: -100px; left: -200px; height: 400px">
-
-<ul class="" style="position: absolute; top: 200px; left: 500px; height: 1000px">
-  <li>Enterprise Sprache</li>
-  <li>hat LINQ</li>
-</ul>
+<img src="images/mob-programming-setup.png" class="borderless" style="height: 50%;">
 
 ----
 
-## Dinge erscheinen zu lassen
+- Driver: Sitzt an der Tastatur (darf nicht denken)
+- Navigator: Sagt dem Driver, was zu tun ist
+- Mob: Unterstuetzt den Navigator
+- Regelmaessiger Wechsel (3-5min)
 
-<img src="images/Csharp_Logo.png" class="borderless fragment" style="position: relative; top: -10px; left: -200px; height: 400px">
+----
 
-<ul class="fragment" style="position: absolute; top: 350px; left: 500px; height: 1000px">
-  <li>Enterprise Sprache</li>
-  <li>hat LINQ</li>
-</ul>
+### "Assisted" Mob Programming
+
+- Facilitator unterstuetzt den Navigator
 
 ---
 
-Customized code (using FiraCode)
+## FP 101
 
-```javascript
-let stringCalc = str => str
-  |> splitByComma
-  |> mapToInt
-  |> lessThan1000
-  |> sum;
+- Immutability
+- Functions as First Class Citizens
+- Pure Functions (see Immutability)
+
+That's it!
+
+---
+
+#### Immutability in C# #
+
+
+```csharp
+public class Customer
+{
+  public string Name { get; set; }
+}
 ```
+
+vs
+
+```csharp
+public class Customer
+{
+  public Customer(string name)
+  {
+    Name = name;
+  }
+  
+  public string Name { get; }
+}
+```
+
+---
+
+#### 1st class functions in C# #
+
+
+```csharp
+public class Customer
+{
+  public string DoMagic(bool isSomething, Func<string, string> func)
+  {
+    if (isSomething)
+      return func();
+    
+    return "failure";
+  }
+}
+```
+
+---
+
+#### Pure Functions in C# #
+
+- haben niemals Seiteneffekte!
+- sollten immer nach `static` umwandelbar sein
+
+---
+
+Schränken uns diese FP Paradigmen ein?
+
+---
+
+Wie kann man mit diesem "Purismus" Software schreiben, die etwas tut?
+
+---
+
+# Let's code
+
+(almost)
+
+---
+
+One more thing: Die Fachlichkeit
+
+(laesstiges Detail...)
+
+---
+
+### Kontakt-App
+
+---
+
+soll folgendes machen
+
+- a
+- b
+- c
+- 

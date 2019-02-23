@@ -2,6 +2,10 @@
   font-size: 3.1em;
 }
 
+.reveal {
+  background: white;
+}
+
 .reveal h2 {
   font-size: 2.0em;
 }
@@ -54,4 +58,8 @@
 /* Increase area for code samples */
 .reveal pre code {
   max-height: 700px;
+}
+
+.reveal .small-font li {
+  font-size: smaller;
 }
