@@ -105,6 +105,25 @@ Diese Notizen erscheinen nur als Speaker Notes (optional)
 
 ---
 
+## FP History
+
+- 1920: Lambda Calculus
+- 1950: LISP
+- 1970: Scheme (OO & FP)
+- ...
+- XXXX: Haskell
+- XXXX: Scala
+- XXXX: F#
+- XXXX: ...
+
+---
+
+## FP Overview
+
+Typed vs Untyped FP
+
+---
+
 ## FP 101
 
 - Immutability
@@ -121,7 +140,7 @@ That's it!
 ```csharp
 public class Customer
 {
-  public string Name { get; set; }
+  public string Name { get; set; } // set -> mutable :-(
 }
 ```
 
@@ -135,7 +154,7 @@ public class Customer
     Name = name;
   }
   
-  public string Name { get; }
+  public string Name { get; } // <- immutable
 }
 ```
 
@@ -145,16 +164,17 @@ public class Customer
 
 
 ```csharp
-public class Customer
+// Func as parameter
+public string Greet(Func<string, string> greeterFunction, string name)
 {
-  public string DoMagic(bool isSomething, Func<string, string> func)
-  {
-    if (isSomething)
-      return func();
-    
-    return "failure";
-  }
+  return greeterFunction(name);
 }
+```
+
+```csharp
+Func<string, string> formatGreeting = (name) => $"Hello, {name}";
+var greetingMessage = Greet(formatGreeting, "dodnedder");
+// -> greetingMessage: "Hello, dodnedder"
 ```
 
 ---
@@ -163,6 +183,51 @@ public class Customer
 
 - haben niemals Seiteneffekte!
 - sollten immer nach `static` umwandelbar sein
+
+----
+
+```csharp
+// method signature lies!
+int Add(int a, int b)
+{
+  Console.WriteLine("foo"); // <- side effect!
+  return a + b;
+}
+```
+
+----
+
+```csharp
+int Add(int a, int b)
+{
+  Console.WriteLine("foo");
+  return a + b;
+}
+```
+
+```csharp
+int Add(int a, int b)
+{
+  return a + b;
+}
+```
+
+Expression body syntax:
+```csharp
+int Add(int a, int b) => a + b;
+```
+
+---
+
+Und was hat es mit
+
+Filter
+
+Map
+
+Reduce
+
+auf sich?
 
 ---
 
@@ -190,9 +255,26 @@ One more thing: Die Fachlichkeit
 
 ---
 
-soll folgendes machen
+### Kontakt-App
 
-- a
-- b
-- c
-- 
+Einträge 
+- Hinzufügen
+- Auflisten
+- Löschen 
+
+----
+
+- Eintrag
+  - Vorname
+  - Nachname
+  - Kontaktmethode
+  - optionale Felder
+    - Geburtstag
+    - Twitter-Link
+    - weitere Kontaktmethoden 
+
+----
+
+- Eintrag wird serialisiert und in Datei abgelegt
+- APIs: Kommandozeile, Datei
+
