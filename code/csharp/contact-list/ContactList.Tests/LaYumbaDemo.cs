@@ -13,21 +13,22 @@ namespace ContactList.Tests
     public class LaYumbaDemo
     {
         // ========================================================================================
-        // Chapter 3: Option (requires pattern matchin)
-        public void ScratchOption()
+        // Chapter 3: Option (requires pattern matching)
+        // ReSharper disable once UnusedMember.Global
+        private void ScratchOption()
         {
         }
 
         [Fact]
         public void Using_pattern_matching()
         {
-            string greetClassic(string greetee)
+            string GreetClassic(string greetee)
                 => greetee == null
                     ? "Sorry, who?"
                     : $"Hello, {greetee}";
 
-            greetClassic(null).Should().Be("Sorry, who?");
-            greetClassic("dodnedder").Should().Be($"Hello, dodnedder");
+            GreetClassic(null).Should().Be("Sorry, who?");
+            GreetClassic("dodnedder").Should().Be($"Hello, dodnedder");
 
 
             string greet(Option<string> greetee)
