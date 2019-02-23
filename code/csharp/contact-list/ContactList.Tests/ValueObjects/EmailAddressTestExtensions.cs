@@ -31,8 +31,7 @@ namespace ContactList.Tests.ValueObjects
     // - `BeSameAs`
     // - `Match`
     public class EmailAddressAssertions 
-        : 
-        ReferenceTypeAssertions<Maybe<EmailAddress2>, EmailAddressAssertions>
+        : ReferenceTypeAssertions<Maybe<EmailAddress2>, EmailAddressAssertions>
     {
         public EmailAddressAssertions(Maybe<EmailAddress2> instance)
         {
