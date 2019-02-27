@@ -393,12 +393,12 @@ namespace ContactList.Tests
         // 8.5.3 Failing fast with monadic flow
         // FP-JARGON: APPLICATIVE
         // Listing 8.18 Validation using applicative flow
-        Validation<PhoneNumber> CreatePhoneNumber
-            (string type, string countryCode, string number)
-            => Valid(PhoneNumber.Create)
-                .Apply(validNumberType(type))
-                .Apply(validCountryCode(countryCode))
-                .Apply(validNumber(number));
+        // Validation<PhoneNumber> CreatePhoneNumber
+        //     (string type, string countryCode, string number)
+        //     => Valid(PhoneNumber.Create)
+        //         .Apply(validNumberType(type))
+        //         .Apply(validCountryCode(countryCode))
+        //         .Apply(validNumber(number));
 
         private static class PhoneNumber
         {
