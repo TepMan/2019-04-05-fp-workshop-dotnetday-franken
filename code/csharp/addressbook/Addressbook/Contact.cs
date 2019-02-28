@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DemoCsharp.Addressbook.ValueObjects;
+using Addressbook.ValueObjetcs;
 using CSharpFunctionalExtensions;
 
-namespace DemoCsharp.Addressbook
+namespace Addressbook
 {
     // Mmh, not sure yet if this class should also be a Value Object...
     public class Contact

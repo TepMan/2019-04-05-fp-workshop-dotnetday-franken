@@ -3,7 +3,7 @@ using CSharpFunctionalExtensions;
 
 // <-- !! Not built into C#; provides "Maybe" !!
 
-namespace DemoCsharp.Addressbook.ValueObjects
+namespace Addressbook.ValueObjetcs
 {
     public static class EmailAddress1Creator
     {

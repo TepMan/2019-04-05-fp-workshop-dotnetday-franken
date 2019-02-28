@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DemoCsharp.Addressbook.ValueObjects
+namespace Addressbook.ValueObjetcs
 {
     // from https://enterprisecraftsmanship.com/2017/08/28/value-object-a-better-implementation/
     public abstract class ValueObject

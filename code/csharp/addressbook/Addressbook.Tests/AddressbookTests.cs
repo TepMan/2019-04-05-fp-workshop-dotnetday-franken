@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using DemoCsharp.Addressbook.ValueObjects;
+using Addressbook.ValueObjetcs;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using Xunit;
 
-namespace DemoCsharp.Addressbook.Tests
+namespace Addressbook.Tests
 {
     public class AddressbookTests
     {

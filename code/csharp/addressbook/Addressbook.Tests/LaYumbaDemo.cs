@@ -2,11 +2,9 @@ using System;
 using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
-using static System.Math;
-using static LaYumba.Functional.F;
 using Unit = System.ValueTuple; // <- don't use void!!
 
-namespace DemoCsharp.Addressbook.Tests
+namespace Addressbook.Tests
 {
     // From "Functional Programming with C#"
     public class LaYumbaDemo
@@ -26,7 +24,7 @@ namespace DemoCsharp.Addressbook.Tests
             // smart ctor
             public static Option<Age> Of(int age)
             {
-                return IsValid(age) ? Some(new Age(age)) : None;
+                return IsValid(age) ? F.Some(new Age(age)) : F.None;
             }
 
             private Age(int value)
@@ -78,8 +76,8 @@ namespace DemoCsharp.Addressbook.Tests
         public void ScratchEither()
         {
             // Either
-            var r = Right(12);
-            var l = Left("ups");
+            var r = F.Right(12);
+            var l = F.Left("ups");
         }
 
         private string Render(Either<string, double> val)
@@ -94,9 +92,9 @@ namespace DemoCsharp.Addressbook.Tests
         private Either<string, double> Calc(double x, double y)
         {
             if (y == 0) return "y cannot be 0";
-            if (x != 0 && Sign(x) != Sign(y))
+            if (x != 0 && Math.Sign(x) != Math.Sign(y))
                 return "x / y cannot be negative";
-            return Sqrt(x / y);
+            return Math.Sqrt(x / y);
         }
 
         // Listing 6.2 (using Option)
@@ -105,7 +103,7 @@ namespace DemoCsharp.Addressbook.Tests
             Func<Candidate, Option<Candidate>> TechTest,
             Func<Candidate, Option<Candidate>> Interview)
         {
-            return Some(candidate)
+            return F.Some(candidate)
                 .Where(IsEligible)
                 .Bind(TechTest) // <- TODO Explain Bind
                 .Bind(Interview);
@@ -118,7 +116,7 @@ namespace DemoCsharp.Addressbook.Tests
             Func<Candidate, Either<Rejection, Candidate>> TechTest,
             Func<Candidate, Either<Rejection, Candidate>> Interview)
         {
-            return Right(candidate)
+            return F.Right(candidate)
                 .Bind(CheckEligibility) // <- TODO explain Bind
                 .Bind(TechTest) // <- TODO explain Bind
                 .Bind(Interview);
@@ -329,8 +327,8 @@ namespace DemoCsharp.Addressbook.Tests
         {
             // Arrange
             Func<Candidate, bool> IsEligible = candidate => true;
-            Func<Candidate, Option<Candidate>> TechTest = candidate => Some(candidate);
-            Func<Candidate, Option<Candidate>> Interview = candidate => Some(candidate);
+            Func<Candidate, Option<Candidate>> TechTest = candidate => F.Some(candidate);
+            Func<Candidate, Option<Candidate>> Interview = candidate => F.Some(candidate);
 
             // Act
             var optionalCandidate = RecruitmentProcess1(new Candidate("homer"), IsEligible, TechTest, Interview);
@@ -344,8 +342,8 @@ namespace DemoCsharp.Addressbook.Tests
         {
             // Arrange
             Func<Candidate, bool> IsEligible = candidate => true;
-            Func<Candidate, Either<Rejection, Candidate>> TechTest = candidate => Right(candidate);
-            Func<Candidate, Either<Rejection, Candidate>> Interview = candidate => Right(candidate);
+            Func<Candidate, Either<Rejection, Candidate>> TechTest = candidate => F.Right(candidate);
+            Func<Candidate, Either<Rejection, Candidate>> Interview = candidate => F.Right(candidate);
 
             Either<Rejection, Candidate> CheckEligibility(Candidate c)
             {
@@ -365,8 +363,8 @@ namespace DemoCsharp.Addressbook.Tests
         [Fact]
         public void RenderTest()
         {
-            Render(Right(12d)).Should().Be("The result is: 12");
-            Render(Left("ups")).Should().Be("Invalid value: ups");
+            Render(F.Right(12d)).Should().Be("The result is: 12");
+            Render(F.Left("ups")).Should().Be("Invalid value: ups");
         }
 
         [Fact]
@@ -395,8 +393,8 @@ namespace DemoCsharp.Addressbook.Tests
             //         () => "Sorry, who?",
             //         (name) => $"Hello, {name}");
 
-            Option<string> none = None;
-            var dodnedder = Some("dodnedder");
+            Option<string> none = F.None;
+            var dodnedder = F.Some("dodnedder");
 
             greet(none).Should().Be("Sorry, who?");
             greet(dodnedder).Should().Be("Hello, dodnedder");

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Mail;
 using CSharpFunctionalExtensions;
 
-namespace DemoCsharp.Addressbook.ValueObjects
+namespace Addressbook.ValueObjetcs
 {
     // This class mimics a "record type" wrapped in a Maybe (also called Option).
     //

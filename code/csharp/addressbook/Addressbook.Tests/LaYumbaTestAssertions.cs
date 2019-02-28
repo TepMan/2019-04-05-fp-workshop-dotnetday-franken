@@ -4,7 +4,7 @@ using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 using LaYumba.Functional;
 
-namespace DemoCsharp.Addressbook.Tests
+namespace Addressbook.Tests
 {
     public class LaYumbaTestAssertions<T>
         : ReferenceTypeAssertions<Option<T>, LaYumbaTestAssertions<T>> where T : struct

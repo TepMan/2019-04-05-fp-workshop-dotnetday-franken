@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DemoCsharp.Addressbook;
 using Xunit;
 
 namespace Addressbook.Tests

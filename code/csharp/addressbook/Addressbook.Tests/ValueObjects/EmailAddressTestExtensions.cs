@@ -1,15 +1,11 @@
-<<<<<<< HEAD:code/csharp/addressbook/Addressbook.Tests/ValueObjects/EmailAddressTestExtensions.cs
-using System;
-using DemoCsharp.Addressbook.ValueObjects;
-=======
-using ContactList.ValueObjects;
->>>>>>> martin sagt, dass ist ok:code/csharp/contact-list/ContactList.Tests/ValueObjects/EmailAddressTestExtensions.cs
+using Addressbook.ValueObjetcs;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
-namespace DemoCsharp.Addressbook.Tests.ValueObjects
+// ReSharper disable once IdentifierTypo
+namespace Addressbook.Tests.ValueObjects
 {
     public static class EmailAddressTestExtensions
     {
