@@ -1,9 +1,9 @@
 using System;
-using ContactList.ValueObjects;
+using Addressbook.ValueObjects;
 using FluentAssertions;
 using Xunit;
 
-namespace ContactList.Tests.ValueObjects
+namespace Addressbook.Tests.ValueObjects
 {
     public class EmailAddress1Tests
     {

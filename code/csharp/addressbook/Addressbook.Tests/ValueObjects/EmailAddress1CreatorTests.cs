@@ -1,9 +1,9 @@
-using ContactList.ValueObjects;
+using Addressbook.ValueObjects;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using Xunit;
 
-namespace ContactList.Tests.ValueObjects
+namespace Addressbook.Tests.ValueObjects
 {
     public class EmailAddress1CreatorTests
     {

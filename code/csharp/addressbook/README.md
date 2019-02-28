@@ -3,23 +3,23 @@
 (on Windows: replace `\` with `^` as line continuation)
 
 ```
-dotnet new sln -n ContactList
-dotnet new xunit -o ContactList.Tests
-dotnet new classlib -o ContactList
-cd ContactList.Tests && \
-    dotnet add reference ../ContactList/ContactList.csproj && \
+dotnet new sln -n Addressbook
+dotnet new xunit -o Addressbook.Tests
+dotnet new classlib -o Addressbook
+cd Addressbook.Tests && \
+    dotnet add reference ../Addressbook/Addressbook.csproj && \
     dotnet add package FluentAssertions && \
     cd ..
-dotnet sln add ContactList/ContactList.csproj
-dotnet sln add ContactList.Tests/ContactList.Tests.csproj
+dotnet sln add Addressbook/Addressbook.csproj
+dotnet sln add Addressbook.Tests/Addressbook.Tests.csproj
 dotnet test
 ```
 
 Adding `CSharpFunctionalExtensions`:
 ```
-cd ContactList
+cd Addressbook
 dotnet add package CSharpFunctionalExtensions
-cd ../ContactList.Tests
+cd ../Addressbook.Tests
 dotnet add package CSharpFunctionalExtensions
 ```
 

@@ -1,11 +1,11 @@
 using System;
-using ContactList.ValueObjects;
+using Addressbook.ValueObjects;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
-namespace ContactList.Tests.ValueObjects
+namespace Addressbook.Tests.ValueObjects
 {
     public static class EmailAddressTestExtensions
     {

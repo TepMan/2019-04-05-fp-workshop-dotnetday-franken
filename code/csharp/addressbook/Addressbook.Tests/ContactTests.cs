@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using ContactList.ValueObjects;
+using Addressbook.ValueObjects;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using Xunit;
 
-namespace ContactList.Tests
+namespace Addressbook.Tests
 {
     public class ContactTests
     {

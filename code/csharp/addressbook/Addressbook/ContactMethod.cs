@@ -1,4 +1,4 @@
-namespace ContactList
+namespace Addressbook
 {
     // C# does not have discriminated union :-(
     // 

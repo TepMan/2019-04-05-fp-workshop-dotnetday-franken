@@ -1,7 +1,7 @@
 using System;
 using CSharpFunctionalExtensions; // <-- !! Not built into C#; provides "Maybe" !!
 
-namespace ContactList.ValueObjects
+namespace Addressbook.ValueObjects
 {
     public static class EmailAddress1Creator
     {

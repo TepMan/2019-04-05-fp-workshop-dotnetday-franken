@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using ContactList.ValueObjects;
+using Addressbook.ValueObjects;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using Xunit;
 
-namespace ContactList.Tests
+namespace Addressbook.Tests
 {
-    public class ContactListTests
+    public class AddressbookTests
     {
         [Fact]
         public void Adding_new_contact_works()
@@ -28,16 +28,16 @@ namespace ContactList.Tests
                 new EmailContact(), 
                 new List<ContactMethod>());
 
-            var sut = new ContactList();
+            var sut = new Addressbook();
             
-            // important design decision: do we have state in ContactList or not?
+            // important design decision: do we have state in Addressbook or not?
             // should the following code return a modified list or have internal state?
             //
             // with state
             sut.AddContact(contact);
             //
             // without state
-            ContactList newContactList = sut.AddContactFunctional(contact);
+            Addressbook newAddressbook = sut.AddContactFunctional(contact);
 
             true.Should().BeTrue();
         }
