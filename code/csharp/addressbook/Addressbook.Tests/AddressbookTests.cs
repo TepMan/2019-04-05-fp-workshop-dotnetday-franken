@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Addressbook.ValueObjetcs;
-using CSharpFunctionalExtensions;
+using Addressbook.ValueObjects;
 using FluentAssertions;
 using Xunit;
+using static LaYumba.Functional.F;
 
 namespace Addressbook.Tests
 {
@@ -16,20 +16,20 @@ namespace Addressbook.Tests
             var lastname = NonEmptyString.CreateBang("Simpson");
             var id = Guid.NewGuid();
             var dateOfBirth = new DateTime(1956, 5, 12);
-            var dob = Maybe<DateTime>.From(dateOfBirth);
+            var dob = Some(dateOfBirth);
             var twitterProfileUrl = NonEmptyString.Create("https://twitter.com/homerjsimpson");
-            
+
             var contact = new Contact(
-                id, 
-                firstname, 
+                id,
+                firstname,
                 lastname,
-                dob, 
-                twitterProfileUrl, 
-                new EmailContact(), 
+                dob,
+                twitterProfileUrl,
+                new EmailContact(),
                 new List<ContactMethod>());
 
             var sut = new Addressbook();
-            
+
             // important design decision: do we have state in Addressbook or not?
             // should the following code return a modified list or have internal state?
             //
@@ -37,7 +37,7 @@ namespace Addressbook.Tests
             sut.AddContact(contact);
             //
             // without state
-            Addressbook newAddressbook = sut.AddContactFunctional(contact);
+            var newAddressbook = sut.AddContactFunctional(contact);
 
             true.Should().BeTrue();
         }

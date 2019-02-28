@@ -1,5 +1,5 @@
 using System;
-using Addressbook.ValueObjetcs;
+using Addressbook.ValueObjects;
 using FluentAssertions;
 using Xunit;
 

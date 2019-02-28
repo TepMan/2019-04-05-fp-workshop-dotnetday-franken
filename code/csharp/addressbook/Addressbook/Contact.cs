@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Addressbook.ValueObjetcs;
-using CSharpFunctionalExtensions;
+using Addressbook.ValueObjects;
+using LaYumba.Functional;
+
+using static LaYumba.Functional.F;
 
 namespace Addressbook
 {
@@ -11,8 +13,8 @@ namespace Addressbook
         public Contact(Guid id,
             NonEmptyString firstname,
             NonEmptyString lastname,
-            Maybe<DateTime> dateOfBirth,
-            Maybe<NonEmptyString> twitterProfileUrl,
+            Option<DateTime> dateOfBirth,
+            Option<NonEmptyString> twitterProfileUrl,
             ContactMethod primaryContactMethod,
             IEnumerable<ContactMethod> otherContactMethod)
         {
@@ -28,8 +30,8 @@ namespace Addressbook
         public Guid Id { get; }
         public NonEmptyString FirstName { get; }
         public NonEmptyString LastName { get; }
-        public Maybe<NonEmptyString> TwitterProfileUrl { get; }
-        public Maybe<DateTime> DateOfBirth { get; }
+        public Option<NonEmptyString> TwitterProfileUrl { get; }
+        public Option<DateTime> DateOfBirth { get; }
         public ContactMethod PrimaryContactMethod { get; }
         public IEnumerable<ContactMethod> OtherContactMethods { get; }
 

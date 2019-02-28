@@ -1,7 +1,7 @@
 using System;
-using Addressbook.ValueObjetcs;
-using CSharpFunctionalExtensions;
+using Addressbook.ValueObjects;
 using FluentAssertions;
+using LaYumba.Functional;
 using Xunit;
 
 namespace Addressbook.Tests.ValueObjects
@@ -18,8 +18,10 @@ namespace Addressbook.Tests.ValueObjects
             var result = EmailAddress2.Create(input);
 
             // Assert
-            result.Should().BeOfType<Maybe<EmailAddress2>>();
-            result.HasNoValue.Should().BeTrue();
+            result.Should().BeOfType<Option<EmailAddress2>>();
+            result.Match(
+                () => true.Should().BeTrue(),
+                x => x.Should().BeNull());
         }
 
         [Theory]
@@ -50,21 +52,9 @@ namespace Addressbook.Tests.ValueObjects
             var result = EmailAddress2.Create(validEmail);
 
             // Assert
-            result.Value.Value.Should().Be(validEmail);
-        }
-
-        [Fact]
-        public void Valid_email_is_ok()
-        {
-            // Arrange
-            var validEmail = "foo@bar.de";
-
-            // Act
-            var result = EmailAddress2.Create(validEmail);
-
-            // Assert
-            result.Should().BeOfType<Maybe<EmailAddress2>>();
-            result.HasValue.Should().BeTrue();
+            result.Match(
+                () => true.Should().BeFalse(),
+                x => x.Value.Should().Be("foo@bar.de"));
         }
     }
 }

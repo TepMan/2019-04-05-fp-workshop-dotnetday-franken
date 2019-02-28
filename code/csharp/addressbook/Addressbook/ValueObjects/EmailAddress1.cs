@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Mail;
 
-namespace Addressbook.ValueObjetcs
+namespace Addressbook.ValueObjects
 {
     // This implementation throws an exception when the given email is invalid
     // 

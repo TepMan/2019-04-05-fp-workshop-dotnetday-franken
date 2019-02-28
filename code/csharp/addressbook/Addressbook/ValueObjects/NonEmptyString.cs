@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
-using CSharpFunctionalExtensions;
+using LaYumba.Functional;
 
-namespace Addressbook.ValueObjetcs
+using static LaYumba.Functional.F;
+
+namespace Addressbook.ValueObjects
 {
     public class NonEmptyString : ValueObject
     {
@@ -16,17 +18,17 @@ namespace Addressbook.ValueObjetcs
 
         public string Value { get; }
 
-        public static Maybe<NonEmptyString> Create(string potentialString)
+        public static Option<NonEmptyString> Create(string potentialString)
         {
-            Maybe<NonEmptyString> result;
+            Option<NonEmptyString> result;
 
             try
             {
-                result = Maybe<NonEmptyString>.From(new NonEmptyString(potentialString));
+                result = Some(new NonEmptyString(potentialString));
             }
             catch (Exception)
             {
-                result = Maybe<NonEmptyString>.None;
+                result = None;
             }
 
             return result;

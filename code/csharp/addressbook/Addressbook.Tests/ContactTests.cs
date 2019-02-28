@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Addressbook.ValueObjetcs;
-using CSharpFunctionalExtensions;
+using Addressbook.ValueObjects;
 using FluentAssertions;
 using Xunit;
+using static LaYumba.Functional.F;
+
 
 namespace Addressbook.Tests
 {
@@ -18,9 +19,7 @@ namespace Addressbook.Tests
             var id = Guid.NewGuid();
 
             var dateOfBirth = new DateTime(1956, 5, 12);
-            var dob = dateOfBirth != null
-                ? Maybe<DateTime>.From(dateOfBirth)
-                : Maybe<DateTime>.None;
+            var dob = Some(dateOfBirth);
 
             var twitterProfileUrl = NonEmptyString.Create("https://twitter.com/homerjsimpson");
 
@@ -29,8 +28,9 @@ namespace Addressbook.Tests
 
             contact.FirstName.Value.Should().Be("Homer");
             contact.LastName.Value.Should().Be("Simpson");
-            contact.DateOfBirth.Should().Be(new DateTime(1956, 5, 12));
-            contact.TwitterProfileUrl.Value.Value.Should().Be("https://twitter.com/homerjsimpson");
+            contact.DateOfBirth.Should().BeEquivalentTo(Some(new DateTime(1956, 5, 12)));
+            contact.TwitterProfileUrl.Should()
+                .BeEquivalentTo(Some(NonEmptyString.CreateBang("https://twitter.com/homerjsimpson")));
             contact.PrimaryContactMethod.Should().BeOfType<EmailContact>();
             contact.OtherContactMethods.Should().NotBeNull().And.BeEmpty();
         }

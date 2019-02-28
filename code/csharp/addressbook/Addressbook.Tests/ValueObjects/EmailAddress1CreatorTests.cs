@@ -1,5 +1,6 @@
-using Addressbook.ValueObjetcs;
-using CSharpFunctionalExtensions;
+using Addressbook.ValueObjects;
+using LaYumba.Functional;
+using static LaYumba.Functional.F;
 using FluentAssertions;
 using Xunit;
 
@@ -17,8 +18,11 @@ namespace Addressbook.Tests.ValueObjects
             var result = EmailAddress1Creator.CreateFrom(emptyString);
 
             // Assert
-            result.Should().BeOfType<Maybe<EmailAddress1>>();
-            result.HasNoValue.Should().BeTrue();
+            result.Should().BeOfType<Option<EmailAddress1>>();
+            //result.Should().BeEquivalentTo(None);
+            result.Match(
+                () => true.Should().BeTrue(),
+                x => x.Should().BeNull());
         }
 
         [Fact]
@@ -31,11 +35,12 @@ namespace Addressbook.Tests.ValueObjects
             var result = EmailAddress1Creator.CreateFrom(validEmail);
 
             // Assert
-            result.Should().BeOfType<Maybe<EmailAddress1>>();
-            result.HasValue.Should().BeTrue();
+            result.Should().BeOfType<Option<EmailAddress1>>();
+            //result.Should().BeEquivalentTo(EmailAddress1Creator.CreateFrom(validEmail));
+            //result.Match(
+            //    () => true.Should().BeFalse(),
+            //    x => x.Should().Be(validEmail));
 
-            // 1st "Value" is from Maybe, 2nd "Value" is content of EmailAddress
-            result.Value.Value.Should().Be(validEmail);
         }
     }
 }

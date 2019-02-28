@@ -1,22 +1,22 @@
-using Addressbook.ValueObjetcs;
-using CSharpFunctionalExtensions;
+using Addressbook.ValueObjects;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
+using LaYumba.Functional;
 
 // ReSharper disable once IdentifierTypo
 namespace Addressbook.Tests.ValueObjects
 {
     public static class EmailAddressTestExtensions
     {
-        public static bool IsOkAndHasValue<T>(this Maybe<T> maybe, T expected)
+        public static bool IsOkAndHasValue<T>(this Option<T> maybe, T expected)
         {
-            if (maybe.HasNoValue) return false;
-
-            return maybe.Value.Equals(expected);
+            return maybe.Match(
+                () => false,
+                x => x.Equals(expected));
         }
 
-        public static EmailAddressAssertions Should(this Maybe<EmailAddress2> instance)
+        public static EmailAddressAssertions Should(this Option<EmailAddress2> instance)
         {
             return new EmailAddressAssertions(instance);
         }
@@ -28,9 +28,9 @@ namespace Addressbook.Tests.ValueObjects
     // - `BeSameAs`
     // - `Match`
     public class EmailAddressAssertions
-        : ReferenceTypeAssertions<Maybe<EmailAddress2>, EmailAddressAssertions>
+        : ReferenceTypeAssertions<Option<EmailAddress2>, EmailAddressAssertions>
     {
-        public EmailAddressAssertions(Maybe<EmailAddress2> instance)
+        public EmailAddressAssertions(Option<EmailAddress2> instance)
         {
             Subject = instance;
         }
@@ -47,10 +47,12 @@ namespace Addressbook.Tests.ValueObjects
                 .ForCondition(!string.IsNullOrWhiteSpace(otherEmailString))
                 .FailWith("You can't compare emails if you provide an empty email string.")
                 .Then
-                .Given(() => Subject.Value)
-                .ForCondition(email => email.Value == otherEmailString)
+                .Given(() => Subject)
+                .ForCondition(opt => opt.Match(
+                    () => false,
+                    x => x == otherEmailString))
                 .FailWith("Expected {context:email} to be {0}{reason}, but found {1}",
-                    otherEmailString, Subject.Value.Value);
+                    otherEmailString, Subject);
 
             return new AndConstraint<EmailAddressAssertions>(this);
         }
@@ -62,9 +64,11 @@ namespace Addressbook.Tests.ValueObjects
         {
             Execute.Assertion
                 .Given(() => Subject)
-                .ForCondition(maybeMail => maybeMail.HasNoValue || maybeMail.Value != otherEmailString)
+                .ForCondition(opt => opt.Match(
+                    () => false,
+                    x => x != otherEmailString))
                 .FailWith("Expected {context:email} not to be {0}{reason}, but found {1}",
-                    otherEmailString, Subject.Value.Value);
+                    otherEmailString, Subject);
 
             return new AndConstraint<EmailAddressAssertions>(this);
         }

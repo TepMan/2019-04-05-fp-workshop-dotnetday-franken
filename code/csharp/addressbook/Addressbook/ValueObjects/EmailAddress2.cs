@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Mail;
-using CSharpFunctionalExtensions;
+using LaYumba.Functional;
 
-namespace Addressbook.ValueObjetcs
+using static LaYumba.Functional.F;
+
+namespace Addressbook.ValueObjects
 {
     // This class mimics a "record type" wrapped in a Maybe (also called Option).
     //
@@ -28,17 +30,17 @@ namespace Addressbook.ValueObjetcs
 
         public string Value { get; }
 
-        public static Maybe<EmailAddress2> Create(string potentialEmailAddress)
+        public static Option<EmailAddress2> Create(string potentialEmailAddress)
         {
-            Maybe<EmailAddress2> result;
+            Option<EmailAddress2> result;
 
             try
             {
-                result = Maybe<EmailAddress2>.From(new EmailAddress2(potentialEmailAddress));
+                result = Some(new EmailAddress2(potentialEmailAddress));
             }
             catch (Exception)
             {
-                result = Maybe<EmailAddress2>.None;
+                result = None;
             }
 
             return result;
