@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Addressbook.Tests.PrimitiveContactManager
+namespace Addressbook.PrimitiveContactManager
 {
     public class ContactManager
     {

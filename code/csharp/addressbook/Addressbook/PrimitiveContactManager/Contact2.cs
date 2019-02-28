@@ -1,4 +1,4 @@
-namespace Addressbook.Tests.PrimitiveContactManager
+namespace Addressbook.PrimitiveContactManager
 {
     public class Contact2
     {

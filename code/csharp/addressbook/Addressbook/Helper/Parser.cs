@@ -1,7 +1,7 @@
 ﻿using System;
 using LaYumba.Functional;
 
-namespace Addressbook.Tests.Helper
+namespace Addressbook.Helper
 {
     public static class Parser
     {

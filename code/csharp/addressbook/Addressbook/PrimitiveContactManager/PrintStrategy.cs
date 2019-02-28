@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Addressbook.Tests.PrimitiveContactManager
+namespace Addressbook.PrimitiveContactManager
 {
     public class PrintStrategy : IPrintStrategy
     {
