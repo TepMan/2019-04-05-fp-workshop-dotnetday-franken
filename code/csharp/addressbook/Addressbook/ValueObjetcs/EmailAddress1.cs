@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mail;
 
 namespace DemoCsharp.Addressbook.ValueObjects
 {
@@ -15,23 +16,26 @@ namespace DemoCsharp.Addressbook.ValueObjects
     {
         public EmailAddress1(string potentialEmailAddress)
         {
-            if (!IsValid(potentialEmailAddress))
-            {
-                throw new ArgumentException();    
-            }
+            if (!IsValid(potentialEmailAddress)) throw new ArgumentException();
 
             Value = potentialEmailAddress;
         }
 
         public string Value { get; }
-        
+
         private bool IsValid(string potentialEmailAddress)
         {
             if (string.IsNullOrWhiteSpace(potentialEmailAddress)) return false;
 
-            try { new System.Net.Mail.MailAddress(potentialEmailAddress); }
-            catch (Exception) { return false; }
-            
+            try
+            {
+                new MailAddress(potentialEmailAddress);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
             return true;
         }
 

@@ -1,11 +1,10 @@
 using System;
-using static System.Math;
 using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
+using static System.Math;
 using static LaYumba.Functional.F;
-using Unit = System.ValueTuple;     // <- don't use void!!
-using FluentAssertions.Primitives;
+using Unit = System.ValueTuple; // <- don't use void!!
 
 namespace DemoCsharp.Addressbook.Tests
 {
@@ -19,35 +18,6 @@ namespace DemoCsharp.Addressbook.Tests
         {
         }
 
-        [Fact]
-        public void Using_pattern_matching()
-        {
-            string GreetClassic(string greetee)
-                => greetee == null
-                    ? "Sorry, who?"
-                    : $"Hello, {greetee}";
-
-            GreetClassic(null).Should().Be("Sorry, who?");
-            GreetClassic("dodnedder").Should().Be($"Hello, dodnedder");
-
-
-            string greet(Option<string> greetee)
-                => greetee.Match(
-                    None: () => "Sorry, who?",
-                    Some: (name) => $"Hello, {name}");
-
-            // string greetCompact(Option<string> greetee)
-            //     => greetee.Match(
-            //         () => "Sorry, who?",
-            //         (name) => $"Hello, {name}");
-
-            Option<string> none = None;
-            Option<string> dodnedder = Some("dodnedder");
-
-            greet(none).Should().Be("Sorry, who?");
-            greet(dodnedder).Should().Be("Hello, dodnedder");
-        }
-
         // Listing 3.8 Smart constructor pattern
         public struct Age
         {
@@ -55,7 +25,9 @@ namespace DemoCsharp.Addressbook.Tests
 
             // smart ctor
             public static Option<Age> Of(int age)
-                => IsValid(age) ? Some(new Age(age)) : None;
+            {
+                return IsValid(age) ? Some(new Age(age)) : None;
+            }
 
             private Age(int value)
             {
@@ -65,7 +37,158 @@ namespace DemoCsharp.Addressbook.Tests
             }
 
             private static bool IsValid(int age)
-                => 0 <= age && age < 120;
+            {
+                return 0 <= age && age < 120;
+            }
+        }
+
+        // 4.3.2 Flattening nested lists with Bind
+
+        /*
+            public static IEnumerable<R> Bind<T, R>
+                (this IEnumerable<T> ts, Func<T, IEnumerable<R>> f)
+            {
+                foreach (T t in ts)
+                    foreach (R r in f(t))
+                        yield return r;
+            }
+         */
+
+        // Previous example is the same as Linq SelectMany!
+
+        // FP-JARGON: Filter, Map; page 94
+        /*
+            LaYumba.Functional              LINQ                Common synonyms
+            ------------------              ----                ---------------
+            Map                             Select              fMap, Project, Lift
+            Bind                            SelectMany          FlatMap, Chain, Collect, Then
+            Where                           Where               Filter
+            ForEach                         n/a                 Iter
+         */
+
+        // FP-JARGON: Fig. 4.4, Fig. 4.5, Fig. 4.6
+
+        // ========================================================================================
+        // Chapter 5: Function composition, method chaining, functional domain modelling
+        // TODO
+
+        // ========================================================================================
+        // Chapter 6: Functional error handling
+        // - Either
+        public void ScratchEither()
+        {
+            // Either
+            var r = Right(12);
+            var l = Left("ups");
+        }
+
+        private string Render(Either<string, double> val)
+        {
+            return val.Match(
+                l => $"Invalid value: {l}",
+                r => $"The result is: {r}");
+        }
+
+        // Listing 6.1
+        // f(x, y) -> sqrt(x / y)
+        private Either<string, double> Calc(double x, double y)
+        {
+            if (y == 0) return "y cannot be 0";
+            if (x != 0 && Sign(x) != Sign(y))
+                return "x / y cannot be negative";
+            return Sqrt(x / y);
+        }
+
+        // Listing 6.2 (using Option)
+        private Option<Candidate> RecruitmentProcess1(Candidate candidate,
+            Func<Candidate, bool> IsEligible,
+            Func<Candidate, Option<Candidate>> TechTest,
+            Func<Candidate, Option<Candidate>> Interview)
+        {
+            return Some(candidate)
+                .Where(IsEligible)
+                .Bind(TechTest) // <- TODO Explain Bind
+                .Bind(Interview);
+        }
+
+        // Listing 6.3 (using Either instead of Option)
+        private Either<Rejection, Candidate> RecruitmentProcess2(
+            Candidate candidate,
+            Func<Candidate, Either<Rejection, Candidate>> CheckEligibility,
+            Func<Candidate, Either<Rejection, Candidate>> TechTest,
+            Func<Candidate, Either<Rejection, Candidate>> Interview)
+        {
+            return Right(candidate)
+                .Bind(CheckEligibility) // <- TODO explain Bind
+                .Bind(TechTest) // <- TODO explain Bind
+                .Bind(Interview);
+        }
+
+        // Listing 6.4
+        private void Chaining_Either()
+        {
+            Func<Either<Reason, Unit>> WakeUpEarly;
+            Func<Unit, Either<Reason, Ingredients>> ShopForIngredients;
+            Func<Ingredients, Either<Reason, Food>> CookRecipe;
+            Action<Food> EnjoyTogether;
+            Action<Reason> ComplainAbout;
+            Action OrderPizza;
+
+            /*
+                 o WakeUpEarly
+                / \
+               L   R ShopForIngredients
+                  / \
+                 L   R CookRecipe
+                    / \
+                   L   R EnjoyTogether
+            */
+
+            void Start()
+            {
+                WakeUpEarly()
+                    .Bind(ShopForIngredients)
+                    .Bind(CookRecipe)
+                    .Match(
+                        Right: dish => EnjoyTogether(dish),
+                        Left: reason =>
+                        {
+                            ComplainAbout(reason);
+                            OrderPizza();
+                        });
+            }
+        }
+
+        private class Candidate
+        {
+            public Candidate(string name)
+            {
+                Name = name;
+            }
+
+            public string Name { get; }
+        }
+
+        private class Rejection
+        {
+            public Rejection(string reason)
+            {
+                Reason = reason;
+            }
+
+            public string Reason { get; }
+        }
+
+        private class Reason
+        {
+        }
+
+        private class Ingredients
+        {
+        }
+
+        private class Food
+        {
         }
 
         [Fact]
@@ -74,11 +197,11 @@ namespace DemoCsharp.Addressbook.Tests
             // TODO Create readable test extension for Option
             Age.Of(10).Match(
                 () => true.Should().Be(false),
-                (age) => age.Value.Should().Be(10));
+                age => age.Value.Should().Be(10));
 
             Age.Of(-1).Match(
                 () => true.Should().Be(true),
-                (age) => age.Should().Be(null));
+                age => age.Should().Be(null));
         }
 
         // ========================================================================================
@@ -162,7 +285,7 @@ namespace DemoCsharp.Addressbook.Tests
         {
             // Int.Parse is a function from LaYumba. It takes a string and returns an Option<int>.
             // Int.Parse: s -> Option<int>
-            Option<int> optI = Int.Parse("12");
+            var optI = Int.Parse("12");
 
             // Age.Of: int -> Option<Age>
             // Age.Of(1)
@@ -171,7 +294,7 @@ namespace DemoCsharp.Addressbook.Tests
             var ageOpt = optI.Map(i => Age.Of(i));
 
             // Problem: returns Option<Option<Age>> ARRGH!
-            Option<Option<Age>> ageOpt1 = optI.Map(i => Age.Of(i));
+            var ageOpt1 = optI.Map(i => Age.Of(i));
 
             // Solution: Bind instead of Map when combining functions which return M<T>
             Func<string, Option<Age>> parseAge = s
@@ -179,71 +302,9 @@ namespace DemoCsharp.Addressbook.Tests
 
             var ageO = parseAge("12");
             ageO.Match(
-                None: () => true.Should().Be(false), // <- ensure that this path is never called!
-                Some: x => x.Value.Should().Be(12)
+                () => true.Should().Be(false), // <- ensure that this path is never called!
+                x => x.Value.Should().Be(12)
             );
-        }
-
-        // 4.3.2 Flattening nested lists with Bind
-
-        /*
-            public static IEnumerable<R> Bind<T, R>
-                (this IEnumerable<T> ts, Func<T, IEnumerable<R>> f)
-            {
-                foreach (T t in ts)
-                    foreach (R r in f(t))
-                        yield return r;
-            }
-         */
-
-        // Previous example is the same as Linq SelectMany!
-
-        // FP-JARGON: Filter, Map; page 94
-        /*
-            LaYumba.Functional              LINQ                Common synonyms
-            ------------------              ----                ---------------
-            Map                             Select              fMap, Project, Lift
-            Bind                            SelectMany          FlatMap, Chain, Collect, Then
-            Where                           Where               Filter
-            ForEach                         n/a                 Iter
-         */
-
-        // FP-JARGON: Fig. 4.4, Fig. 4.5, Fig. 4.6
-
-        // ========================================================================================
-        // Chapter 5: Function composition, method chaining, functional domain modelling
-        // TODO
-
-        // ========================================================================================
-        // Chapter 6: Functional error handling
-        // - Either
-        public void ScratchEither()
-        {
-            // Either
-            var r = Right(12);
-            var l = Left("ups");
-        }
-
-        string Render(Either<string, double> val) =>
-            val.Match(
-                Left: l => $"Invalid value: {l}",
-                Right: r => $"The result is: {r}");
-
-        [Fact]
-        public void RenderTest()
-        {
-            Render(Right(12d)).Should().Be("The result is: 12");
-            Render(Left("ups")).Should().Be("Invalid value: ups");
-        }
-
-        // Listing 6.1
-        // f(x, y) -> sqrt(x / y)
-        Either<string, double> Calc(double x, double y)
-        {
-            if (y == 0) return "y cannot be 0";
-            if (x != 0 && Sign(x) != Sign(y))
-                return "x / y cannot be negative";
-            return Sqrt(x / y);
         }
 
         [Fact]
@@ -251,27 +312,17 @@ namespace DemoCsharp.Addressbook.Tests
         {
             // TODO Is there a easier way to test an Either??
             Calc(3, 0).Match(
-                Left: e => e.Should().Be("y cannot be 0"),
-                Right: r => r.Should().Be(null));
+                e => e.Should().Be("y cannot be 0"),
+                r => r.Should().Be(null));
 
             Calc(-3, 3).Match(
-                Left: e => e.Should().Be("x / y cannot be negative"),
-                Right: r => r.Should().Be(null));
+                e => e.Should().Be("x / y cannot be negative"),
+                r => r.Should().Be(null));
 
             Calc(-3, -3).Match(
-                Left: e => e.Should().Be(null),
-                Right: r => r.Should().Be(1));
+                e => e.Should().Be(null),
+                r => r.Should().Be(1));
         }
-
-        // Listing 6.2 (using Option)
-        Option<Candidate> RecruitmentProcess1(Candidate candidate,
-            Func<Candidate, bool> IsEligible,
-            Func<Candidate, Option<Candidate>> TechTest,
-            Func<Candidate, Option<Candidate>> Interview)
-                => Some(candidate)
-                    .Where(IsEligible)
-                    .Bind(TechTest)         // <- TODO Explain Bind
-                    .Bind(Interview);       // <- TODO Explain Bind
 
         [Fact]
         public void RecruitmentProcess1Test()
@@ -288,17 +339,6 @@ namespace DemoCsharp.Addressbook.Tests
             optionalCandidate.Map(c => c.Name.Should().Be("homer"));
         }
 
-        // Listing 6.3 (using Either instead of Option)
-        Either<Rejection, Candidate> RecruitmentProcess2(
-            Candidate candidate,
-            Func<Candidate, Either<Rejection, Candidate>> CheckEligibility,
-            Func<Candidate, Either<Rejection, Candidate>> TechTest,
-            Func<Candidate, Either<Rejection, Candidate>> Interview)
-                => Right(candidate)
-                    .Bind(CheckEligibility) // <- TODO explain Bind
-                    .Bind(TechTest)         // <- TODO explain Bind
-                    .Bind(Interview);       // <- TODO explain Bind
-
         [Fact]
         public void RecruitmentProcess2Test()
         {
@@ -306,10 +346,11 @@ namespace DemoCsharp.Addressbook.Tests
             Func<Candidate, bool> IsEligible = candidate => true;
             Func<Candidate, Either<Rejection, Candidate>> TechTest = candidate => Right(candidate);
             Func<Candidate, Either<Rejection, Candidate>> Interview = candidate => Right(candidate);
+
             Either<Rejection, Candidate> CheckEligibility(Candidate c)
             {
                 if (IsEligible(c)) return c;
-                else return new Rejection("Not eligible");
+                return new Rejection("Not eligible");
             }
 
             // Act
@@ -321,71 +362,44 @@ namespace DemoCsharp.Addressbook.Tests
             optionalCandidate.Map(candidate => candidate.Name.Should().Be("homer simpson"));
         }
 
-        // Listing 6.4
-        private void Chaining_Either()
+        [Fact]
+        public void RenderTest()
         {
-            Func<Either<Reason, Unit>> WakeUpEarly;
-            Func<Unit, Either<Reason, Ingredients>> ShopForIngredients;
-            Func<Ingredients, Either<Reason, Food>> CookRecipe;
-            Action<Food> EnjoyTogether;
-            Action<Reason> ComplainAbout;
-            Action OrderPizza;
+            Render(Right(12d)).Should().Be("The result is: 12");
+            Render(Left("ups")).Should().Be("Invalid value: ups");
+        }
 
-            /*
-                 o WakeUpEarly
-                / \
-               L   R ShopForIngredients
-                  / \
-                 L   R CookRecipe
-                    / \
-                   L   R EnjoyTogether
-            */
-
-            void Start()
+        [Fact]
+        public void Using_pattern_matching()
+        {
+            string GreetClassic(string greetee)
             {
-                WakeUpEarly()
-                .Bind(ShopForIngredients)
-                .Bind(CookRecipe)
-                .Match(
-                    Right: dish => EnjoyTogether(dish),
-                    Left: reason =>
-                        {
-                            ComplainAbout(reason);
-                            OrderPizza();
-                        });
+                return greetee == null
+                    ? "Sorry, who?"
+                    : $"Hello, {greetee}";
             }
-        }
 
-        private class Candidate
-        {
-            public string Name { get; }
+            GreetClassic(null).Should().Be("Sorry, who?");
+            GreetClassic("dodnedder").Should().Be("Hello, dodnedder");
 
-            public Candidate(string name)
+
+            string greet(Option<string> greetee)
             {
-                this.Name = name;
+                return greetee.Match(
+                    () => "Sorry, who?",
+                    name => $"Hello, {name}");
             }
-        }
 
-        private class Rejection
-        {
-            public string Reason { get; }
+            // string greetCompact(Option<string> greetee)
+            //     => greetee.Match(
+            //         () => "Sorry, who?",
+            //         (name) => $"Hello, {name}");
 
-            public Rejection(string reason)
-            {
-                this.Reason = reason;
-            }
-        }
+            Option<string> none = None;
+            var dodnedder = Some("dodnedder");
 
-        private class Reason
-        {
-        }
-
-        private class Ingredients
-        {
-        }
-
-        private class Food
-        {
+            greet(none).Should().Be("Sorry, who?");
+            greet(dodnedder).Should().Be("Hello, dodnedder");
         }
 
         // ========================================================================================

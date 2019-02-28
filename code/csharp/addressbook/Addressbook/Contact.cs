@@ -8,12 +8,12 @@ namespace DemoCsharp.Addressbook
     // Mmh, not sure yet if this class should also be a Value Object...
     public class Contact
     {
-        public Contact(Guid id, 
-            NonEmptyString firstname, 
-            NonEmptyString lastname, 
+        public Contact(Guid id,
+            NonEmptyString firstname,
+            NonEmptyString lastname,
             Maybe<DateTime> dateOfBirth,
-            Maybe<NonEmptyString> twitterProfileUrl, 
-            ContactMethod primaryContactMethod, 
+            Maybe<NonEmptyString> twitterProfileUrl,
+            ContactMethod primaryContactMethod,
             IEnumerable<ContactMethod> otherContactMethod)
         {
             Id = id;

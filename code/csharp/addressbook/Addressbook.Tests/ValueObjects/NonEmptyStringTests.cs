@@ -11,12 +11,12 @@ namespace DemoCsharp.Addressbook.Tests.ValueObjects
         [Theory]
         [InlineData("a", true)]
         [InlineData("", false)]
-        [InlineData((string)null, false)]
+        [InlineData((string) null, false)]
         public void NonEmptyString_creation_works(string input, bool isValid)
         {
             // Act
             var result = NonEmptyString.Create(input);
-            
+
             // Assert
             result.Should()
                 .NotBeNull()
@@ -36,13 +36,13 @@ namespace DemoCsharp.Addressbook.Tests.ValueObjects
         [Theory]
         [InlineData("a", true)]
         [InlineData("", false)]
-        [InlineData((string)null, false)]
+        [InlineData((string) null, false)]
         public void NonEmptyString_creation_with_bang_works(string input, bool isValid)
         {
             if (isValid)
             {
                 var result = NonEmptyString.CreateBang(input);
-                
+
                 // Assert
                 result.Should()
                     .NotBeNull()

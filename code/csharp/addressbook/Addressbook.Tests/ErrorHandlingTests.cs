@@ -8,6 +8,11 @@ namespace DemoCsharp.Addressbook.Tests
     public class ErrorHandlingTests
     {
         [Fact]
+        public void Chain_of_maybes_collects_all_errors()
+        {
+        }
+
+        [Fact]
         public void Chain_of_maybes_returns_after_first_error()
         {
             var maybeEmail1 = EmailAddress2.Create("homer.simpson@springfield.com");
@@ -22,12 +27,6 @@ namespace DemoCsharp.Addressbook.Tests
                     : x.Error);
 
             result.Should().Be("ups2");
-        }
-        
-        [Fact]
-        public void Chain_of_maybes_collects_all_errors()
-        {
-            
         }
     }
 }

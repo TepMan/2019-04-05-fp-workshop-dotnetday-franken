@@ -1,5 +1,7 @@
 using System;
-using CSharpFunctionalExtensions; // <-- !! Not built into C#; provides "Maybe" !!
+using CSharpFunctionalExtensions;
+
+// <-- !! Not built into C#; provides "Maybe" !!
 
 namespace DemoCsharp.Addressbook.ValueObjects
 {

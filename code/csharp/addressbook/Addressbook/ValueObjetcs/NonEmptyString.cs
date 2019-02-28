@@ -9,28 +9,27 @@ namespace DemoCsharp.Addressbook.ValueObjects
         private NonEmptyString(string potentialString)
         {
             if (string.IsNullOrWhiteSpace(potentialString))
-            {
                 throw new ArgumentException("String may not be empty or null!");
-            }
 
             Value = potentialString;
         }
 
         public string Value { get; }
-        
+
         public static Maybe<NonEmptyString> Create(string potentialString)
         {
             Maybe<NonEmptyString> result;
 
             try
             {
-                result = Maybe<NonEmptyString>.From(new NonEmptyString(potentialString)); 
+                result = Maybe<NonEmptyString>.From(new NonEmptyString(potentialString));
             }
             catch (Exception)
             {
                 result = Maybe<NonEmptyString>.None;
             }
-            return result;            
+
+            return result;
         }
 
         public static NonEmptyString CreateBang(string potentialString)

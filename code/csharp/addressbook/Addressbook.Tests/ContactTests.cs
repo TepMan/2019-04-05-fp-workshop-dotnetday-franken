@@ -9,7 +9,6 @@ namespace DemoCsharp.Addressbook.Tests
 {
     public class ContactTests
     {
-        
         [Fact]
         public void Creating_a_new_contact_happy_path()
         {
@@ -21,7 +20,7 @@ namespace DemoCsharp.Addressbook.Tests
             var dateOfBirth = new DateTime(1956, 5, 12);
             var dob = dateOfBirth != null
                 ? Maybe<DateTime>.From(dateOfBirth)
-                : Maybe<DateTime>.None;    
+                : Maybe<DateTime>.None;
 
             var twitterProfileUrl = NonEmptyString.Create("https://twitter.com/homerjsimpson");
 

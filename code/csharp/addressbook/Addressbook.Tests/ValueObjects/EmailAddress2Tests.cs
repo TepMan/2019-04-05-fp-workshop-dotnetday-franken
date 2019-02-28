@@ -8,33 +8,6 @@ namespace DemoCsharp.Addressbook.Tests.ValueObjects
 {
     public class EmailAddress2Tests
     {
-        [Fact]
-        public void Valid_email_is_ok()
-        {
-            // Arrange
-            var validEmail = "foo@bar.de";
-
-            // Act
-            var result = EmailAddress2.Create(validEmail);
-
-            // Assert
-            result.Should().BeOfType<Maybe<EmailAddress2>>();
-            result.HasValue.Should().BeTrue();
-        }
-
-        [Fact]
-        public void Valid_email_has_correct_value()
-        {
-            // Arrange
-            var validEmail = "foo@bar.de";
-
-            // Act
-            var result = EmailAddress2.Create(validEmail);
-
-            // Assert
-            result.Value.Value.Should().Be(validEmail);
-        }
-
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -58,13 +31,40 @@ namespace DemoCsharp.Addressbook.Tests.ValueObjects
         {
             if (isValid)
             {
-                var result = EmailAddress2.CreateBang(input);    
+                var result = EmailAddress2.CreateBang(input);
             }
             else
             {
                 Action action = () => EmailAddress2.CreateBang(input);
                 action.Should().Throw<ArgumentException>().WithMessage($"Invalid email address: {input}");
             }
+        }
+
+        [Fact]
+        public void Valid_email_has_correct_value()
+        {
+            // Arrange
+            var validEmail = "foo@bar.de";
+
+            // Act
+            var result = EmailAddress2.Create(validEmail);
+
+            // Assert
+            result.Value.Value.Should().Be(validEmail);
+        }
+
+        [Fact]
+        public void Valid_email_is_ok()
+        {
+            // Arrange
+            var validEmail = "foo@bar.de";
+
+            // Act
+            var result = EmailAddress2.Create(validEmail);
+
+            // Assert
+            result.Should().BeOfType<Maybe<EmailAddress2>>();
+            result.HasValue.Should().BeTrue();
         }
     }
 }

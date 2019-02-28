@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Mail;
 using CSharpFunctionalExtensions;
 
 namespace DemoCsharp.Addressbook.ValueObjects
@@ -20,12 +21,12 @@ namespace DemoCsharp.Addressbook.ValueObjects
         private EmailAddress2(string potentialEmailAddress)
         {
             if (!IsValid(potentialEmailAddress))
-            {
-                throw new ArgumentException($"Invalid email address: {potentialEmailAddress}");    
-            }
+                throw new ArgumentException($"Invalid email address: {potentialEmailAddress}");
 
             Value = potentialEmailAddress;
         }
+
+        public string Value { get; }
 
         public static Maybe<EmailAddress2> Create(string potentialEmailAddress)
         {
@@ -33,13 +34,14 @@ namespace DemoCsharp.Addressbook.ValueObjects
 
             try
             {
-                result = Maybe<EmailAddress2>.From(new EmailAddress2(potentialEmailAddress)); 
+                result = Maybe<EmailAddress2>.From(new EmailAddress2(potentialEmailAddress));
             }
             catch (Exception)
             {
                 result = Maybe<EmailAddress2>.None;
             }
-            return result;            
+
+            return result;
         }
 
         public static object CreateBang(string input)
@@ -47,15 +49,19 @@ namespace DemoCsharp.Addressbook.ValueObjects
             return new EmailAddress2(input);
         }
 
-        public string Value { get; }
-        
         private bool IsValid(string potentialEmailAddress)
         {
             if (string.IsNullOrWhiteSpace(potentialEmailAddress)) return false;
 
-            try { new System.Net.Mail.MailAddress(potentialEmailAddress); }
-            catch (Exception) { return false; }
-            
+            try
+            {
+                new MailAddress(potentialEmailAddress);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
             return true;
         }
 
