@@ -73,11 +73,13 @@ namespace Addressbook.Tests
         // ========================================================================================
         // Chapter 6: Functional error handling
         // - Either
+        [Fact]
         public void ScratchEither()
         {
             // Either
             var r = F.Right(12);
             var l = F.Left("ups");
+            true.Should().BeTrue();
         }
 
         private string Render(Either<string, double> val)
@@ -148,7 +150,7 @@ namespace Addressbook.Tests
                     .Bind(ShopForIngredients)
                     .Bind(CookRecipe)
                     .Match(
-                        Right: dish => EnjoyTogether(dish),
+                        Right: EnjoyTogether,
                         Left: reason =>
                         {
                             ComplainAbout(reason);
