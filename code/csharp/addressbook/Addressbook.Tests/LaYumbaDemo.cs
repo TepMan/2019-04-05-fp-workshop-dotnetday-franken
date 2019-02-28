@@ -7,7 +7,7 @@ using static LaYumba.Functional.F;
 using Unit = System.ValueTuple;     // <- don't use void!!
 using FluentAssertions.Primitives;
 
-namespace Addressbook.Tests
+namespace DemoCsharp.Addressbook.Tests
 {
     // From "Functional Programming with C#"
     public class LaYumbaDemo

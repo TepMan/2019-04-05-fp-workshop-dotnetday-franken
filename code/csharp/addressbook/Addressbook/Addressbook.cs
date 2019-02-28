@@ -1,6 +1,6 @@
 using System;
 
-namespace Addressbook
+namespace DemoCsharp.Addressbook
 {
     public class Addressbook
     {

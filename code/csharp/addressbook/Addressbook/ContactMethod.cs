@@ -1,4 +1,4 @@
-namespace Addressbook
+namespace DemoCsharp.Addressbook
 {
     // C# does not have discriminated union :-(
     // 

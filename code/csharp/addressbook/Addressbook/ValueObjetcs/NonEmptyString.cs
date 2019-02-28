@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using CSharpFunctionalExtensions;
 
-namespace Addressbook.ValueObjects
+namespace DemoCsharp.Addressbook.ValueObjects
 {
     public class NonEmptyString : ValueObject
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using CSharpFunctionalExtensions;
 
-namespace Addressbook.ValueObjects
+namespace DemoCsharp.Addressbook.ValueObjects
 {
     // This class mimics a "record type" wrapped in a Maybe (also called Option).
     //

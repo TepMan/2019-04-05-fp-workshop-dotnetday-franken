@@ -1,9 +1,9 @@
-using Addressbook.ValueObjects;
+using DemoCsharp.Addressbook.ValueObjects;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using Xunit;
 
-namespace Addressbook.Tests
+namespace DemoCsharp.Addressbook.Tests
 {
     public class ErrorHandlingTests
     {

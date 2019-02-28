@@ -1,9 +1,9 @@
-using Addressbook.ValueObjects;
+using DemoCsharp.Addressbook.ValueObjects;
 using CSharpFunctionalExtensions;
 using FluentAssertions;
 using Xunit;
 
-namespace Addressbook.Tests.ValueObjects
+namespace DemoCsharp.Addressbook.Tests.ValueObjects
 {
     public class EmailAddress1CreatorTests
     {

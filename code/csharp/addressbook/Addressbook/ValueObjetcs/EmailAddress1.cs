@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Addressbook.ValueObjects
+namespace DemoCsharp.Addressbook.ValueObjects
 {
     // This implementation throws an exception when the given email is invalid
     // 
