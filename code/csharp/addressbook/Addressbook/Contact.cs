@@ -32,5 +32,7 @@ namespace DemoCsharp.Addressbook
         public Maybe<DateTime> DateOfBirth { get; }
         public ContactMethod PrimaryContactMethod { get; }
         public IEnumerable<ContactMethod> OtherContactMethods { get; }
+
+        // TODO Add an actual address ;-)
     }
 }
