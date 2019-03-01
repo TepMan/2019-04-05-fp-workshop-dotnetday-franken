@@ -1,4 +1,6 @@
+using System.Linq;
 using Addressbook.ValueObjects;
+using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
 using static LaYumba.Functional.F;
@@ -15,24 +17,38 @@ namespace Addressbook.Tests
         {
         }
 
+        /// <summary>
+        ///     ...also referred to as "Railway Oriented Programming"...
+        /// </summary>
         [Fact]
-        public void Chain_of_maybes_returns_after_first_error()
+        public void Chain_of_validations_returns_after_first_error()
         {
-            var maybeEmail1 = EmailAddress2.Create("homer.simpson@springfield.com");
-            var maybeEmail2 = EmailAddress2.Create("invalid1");
-            var maybeEmail3 = EmailAddress2.Create("invalid2");
+            var optMail1 = EmailAddress2.Create("homer.simpson@springfield.com");
 
-            //var result = maybeEmail1.ToResult("ups")
-            //    .OnSuccess(() => maybeEmail2.ToResult("ups2"))
-            //    .OnSuccess(() => maybeEmail3.ToResult("ups3"))
-            //    .OnBoth(x => x.IsSuccess
-            //        ? "all ok"
-            //        : x.Error);
+            var result = optMail1
+                .ToValidation("ups1")
+                .Bind(mail => mail.Value.StartsWith("x")
+                    ? Valid(mail)
+                    : Invalid("does not start with x"))
+                .Bind(mail => mail.Value.Contains("homer")
+                    ? Valid(mail)
+                    : Invalid("does not contain homer"))
+                .Match(
+                e => e.Aggregate((a,b) => $"{a},{b}"),
+                x => x.Value
+                );
 
-            //result.Should().Be("ups2");
-
-            //var validation1 = maybeEmail1.ToValidation(() => Error("ups"));
-            //validation1.Bind()
+            result.Message.Should().Be("does not start with x");
         }
+    }
+
+    public static class ErrorHandlingExtensions
+    {
+        public static Validation<T> ToValidation<T>
+            (this Option<T> opt, string msg) 
+                =>
+                    opt.Match(
+                        () => Invalid(msg),
+                        Valid);
     }
 }
