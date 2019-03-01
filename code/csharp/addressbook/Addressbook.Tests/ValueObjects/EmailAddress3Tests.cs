@@ -1,5 +1,4 @@
 using Addressbook.ValueObjects;
-using LaYumba.Functional;
 using Xunit;
 
 namespace Addressbook.Tests.ValueObjects
@@ -19,41 +18,6 @@ namespace Addressbook.Tests.ValueObjects
                 result.Should().BeEqualToEmailString(other);
             else
                 result.Should().NotBeEqualToEmailString(other);
-        }
-
-        [Fact]
-        public void Valid_email_is_ok()
-        {
-            // Arrange
-            var validEmail = "foo@bar.de";
-
-            // Act
-            var result = EmailAddress2.Create(validEmail);
-
-            // Assert
-            result.Should()
-                .NotBeNull()
-                .And.BeOfType<Option<EmailAddress2>>();
-
-            //result.Value.Value.Should().Be(validEmail);
-
-            //var isOkAndHasValue =
-            //    result.IsOkAndHasValue(EmailAddress2.Create(validEmail).Value);
-
-            //isOkAndHasValue.Should().BeTrue();
-        }
-
-        [Fact]
-        public void Valid_email_is_ok_using_own_extension()
-        {
-            // Arrange
-            var validEmail = "foo@bar.de";
-
-            // Act
-            var result = EmailAddress2.Create(validEmail);
-
-            // Assert
-            result.Should().BeEqualToEmailString(validEmail);
         }
     }
 }

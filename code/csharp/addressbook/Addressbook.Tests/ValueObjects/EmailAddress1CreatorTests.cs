@@ -1,6 +1,6 @@
 using Addressbook.ValueObjects;
 using LaYumba.Functional;
-using static LaYumba.Functional.F;
+
 using FluentAssertions;
 using Xunit;
 

@@ -4,18 +4,10 @@ using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 using LaYumba.Functional;
 
-// ReSharper disable once IdentifierTypo
 namespace Addressbook.Tests.ValueObjects
 {
     public static class EmailAddressTestExtensions
     {
-        public static bool IsOkAndHasValue<T>(this Option<T> maybe, T expected)
-        {
-            return maybe.Match(
-                () => false,
-                x => x.Equals(expected));
-        }
-
         public static EmailAddressAssertions Should(this Option<EmailAddress2> instance)
         {
             return new EmailAddressAssertions(instance);

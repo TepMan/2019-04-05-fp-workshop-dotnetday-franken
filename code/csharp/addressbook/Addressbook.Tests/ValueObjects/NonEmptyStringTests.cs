@@ -25,16 +25,6 @@ namespace Addressbook.Tests.ValueObjects
             result.Match(
                 () => isValid.Should().BeFalse(),
                 x => x.Value.Should().Be(isValid ? input : null));
-
-            //if (isValid)
-            //{
-            //    result.HasValue.Should().BeTrue();
-            //    result.Value.Value.Should().Be(input);
-            //}
-            //else
-            //{
-            //    result.HasNoValue.Should().BeTrue();
-            //}
         }
 
         [Theory]
