@@ -8,15 +8,10 @@ using static LaYumba.Functional.F;
 namespace Addressbook.Tests
 {
     /// <summary>
-    /// TODO
+    ///     TODO Demo for Applicatives
     /// </summary>
     public class ErrorHandlingTests
     {
-        [Fact]
-        public void Chain_of_maybes_collects_all_errors()
-        {
-        }
-
         /// <summary>
         ///     ...also referred to as "Railway Oriented Programming"...
         /// </summary>
@@ -40,6 +35,24 @@ namespace Addressbook.Tests
 
             result.Message.Should().Be("does not start with x");
         }
+
+        //[Fact]
+        //public void Chain_of_validations_collects_all_errors()
+        //{
+        //    var optMail1 = EmailAddress2.Create("homer.simpson@springfield.com");
+
+        //    var result = optMail1
+        //        .ToValidation("ups1")
+        //        .Apply(mail => mail.Value.Contains("homer")
+        //            ? Valid(mail)
+        //            : Invalid("does not contain homer"));
+        //    //.Match(
+        //    //    e => e.Aggregate((a,b) => $"{a},{b}"),
+        //    //    x => x.Value
+        //    //);
+
+        //    //result.Message.Should().Be("does not start with x");
+        //}
     }
 
     public static class ErrorHandlingExtensions
