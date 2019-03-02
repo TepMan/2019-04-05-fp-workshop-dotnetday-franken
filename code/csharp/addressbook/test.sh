@@ -1,2 +1,2 @@
 #!/bin/bash
-dotnet test Addressbook.Tests
+dotnet watch --project *.Tests/ test

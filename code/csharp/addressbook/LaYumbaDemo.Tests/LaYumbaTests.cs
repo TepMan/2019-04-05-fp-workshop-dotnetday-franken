@@ -9,7 +9,11 @@ namespace LaYumbaDemo.Tests
     // From "Functional Programming with C#"
     public class LaYumbaTests
     {
-        
+        [Fact]
+        public void SmokeTest()
+        {
+            true.Should().BeTrue();
+        }
         // ========================================================================================
         // Chapter 5: Function composition, method chaining, functional domain modelling
         // TODO
