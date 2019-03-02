@@ -46,3 +46,4 @@ According to this [Github issue](https://github.com/aspnet/DotNetTools/issues/45
 
 `dotnet-test-explorer.testProjectPath": ".Tests/"`
 
+Be sure to restart vscode for these changes to take effect.
