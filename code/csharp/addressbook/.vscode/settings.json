@@ -7,5 +7,7 @@
     },
     "cSpell.words": [
         "greetee"
-    ]
+    ],
+    "dotnet-test-explorer.autoWatch": true,
+    "dotnet-test-explorer.testProjectPath": "*.Tests/"
 }
