@@ -278,3 +278,11 @@ Einträge
 - Eintrag wird serialisiert und in Datei abgelegt
 - APIs: Kommandozeile, Datei
 
+---
+
+Und warum hat C# andere Verben verwendet?
+
+- Als C# LINQ eingefuehrt hat, war FP nicht hipp
+- SQL ist funktional
+
+-> Syntax
