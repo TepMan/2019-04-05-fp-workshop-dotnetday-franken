@@ -11,16 +11,16 @@ namespace Addressbook.ValueObjects
     //
     // An instance can only be created using the static "Create" method. 
     //
-    // The static "Create" method returns a "Maybe<EmailAddress2>"
+    // The static "Create" method returns a "Maybe<EmailAddress>"
     //
-    // The "Create" method will always return a valid answer of type Maybe<EmailAddress2> (and not throw an exception).
+    // The "Create" method will always return a valid answer of type Maybe<EmailAddress> (and not throw an exception).
     // Consumers of this class must handle the result.
     //
     // Other alternative: EmailAddress1 -> throws Exception
     //
-    public class EmailAddress2 : ValueObject
+    public class EmailAddress : ValueObject
     {
-        private EmailAddress2(string potentialEmailAddress)
+        private EmailAddress(string potentialEmailAddress)
         {
             if (!IsValid(potentialEmailAddress))
                 throw new ArgumentException($"Invalid email address: {potentialEmailAddress}");
@@ -30,13 +30,13 @@ namespace Addressbook.ValueObjects
 
         public string Value { get; }
 
-        public static Option<EmailAddress2> Create(string potentialEmailAddress)
+        public static Option<EmailAddress> Create(string potentialEmailAddress)
         {
-            Option<EmailAddress2> result;
+            Option<EmailAddress> result;
 
             try
             {
-                result = Some(new EmailAddress2(potentialEmailAddress));
+                result = Some(new EmailAddress(potentialEmailAddress));
             }
             catch (Exception)
             {
@@ -48,7 +48,7 @@ namespace Addressbook.ValueObjects
 
         public static object CreateBang(string input)
         {
-            return new EmailAddress2(input);
+            return new EmailAddress(input);
         }
 
         private bool IsValid(string potentialEmailAddress)
@@ -73,7 +73,7 @@ namespace Addressbook.ValueObjects
         }
 
         // Syntactic sugar...
-        public static implicit operator string(EmailAddress2 emailAddress)
+        public static implicit operator string(EmailAddress emailAddress)
         {
             return emailAddress.Value;
         }

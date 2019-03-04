@@ -8,7 +8,7 @@ namespace Addressbook.Tests.ValueObjects
 {
     public static class EmailAddressTestExtensions
     {
-        public static EmailAddressAssertions Should(this Option<EmailAddress2> instance)
+        public static EmailAddressAssertions Should(this Option<EmailAddress> instance)
         {
             return new EmailAddressAssertions(instance);
         }
@@ -20,9 +20,9 @@ namespace Addressbook.Tests.ValueObjects
     // - `BeSameAs`
     // - `Match`
     public class EmailAddressAssertions
-        : ReferenceTypeAssertions<Option<EmailAddress2>, EmailAddressAssertions>
+        : ReferenceTypeAssertions<Option<EmailAddress>, EmailAddressAssertions>
     {
-        public EmailAddressAssertions(Option<EmailAddress2> instance)
+        public EmailAddressAssertions(Option<EmailAddress> instance)
         {
             Subject = instance;
         }

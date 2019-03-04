@@ -12,7 +12,7 @@ namespace Addressbook.Tests.ValueObjects
         [InlineData(false, "foo@bar.com", (string) null)]
         public void Email_extension_handles_input_as_expected(bool shouldPass, string input, string other)
         {
-            var result = EmailAddress2.Create(input);
+            var result = EmailAddress.Create(input);
 
             if (shouldPass)
                 result.Should().BeEqualToEmailString(other);
