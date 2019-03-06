@@ -18,3 +18,6 @@ let flatMap f x =
     match x with
     | Ok x -> f x
     | Error e -> Error e
+
+let lift a =
+    Ok a
