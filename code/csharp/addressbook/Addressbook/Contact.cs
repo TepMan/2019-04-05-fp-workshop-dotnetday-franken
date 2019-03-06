@@ -34,7 +34,7 @@ namespace Addressbook
         public NonEmptyString FirstName { get; private set; }
         public NonEmptyString LastName { get; private set; }
         public Option<NonEmptyString> TwitterProfileUrl { get; private set; }
-        public Option<DateTime> DateOfBirth { get; }
+        public Option<DateTime> DateOfBirth { get; private set; }
         public ContactMethod PrimaryContactMethod { get; }
         public IEnumerable<ContactMethod> OtherContactMethods { get; }
 
@@ -59,10 +59,13 @@ namespace Addressbook
         
         public Contact ChangeTwitterUrl(Option<NonEmptyString> optTwitterUrl)
         {
-            optTwitterUrl.Match(
-                () => Unit(),
-                x => TwitterProfileUrl = x);
-            
+            TwitterProfileUrl = optTwitterUrl;
+            return this;
+        }
+
+        public Contact ChangeDateOfBirth(Option<DateTime> optDateOfBirth)
+        {
+            DateOfBirth = optDateOfBirth;
             return this;
         }
     }

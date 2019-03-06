@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Addressbook.ValueObjects;
 using FluentAssertions;
+using LaYumba.Functional;
 using Xunit;
 using static LaYumba.Functional.F;
 
@@ -55,16 +56,35 @@ namespace Addressbook.Tests
         {
             // Arrange
             var contact = CreateHomer();
+            var twitterUrl = NonEmptyString.Create(newTwitterUrl);
             
             // Act
-            var result = contact.ChangeTwitterUrl(NonEmptyString.Create(newTwitterUrl));
+            var result = contact.ChangeTwitterUrl(twitterUrl);
             
             // Assert
-            // TODO the `"".Should().Be("")` alternatives in the match can be improved..
-            result.TwitterProfileUrl.Match(
-                () => isValid ? "".Should().Be("x") : "".Should().Be(""),
-                x => isValid ? x.Value.Should().Be(newTwitterUrl) : "".Should().Be(""));
+            result.TwitterProfileUrl.Should().Be(isValid ? twitterUrl : None);
+            result.Id.Should().Be(contact.Id);
+        }
+
+        [Theory]
+        [InlineData(1980, 1, 1, true)]
+        [InlineData(null, null, null, false)]
+        public void Changing_optional_date_of_birth_works_and_does_not_modify_id(
+            int? year, int? month, int? day, bool isValid)
+        {
+            // Arrange
+            var contact = CreateHomer();
+            Option<DateTime> dateOfBirth = None;
+            if (isValid)
+            {
+                dateOfBirth = Some(new DateTime(year.Value, month.Value, day.Value));    
+            }
             
+            // Act
+            var result = contact.ChangeDateOfBirth(isValid ? dateOfBirth : None);
+            
+            // Assert
+            result.DateOfBirth.Should().Be(isValid ? dateOfBirth : None);
             result.Id.Should().Be(contact.Id);
         }
         
