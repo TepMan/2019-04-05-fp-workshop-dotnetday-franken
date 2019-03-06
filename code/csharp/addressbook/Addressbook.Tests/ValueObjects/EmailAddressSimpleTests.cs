@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Addressbook.Tests.ValueObjects
 {
-    public class EmailAddress1Tests
+    public class EmailAddressSimpleTests
     {
         [Fact]
         public void Invalid_email_throws()
@@ -14,7 +14,7 @@ namespace Addressbook.Tests.ValueObjects
             var invalidEmail = "invalid";
 
             // Act
-            Action action = () => new EmailAddress1(invalidEmail);
+            Action action = () => new EmailAddressSimple(invalidEmail);
 
             // Assert
             action.Should().Throw<Exception>();
@@ -27,7 +27,7 @@ namespace Addressbook.Tests.ValueObjects
             var validEmail = "foo@bar.de";
 
             // Act
-            string result = new EmailAddress1(validEmail);
+            string result = new EmailAddressSimple(validEmail);
 
             // Assert
             result.Should().Be(validEmail);

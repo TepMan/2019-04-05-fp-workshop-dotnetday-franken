@@ -12,9 +12,9 @@ namespace Addressbook.ValueObjects
     // "value objects" are IMMUTABLE!
     //
     // HINT: Other languages have this data type built in (i.e. record types in F#)
-    public class EmailAddress1
+    public class EmailAddressSimple
     {
-        public EmailAddress1(string potentialEmailAddress)
+        public EmailAddressSimple(string potentialEmailAddress)
         {
             if (!IsValid(potentialEmailAddress)) throw new ArgumentException();
 
@@ -40,7 +40,7 @@ namespace Addressbook.ValueObjects
         }
 
         // Syntactic sugar...
-        public static implicit operator string(EmailAddress1 emailAddress)
+        public static implicit operator string(EmailAddressSimple emailAddress)
         {
             return emailAddress.Value;
         }
