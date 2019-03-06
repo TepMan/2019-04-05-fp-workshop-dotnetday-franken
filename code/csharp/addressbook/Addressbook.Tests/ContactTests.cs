@@ -25,24 +25,22 @@ namespace Addressbook.Tests
             contact.OtherContactMethods.Should().NotBeNull().And.BeEmpty();
         }
 
-        
-
         [Theory]
         [InlineData("Lisa", "Flanders", true, true)]
         [InlineData("", "Flanders", false, true)]
         [InlineData("Lisa", "", true, false)]
         public void Changing_name_works_and_does_not_modify_id(
-            string newFirstName, string newLastName, 
+            string newFirstName, string newLastName,
             bool isFirstNameValid, bool isLastNameValid)
         {
             // Arrange
             var contact = CreateHomer();
-            
+
             // Act
             var result = contact
                 .ChangeFirstName(NonEmptyString.Create(newFirstName))
                 .ChangeLastName(NonEmptyString.Create(newLastName));
-            
+
             // Assert
             result.FirstName.Value.Should().Be(isFirstNameValid ? newFirstName : contact.FirstName.Value);
             result.LastName.Value.Should().Be(isLastNameValid ? newLastName : contact.LastName.Value);
@@ -57,10 +55,10 @@ namespace Addressbook.Tests
             // Arrange
             var contact = CreateHomer();
             var twitterUrl = NonEmptyString.Create(newTwitterUrl);
-            
+
             // Act
             var result = contact.ChangeTwitterUrl(twitterUrl);
-            
+
             // Assert
             result.TwitterProfileUrl.Should().Be(isValid ? twitterUrl : None);
             result.Id.Should().Be(contact.Id);
@@ -75,19 +73,17 @@ namespace Addressbook.Tests
             // Arrange
             var contact = CreateHomer();
             Option<DateTime> dateOfBirth = None;
-            if (isValid)
-            {
-                dateOfBirth = Some(new DateTime(year.Value, month.Value, day.Value));    
-            }
-            
+            // ReSharper disable PossibleInvalidOperationException
+            if (isValid) dateOfBirth = Some(new DateTime(year.Value, month.Value, day.Value));
+            // ReSharper restore PossibleInvalidOperationException
+
             // Act
             var result = contact.ChangeDateOfBirth(isValid ? dateOfBirth : None);
-            
+
             // Assert
             result.DateOfBirth.Should().Be(isValid ? dateOfBirth : None);
             result.Id.Should().Be(contact.Id);
         }
-        
         
         private static Contact CreateHomer()
         {
