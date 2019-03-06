@@ -15,8 +15,7 @@ namespace Addressbook.Tests
             var firstname = NonEmptyString.CreateBang("Homer");
             var lastname = NonEmptyString.CreateBang("Simpson");
             var id = Guid.NewGuid();
-            var dateOfBirth = new DateTime(1956, 5, 12);
-            var dob = Some(dateOfBirth);
+            var dob = Some(new DateTime(1956, 5, 12));
             var twitterProfileUrl = NonEmptyString.Create("https://twitter.com/homerjsimpson");
 
             var contact = new Contact(
@@ -34,12 +33,9 @@ namespace Addressbook.Tests
             // should the following code return a modified list or have internal state?
             //
             // with state
+            sut.Contacts.Should().BeEmpty();
             sut.AddContact(contact);
-            //
-            // without state
-            var newAddressbook = sut.AddContactFunctional(contact);
-
-            true.Should().BeTrue();
+            sut.Contacts.Should().HaveCount(1, "we added one contact");
         }
     }
 }
