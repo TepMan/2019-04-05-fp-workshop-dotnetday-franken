@@ -47,6 +47,26 @@ namespace Addressbook.Tests
             result.LastName.Value.Should().Be(isLastNameValid ? newLastName : contact.LastName.Value);
             result.Id.Should().Be(contact.Id);
         }
+
+        [Theory]
+        [InlineData("https://www.google.de", true)]
+        [InlineData("", false)]
+        public void Changing_optional_twitter_url_works_and_does_not_modify_id(string newTwitterUrl, bool isValid)
+        {
+            // Arrange
+            var contact = CreateHomer();
+            
+            // Act
+            var result = contact.ChangeTwitterUrl(NonEmptyString.Create(newTwitterUrl));
+            
+            // Assert
+            // TODO the `"".Should().Be("")` alternatives in the match can be improved..
+            result.TwitterProfileUrl.Match(
+                () => isValid ? "".Should().Be("x") : "".Should().Be(""),
+                x => isValid ? x.Value.Should().Be(newTwitterUrl) : "".Should().Be(""));
+            
+            result.Id.Should().Be(contact.Id);
+        }
         
         
         private static Contact CreateHomer()
