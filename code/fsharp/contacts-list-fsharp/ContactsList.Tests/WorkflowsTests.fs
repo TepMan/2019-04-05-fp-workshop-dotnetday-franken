@@ -5,18 +5,25 @@ open Domain
 open Xunit
 open FsUnit.Xunit
 open PositiveNumber
-open Contact
+open Result
 
 [<Fact>]
 let ``prepareOutput function works`` () =
     let c = 
-    // Idee: create mit der Guid angewendet via Lift in ein Result, alles andere auch was kein Result ist,
-    // und dann mit map und apply alles verbinden
-        Contact.create 
-            (System.Guid.Parse("bba52030-19ce-4c02-b1dd-792b0120855b"))
+    // Idee: create mit der Guid angewendet via Lift in ein Result, alles andere auch liften was kein Result ist,
+    // und dann mit apply alles verbinden.
+    // Dann kommt am Ende entweder ein Contact raus, oder eine Liste mit Errors, was nicht geklappt hat
+        (lift (Contact.create <| System.Guid.Parse("bba52030-19ce-4c02-b1dd-792b0120855b")))
+        <*> (NonEmptyString.create "Homer")
+        <*> (NonEmptyString.create "Simpson")
+        <*> (lift None)
+        <*> (lift None)
+        <*> (Result.map Email (Result.bind EmailAddress.create (NonEmptyString.create "a@b.c")))
+        <*> (PositiveNumber.create 59)
+
     ()
             
-        // FirstName = NonEmptyString.create "Homer"
+        // FirstName = 
         // LastName = NonEmptyString.create "Simpson"
         // TwitterProfileUrl = Nothing 
         // DateOfBirth =  Nothing
