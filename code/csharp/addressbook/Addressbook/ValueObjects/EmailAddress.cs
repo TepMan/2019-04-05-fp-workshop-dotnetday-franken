@@ -16,7 +16,7 @@ namespace Addressbook.ValueObjects
     // The "Create" method will always return a valid answer of type Maybe<EmailAddress> (and not throw an exception).
     // Consumers of this class must handle the result.
     //
-    // Other alternative: EmailAddress1 -> throws Exception
+    // Other alternative: EmailAddressSimple -> throws Exception
     //
     public class EmailAddress : ValueObject
     {

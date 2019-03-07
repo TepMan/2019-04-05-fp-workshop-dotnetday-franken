@@ -1,15 +1,14 @@
+using System.Collections.Generic;
+
 namespace Addressbook
 {
     public class Addressbook
     {
+        public List<Contact> Contacts { get; } = new List<Contact>();
+        
         public void AddContact(Contact contact)
         {
-            // TODO
-        }
-
-        public Addressbook AddContactFunctional(Contact contact)
-        {
-            return new Addressbook();
+            Contacts.Add(contact);
         }
     }
 }

@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Addressbook.Tests.ValueObjects
 {
-    public class EmailAddress1CreatorTests
+    public class EmailAddressSimpleCreatorTests
     {
         [Fact]
         public void Empty_string_returns_error()
@@ -15,10 +15,10 @@ namespace Addressbook.Tests.ValueObjects
             var emptyString = string.Empty;
 
             // Act
-            var result = EmailAddress1Creator.CreateFrom(emptyString);
+            var result = EmailAddressSimpleCreator.CreateFrom(emptyString);
 
             // Assert
-            result.Should().BeOfType<Option<EmailAddress1>>();
+            result.Should().BeOfType<Option<EmailAddressSimple>>();
             //result.Should().BeEquivalentTo(None);
             result.Match(
                 () => true.Should().BeTrue(),
@@ -32,11 +32,11 @@ namespace Addressbook.Tests.ValueObjects
             var validEmail = "foo@bar.de";
 
             // Act
-            var result = EmailAddress1Creator.CreateFrom(validEmail);
+            var result = EmailAddressSimpleCreator.CreateFrom(validEmail);
 
             // Assert
-            result.Should().BeOfType<Option<EmailAddress1>>();
-            //result.Should().BeEquivalentTo(EmailAddress1Creator.CreateFrom(validEmail));
+            result.Should().BeOfType<Option<EmailAddressSimple>>();
+            //result.Should().BeEquivalentTo(EmailAddressSimpleCreator.CreateFrom(validEmail));
             //result.Match(
             //    () => true.Should().BeFalse(),
             //    x => x.Should().Be(validEmail));

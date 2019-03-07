@@ -6,8 +6,23 @@ using Xunit;
 
 namespace Addressbook.Tests.ValueObjects
 {
-    public class EmailAddress2Tests
+    public class EmailAddressTests
     {
+        [Fact]
+        public void Valid_email_has_correct_value()
+        {
+            // Arrange
+            var validEmail = "foo@bar.de";
+
+            // Act
+            var result = EmailAddress.Create(validEmail);
+
+            // Assert
+            result.Match(
+                () => true.Should().BeFalse(),
+                x => x.Value.Should().Be("foo@bar.de"));
+        }
+
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -42,19 +57,19 @@ namespace Addressbook.Tests.ValueObjects
             }
         }
 
-        [Fact]
-        public void Valid_email_has_correct_value()
+        [Theory]
+        [InlineData(true, "foo@bar.com", "foo@bar.com")]
+        [InlineData(false, "foo@bar.com", "foo@bar.com_x")]
+        [InlineData(false, "foo@bar.com", "")]
+        [InlineData(false, "foo@bar.com", (string) null)]
+        public void Email_extension_handles_input_as_expected(bool shouldPass, string input, string other)
         {
-            // Arrange
-            var validEmail = "foo@bar.de";
+            var result = EmailAddress.Create(input);
 
-            // Act
-            var result = EmailAddress.Create(validEmail);
-
-            // Assert
-            result.Match(
-                () => true.Should().BeFalse(),
-                x => x.Value.Should().Be("foo@bar.de"));
+            if (shouldPass)
+                result.Should().BeEqualToEmailString(other);
+            else
+                result.Should().NotBeEqualToEmailString(other);
         }
     }
 }

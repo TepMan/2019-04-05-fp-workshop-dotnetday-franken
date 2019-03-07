@@ -5,15 +5,15 @@ using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
-    public static class EmailAddress1Creator
+    public static class EmailAddressSimpleCreator
     {
-        public static Option<EmailAddress1> CreateFrom(string potentialEmail)
+        public static Option<EmailAddressSimple> CreateFrom(string potentialEmail)
         {
-            Option<EmailAddress1> result;
+            Option<EmailAddressSimple> result;
 
             try
             {
-                result = Some(new EmailAddress1(potentialEmail));
+                result = Some(new EmailAddressSimple(potentialEmail));
             }
             catch (Exception)
             {
