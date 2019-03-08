@@ -11,6 +11,7 @@ namespace Addressbook
     // Probably not, because this object has an identity, and therefore is an entity (not a value object)
     
     // TODO Add an actual address ;-)
+    [Serializable]
     public class Contact
     {
         public Contact(Guid id,

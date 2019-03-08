@@ -1,7 +1,8 @@
 ﻿namespace Addressbook.Persistence.Contracts
 {
-    public interface IAddressbookProvider
+    public interface IAddressbookRepository
     {
         Addressbook GetAddressbook();
+        void Save(Addressbook addressbook);
     }
 }
