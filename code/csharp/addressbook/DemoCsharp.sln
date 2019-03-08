@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{89128151-A7E0-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Addressbook.Console", "Addressbook.Console\Addressbook.Console.csproj", "{9741BDEB-1439-4B2B-A5B7-4D1E06F692C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Addressbook.Persistence.Tests", "Addressbook.Persistence.Tests\Addressbook.Persistence.Tests.csproj", "{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,18 @@ Global
 		{9741BDEB-1439-4B2B-A5B7-4D1E06F692C9}.Release|x64.Build.0 = Release|Any CPU
 		{9741BDEB-1439-4B2B-A5B7-4D1E06F692C9}.Release|x86.ActiveCfg = Release|Any CPU
 		{9741BDEB-1439-4B2B-A5B7-4D1E06F692C9}.Release|x86.Build.0 = Release|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Debug|x64.Build.0 = Debug|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Debug|x86.Build.0 = Debug|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Release|x64.ActiveCfg = Release|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Release|x64.Build.0 = Release|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Release|x86.ActiveCfg = Release|Any CPU
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,5 +133,6 @@ Global
 		{4B7239D8-364E-48C7-9D0A-51326158EC14} = {BE8C08F6-7536-4C75-A5B5-2A0E1F0B248C}
 		{53E34055-A0C4-4C76-B702-E5DAF527FA4D} = {BE8C08F6-7536-4C75-A5B5-2A0E1F0B248C}
 		{9741BDEB-1439-4B2B-A5B7-4D1E06F692C9} = {89128151-A7E0-4AAF-8785-E8161EBCEED0}
+		{083E3F5A-ECCD-42BD-8F8F-4CBA5CF690A0} = {ABB9F224-F71A-49C9-90FA-0329DD911E6D}
 	EndGlobalSection
 EndGlobal
