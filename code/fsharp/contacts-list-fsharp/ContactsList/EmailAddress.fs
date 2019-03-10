@@ -14,8 +14,8 @@ let create (nes : NonEmptyString) =
         Ok <| EmailAddress s
 
     with
-        | :? System.FormatException as ex -> Error "Invalid format"
-        | _ -> Error "Other unexpected error"
+        | :? System.FormatException as ex -> Error ["Invalid format"]
+        | _ -> Error ["Other unexpected error"]
 
 let get (EmailAddress ea) = 
     ea
