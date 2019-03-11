@@ -21,8 +21,7 @@ namespace Addressbook.Tests
             contact.DateOfBirth.Should().BeEquivalentTo(Some(new DateTime(1956, 5, 12)));
             contact.TwitterProfileUrl.Should()
                 .BeEquivalentTo(Some(NonEmptyString.CreateBang("https://twitter.com/homerjsimpson")));
-            contact.PrimaryContactMethod.Should().BeOfType<EmailContact>();
-            contact.OtherContactMethods.Should().NotBeNull().And.BeEmpty();
+            contact.ContactMethod.Should().BeOfType<EmailContact>();
         }
 
         [Theory]
@@ -98,7 +97,7 @@ namespace Addressbook.Tests
             var twitterProfileUrl = NonEmptyString.Create("https://twitter.com/homerjsimpson");
 
             var contact = new Contact(id, firstname, lastname,
-                dob, twitterProfileUrl, new EmailContact(), new List<ContactMethod>());
+                dob, twitterProfileUrl, new EmailContact());
             return contact;
         }
     }

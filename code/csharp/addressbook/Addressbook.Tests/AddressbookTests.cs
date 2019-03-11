@@ -24,8 +24,7 @@ namespace Addressbook.Tests
                 lastname,
                 dob,
                 twitterProfileUrl,
-                new EmailContact(),
-                new List<ContactMethod>());
+                new EmailContact());
 
             var sut = new Addressbook();
 

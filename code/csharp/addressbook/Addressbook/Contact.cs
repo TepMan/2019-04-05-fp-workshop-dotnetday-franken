@@ -19,16 +19,14 @@ namespace Addressbook
             NonEmptyString lastname,
             Option<DateTime> dateOfBirth,
             Option<NonEmptyString> twitterProfileUrl,
-            ContactMethod primaryContactMethod,
-            IEnumerable<ContactMethod> otherContactMethod)
+            ContactMethod contactMethod)
         {
             Id = id;
             FirstName = firstname;
             LastName = lastname;
             DateOfBirth = dateOfBirth;
             TwitterProfileUrl = twitterProfileUrl;
-            PrimaryContactMethod = primaryContactMethod;
-            OtherContactMethods = otherContactMethod;
+            ContactMethod = contactMethod;
         }
 
         public Guid Id { get; }
@@ -36,9 +34,7 @@ namespace Addressbook
         public NonEmptyString LastName { get; private set; }
         public Option<NonEmptyString> TwitterProfileUrl { get; private set; }
         public Option<DateTime> DateOfBirth { get; private set; }
-        public ContactMethod PrimaryContactMethod { get; }
-        public IEnumerable<ContactMethod> OtherContactMethods { get; }
-
+        public ContactMethod ContactMethod { get; }
 
         public Contact ChangeFirstName(Option<NonEmptyString> optFirstName)
         {

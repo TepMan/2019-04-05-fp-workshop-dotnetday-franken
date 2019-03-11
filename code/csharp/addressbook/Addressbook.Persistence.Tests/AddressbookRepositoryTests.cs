@@ -41,8 +41,7 @@ namespace Addressbook.Persistence.Tests
                 lastname,
                 dob,
                 twitterProfileUrl,
-                new EmailContact(),
-                new List<ContactMethod>());
+                new EmailContact());
 
             var addressbook = new Addressbook();
             addressbook.AddContact(contact);
