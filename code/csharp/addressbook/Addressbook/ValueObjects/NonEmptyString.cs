@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using LaYumba.Functional;
-
+using Newtonsoft.Json;
 using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
     public class NonEmptyString : ValueObject
     {
+        [JsonConstructor] 
         private NonEmptyString(string potentialString)
         {
             if (string.IsNullOrWhiteSpace(potentialString))

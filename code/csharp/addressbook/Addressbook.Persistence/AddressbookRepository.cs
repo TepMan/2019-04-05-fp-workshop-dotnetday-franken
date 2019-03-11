@@ -5,6 +5,10 @@ using Newtonsoft.Json;
 
 namespace Addressbook.Persistence
 {
+    /// <summary>
+    ///     TODO: How to serialize/deserialize Option<T>?
+    ///     TODO: Get current folder, so we can use relative paths
+    /// </summary>
     public class AddressbookRepository : IAddressbookRepository
     {
         private const string FALLBACK_ADDRESSBOOK_JSON = @"~/tmp/addressbook.json";
@@ -19,6 +23,7 @@ namespace Addressbook.Persistence
 
         public Addressbook GetAddressbook()
         {
+            // https://www.newtonsoft.com/json/help/html/DeserializeWithJsonSerializerFromFile.htm
             using (var file = File.OpenText(_addressbookJson))
             {
                 var serializer = new JsonSerializer();

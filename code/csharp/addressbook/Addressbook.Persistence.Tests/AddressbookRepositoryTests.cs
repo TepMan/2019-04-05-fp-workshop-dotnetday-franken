@@ -19,6 +19,14 @@ namespace Addressbook.Persistence.Tests
             sut.Save(addressbook);            
         }
 
+        [Fact(Skip = "because I'm too stupid")]
+        public void GetAddressbook_works()
+        {
+            var sut = new AddressbookRepository(ADDRESSBOOK_JSON);
+            var result = sut.GetAddressbook();
+            result.Should().NotBeNull();
+        }
+
         private static Addressbook CreateAddressbook()
         {
             var firstname = NonEmptyString.CreateBang("Homer");
