@@ -7,17 +7,17 @@ let map2 f a b =
     | Error a, _ -> Error [a]
     | _, Error b -> Error [b]  
 
-let apply (f: Result<('a -> 'b), 'c>) (a: Result<'a, 'c>) : Result<'b, 'c list> =
+let apply (f: Result<('a -> 'b), 'c list>) (a: Result<'a, 'c list>) : Result<'b, 'c list> =
     match f, a with
     | Ok f, Ok a -> Ok (f a)
-    | Error f, Error a -> Error [f; a]  
-    | Error f, _ -> Error [f]  
-    | _, Error a -> Error [a]  
+    | Error f, Error a -> Error <| f @ a  
+    | Error f, _ -> Error f  
+    | _, Error a -> Error a  
 
-let flatMap f x =
-    match x with
-    | Ok x -> f x
-    | Error e -> Error e
+let flatMap = Result.bind
 
 let lift a =
     Ok a
+
+let (<!>) = Result.map
+let (<*>) = apply
