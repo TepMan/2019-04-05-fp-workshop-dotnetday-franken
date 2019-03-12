@@ -1,10 +1,10 @@
 module Workflows
 
-let add guid firstName lastName twitterProfileUrl dateOfBirth primaryContactMethod iq =
-    () // TODO
 
-let delete guid =
-    () // TODO
+let add guid firstName lastName twitterProfileUrl dateOfBirth
+    primaryContactMethod iq = ()
+// TODO
+let delete guid = ()
 
 let prepareOutput filterPredicate format makePrintable contacts =
     contacts

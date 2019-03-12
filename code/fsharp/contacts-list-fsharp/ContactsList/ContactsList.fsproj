@@ -15,7 +15,14 @@
     <Compile Include="PostalAddress.fs" />
     <Compile Include="Domain.fs" />
     <Compile Include="Contact.fs" />
+    <Compile Include="Filters.fs" />
+    <Compile Include="Formatters.fs" />
+    <Compile Include="Printer.fs" />
+    <Compile Include="Persistence.fs" />
     <Compile Include="Workflows.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 </Project>
