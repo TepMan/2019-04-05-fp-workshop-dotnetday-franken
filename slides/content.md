@@ -286,3 +286,26 @@ Und warum hat C# andere Verben verwendet?
 - SQL ist funktional
 
 -> Syntax
+
+---
+
+## LINQ - fuer Listen (IEnumerable in C#)
+
+Allg.: Funktionen, die auf eine Liste angewendet werden
+
+Bsp:
+
+- Option ist eigentlich nur eine Liste mit 2 Werten (Some und None)
+- Result -> Liste mit 2 Werten (Left und Right)
+- etc.
+
+In FP unterscheidet man die Wrapper-Klassen (zB IEnumerable) anhand der Funktionen, die sie bereitstellen
+
+---
+
+## FP-Jargon: Verschiedene Arten von Funktionen, die angewendet werden
+
+- Functor: Funktion auf jedes Element anwenden (Map)
+- Monad: ...
+- Applicative: ...
+
