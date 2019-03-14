@@ -17,13 +17,15 @@ namespace Addressbook.Tests
             var id = Guid.NewGuid();
             var dob = Some(new DateTime(1956, 5, 12));
             var twitterProfileUrl = NonEmptyString.Create("https://twitter.com/homerjsimpson");
-
+            var address = None;
+            
             var contact = new Contact(
                 id,
                 firstname,
                 lastname,
                 dob,
                 twitterProfileUrl,
+                address,
                 new EmailContact());
 
             var sut = new Addressbook();

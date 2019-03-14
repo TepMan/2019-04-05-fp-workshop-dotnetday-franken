@@ -63,6 +63,21 @@ namespace Addressbook.Tests
             result.Id.Should().Be(contact.Id);
         }
 
+        [Fact]
+        public void Changing_optional_address_works_and_does_not_modify_id()
+        {
+            // Arrange
+            var contact = CreateHomer();
+            var address = CreateAddress();
+            
+            // Act
+            var result = contact.ChangeAddress(address);
+
+            // Assert
+            result.Address.Should().Be(Some(CreateAddress()));
+            result.Id.Should().Be(contact.Id);
+        }
+
         [Theory]
         [InlineData(1980, 1, 1, true)]
         [InlineData(null, null, null, false)]
@@ -96,9 +111,21 @@ namespace Addressbook.Tests
 
             var twitterProfileUrl = NonEmptyString.Create("https://twitter.com/homerjsimpson");
 
+            var address = None;
+            
             var contact = new Contact(id, firstname, lastname,
-                dob, twitterProfileUrl, new EmailContact());
+                dob, twitterProfileUrl, address, new EmailContact());
             return contact;
+        }
+
+        private static Address CreateAddress()
+        {
+            var zipCode = Zipcode.CreateBang("12345");
+            var street = NonEmptyString.CreateBang("742 Evergreen Terrace");
+            var city = NonEmptyString.CreateBang("Springfield");
+
+            var address = Address.Create(street, city, zipCode);
+            return address;
         }
     }
 }

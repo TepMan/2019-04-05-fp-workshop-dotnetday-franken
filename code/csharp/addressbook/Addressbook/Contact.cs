@@ -19,6 +19,7 @@ namespace Addressbook
             NonEmptyString lastname,
             Option<DateTime> dateOfBirth,
             Option<NonEmptyString> twitterProfileUrl,
+            Option<Address> address,
             ContactMethod contactMethod)
         {
             Id = id;
@@ -26,6 +27,7 @@ namespace Addressbook
             LastName = lastname;
             DateOfBirth = dateOfBirth;
             TwitterProfileUrl = twitterProfileUrl;
+            Address = address;
             ContactMethod = contactMethod;
         }
 
@@ -35,7 +37,8 @@ namespace Addressbook
         public Option<NonEmptyString> TwitterProfileUrl { get; private set; }
         public Option<DateTime> DateOfBirth { get; private set; }
         public ContactMethod ContactMethod { get; }
-
+        public Option<Address> Address { get; private set; }
+        
         public Contact ChangeFirstName(Option<NonEmptyString> optFirstName)
         {
             optFirstName.Match(
@@ -63,6 +66,12 @@ namespace Addressbook
         public Contact ChangeDateOfBirth(Option<DateTime> optDateOfBirth)
         {
             DateOfBirth = optDateOfBirth;
+            return this;
+        }
+
+        public Contact ChangeAddress(Option<Address> optAddress)
+        {
+            Address = optAddress;
             return this;
         }
     }
