@@ -13,7 +13,7 @@ namespace Addressbook.Tests.ValueObjects
         [Theory]
         [InlineData("123", true)]
         [InlineData("abc", true)]
-        [InlineData("invalid", false)]
+        [InlineData("x", false)]
         public void Creating_a_zipcode_from_NonEmptyString_works(string input, bool isValid)
         {
             var result = Zipcode.Create(NonEmptyString.CreateBang(input));
@@ -34,7 +34,7 @@ namespace Addressbook.Tests.ValueObjects
         [Theory]
         [InlineData("123", true)]
         [InlineData("abc", true)]
-        [InlineData("invalid", false)]
+        [InlineData("x", false)]
         public void Creating_a_zipcode_from_string_works(string input, bool isValid)
         {
             var result = Zipcode.Create(input);

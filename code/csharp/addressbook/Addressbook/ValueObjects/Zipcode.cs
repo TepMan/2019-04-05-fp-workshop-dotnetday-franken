@@ -21,7 +21,7 @@ namespace Addressbook.ValueObjects
 
         // Just another rule..
         private static bool IsValid(NonEmptyString potentialZipcode) => 
-            potentialZipcode.Value.Length <= 3;
+            potentialZipcode.Value.Length >= 3;
 
         public static Option<Zipcode> Create(NonEmptyString potentialZipcode)
         {
