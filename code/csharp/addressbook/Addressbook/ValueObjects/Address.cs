@@ -25,6 +25,38 @@ namespace Addressbook.ValueObjects
             return new Address(street, city, zipcode);
         }
 
+        public static Option<Address> CreateOption(
+            string street, 
+            string city, 
+            string zipcode)
+        {
+            // TODO
+            return None;
+        }
+
+        public static Either<string, Address> CreateSimpleEither(
+            string street, 
+            string city, 
+            string zipcode)
+        {
+            // TODO
+            return Left("x");
+        }
+
+        // TODO Use Error types -> Railway Oriented Programming
+//        public static Either<Error, Address> CreateSimpleEither(
+//            string street, 
+//            string city, 
+//            string zipcode)
+//        {
+//            // TODO
+//            return Left("x");
+//        }
+
+
+        
+        
+        
         // Currently the same as `Create`
 //        public static Address CreateBang(
 //            NonEmptyString street, 
