@@ -36,7 +36,7 @@ namespace Addressbook.Tests
             // with state
             sut.Contacts.Should().BeEmpty();
             sut.AddContact(contact);
-            sut.Contacts.Should().HaveCount(1, "we added one contact");
+            sut.Contacts.Should().HaveCount(1, "we added 1 contact");
         }
     }
 }
