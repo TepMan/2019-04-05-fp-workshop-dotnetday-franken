@@ -15,7 +15,7 @@ namespace Addressbook.Tests.ValueObjects
         public void NonEmptyString_creation_works(string input, bool isValid)
         {
             // Act
-            var result = NonEmptyString.Create(input);
+            var result = NonEmptyString.CreateClassic(input);
 
             // Assert
             result.Should()
@@ -49,6 +49,25 @@ namespace Addressbook.Tests.ValueObjects
                 Action action = () => NonEmptyString.CreateBang(input);
                 action.Should().Throw<ArgumentException>().WithMessage("String may not be empty or null!");
             }
+        }
+    
+        [Theory(Skip = "TODO")]
+        [InlineData("a", true)]
+        [InlineData("", false)]
+        [InlineData((string) null, false)]
+        public void NonEmptyString_creation_with_smart_ctor_works(string input, bool isValid)
+        {
+            // Act
+            var result = NonEmptyString.Create(input);
+
+            // Assert
+            result.Should()
+                .NotBeNull()
+                .And.BeOfType<Option<NonEmptyString>>();
+
+            result.Match(
+                () => isValid.Should().BeFalse(),
+                x => x.Value.Should().Be(isValid ? input : null));
         }
     }
 }

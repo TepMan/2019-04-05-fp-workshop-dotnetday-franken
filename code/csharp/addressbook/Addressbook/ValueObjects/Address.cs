@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using LaYumba.Functional;
 using static LaYumba.Functional.F;
@@ -17,7 +18,11 @@ namespace Addressbook.ValueObjects
             Zipcode = zipcode;
         }
 
-        public static Address Create(
+        // smart ctor
+        public static Func<NonEmptyString, NonEmptyString, Zipcode, Address> Create 
+            = (street, city, zipcode) => new Address(street, city, zipcode);
+
+        public static Address CreateClassic(
             NonEmptyString street, 
             NonEmptyString city, 
             Zipcode zipcode)

@@ -41,7 +41,7 @@ namespace Addressbook.ValueObjects
 
         public static Option<Zipcode> Create(string potentialZipcode)
         {
-            var option = NonEmptyString.Create(potentialZipcode);
+            var option = NonEmptyString.CreateClassic(potentialZipcode);
             return option.Match(
                 () => None,
                 Create);

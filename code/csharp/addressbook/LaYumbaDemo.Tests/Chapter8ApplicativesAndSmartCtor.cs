@@ -62,7 +62,7 @@ namespace LaYumbaDemo.Tests
         public static Func<NumberType, CountryCode, Number, PhoneNumber> Create 
             = (type, country, number) => new PhoneNumber(type, country, number);
 
-        PhoneNumber(NumberType type, CountryCode country, Number number)
+        private PhoneNumber(NumberType type, CountryCode country, Number number)
         {
             Type = type;
             Country = country;
@@ -93,7 +93,7 @@ namespace LaYumbaDemo.Tests
     public class Number
     {
         // smart ctor
-        // ISet<string> -> string -> Option<_Number>
+        // ISet<string> -> string -> Option<Number>
         public static Func<string, Option<Number>> Create
             = s => Long.Parse(s)
                .Map(_ => s) // <- "map": extract value from Option..

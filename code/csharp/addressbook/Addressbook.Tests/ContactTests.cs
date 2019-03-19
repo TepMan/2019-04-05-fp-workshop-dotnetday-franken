@@ -37,8 +37,8 @@ namespace Addressbook.Tests
 
             // Act
             var result = contact
-                .ChangeFirstName(NonEmptyString.Create(newFirstName))
-                .ChangeLastName(NonEmptyString.Create(newLastName));
+                .ChangeFirstName(NonEmptyString.CreateClassic(newFirstName))
+                .ChangeLastName(NonEmptyString.CreateClassic(newLastName));
 
             // Assert
             result.FirstName.Value.Should().Be(isFirstNameValid ? newFirstName : contact.FirstName.Value);
@@ -53,7 +53,7 @@ namespace Addressbook.Tests
         {
             // Arrange
             var contact = CreateHomer();
-            var twitterUrl = NonEmptyString.Create(newTwitterUrl);
+            var twitterUrl = NonEmptyString.CreateClassic(newTwitterUrl);
 
             // Act
             var result = contact.ChangeTwitterUrl(twitterUrl);
@@ -109,7 +109,7 @@ namespace Addressbook.Tests
             var dateOfBirth = new DateTime(1956, 5, 12);
             var dob = Some(dateOfBirth);
 
-            var twitterProfileUrl = NonEmptyString.Create("https://twitter.com/homerjsimpson");
+            var twitterProfileUrl = NonEmptyString.CreateClassic("https://twitter.com/homerjsimpson");
 
             var address = None;
             
@@ -124,7 +124,7 @@ namespace Addressbook.Tests
             var street = NonEmptyString.CreateBang("742 Evergreen Terrace");
             var city = NonEmptyString.CreateBang("Springfield");
 
-            var address = Address.Create(street, city, zipCode);
+            var address = Address.CreateClassic(street, city, zipCode);
             return address;
         }
     }

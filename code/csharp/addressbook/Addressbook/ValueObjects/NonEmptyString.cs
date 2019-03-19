@@ -11,15 +11,24 @@ namespace Addressbook.ValueObjects
         [JsonConstructor] 
         private NonEmptyString(string potentialString)
         {
-            if (string.IsNullOrWhiteSpace(potentialString))
+            if (IsValid(potentialString))
                 throw new ArgumentException("String may not be empty or null!");
 
             Value = potentialString;
         }
 
+        private static bool IsValid(string potentialString) => !string.IsNullOrWhiteSpace(potentialString);
+
         public string Value { get; }
 
-        public static Option<NonEmptyString> Create(string potentialString)
+        // smart ctor
+        public static Func<string, Option<NonEmptyString>> Create 
+            = s => IsValid(s)
+                ? Some(new NonEmptyString(s))
+                : None;
+
+        [Obsolete]
+        public static Option<NonEmptyString> CreateClassic(string potentialString)
         {
             Option<NonEmptyString> result;
 

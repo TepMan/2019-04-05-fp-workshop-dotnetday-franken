@@ -13,8 +13,8 @@ namespace Addressbook.Tests.ValueObjects
             var street = NonEmptyString.CreateBang("742 Evergreen Terrace");
             var city = NonEmptyString.CreateBang("Springfield");
 
-            var address1 = Address.Create(street, city, zipCode);
-            var address2 = Address.Create(street, city, zipCode);
+            var address1 = Address.CreateClassic(street, city, zipCode);
+            var address2 = Address.CreateClassic(street, city, zipCode);
             
             address1.Should().Be(address2);
         }
@@ -27,8 +27,8 @@ namespace Addressbook.Tests.ValueObjects
             var city1 = NonEmptyString.CreateBang("Springfield");
             var city2 = NonEmptyString.CreateBang("Shelbyville");
 
-            var address1 = Address.Create(street, city1, zipCode);
-            var address2 = Address.Create(street, city2, zipCode);
+            var address1 = Address.CreateClassic(street, city1, zipCode);
+            var address2 = Address.CreateClassic(street, city2, zipCode);
             
             address1.Should().NotBe(address2);
         }
