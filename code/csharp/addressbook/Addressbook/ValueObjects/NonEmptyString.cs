@@ -11,7 +11,7 @@ namespace Addressbook.ValueObjects
         [JsonConstructor] 
         private NonEmptyString(string potentialString)
         {
-            if (IsValid(potentialString))
+            if (!IsValid(potentialString))
                 throw new ArgumentException("String may not be empty or null!");
 
             Value = potentialString;
