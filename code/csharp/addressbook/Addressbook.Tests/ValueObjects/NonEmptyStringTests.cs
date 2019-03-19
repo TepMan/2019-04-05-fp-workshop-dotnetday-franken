@@ -51,7 +51,7 @@ namespace Addressbook.Tests.ValueObjects
             }
         }
     
-        [Theory(Skip = "TODO")]
+        [Theory]
         [InlineData("a", true)]
         [InlineData("", false)]
         [InlineData((string) null, false)]
