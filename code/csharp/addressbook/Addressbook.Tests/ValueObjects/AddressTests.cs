@@ -10,8 +10,8 @@ namespace Addressbook.Tests.ValueObjects
         public void Two_addresses_with_same_content_are_equal()
         {
             var zipCode = Zipcode.CreateBang("12345");
-            var street = NonEmptyString.CreateBang("742 Evergreen Terrace");
-            var city = NonEmptyString.CreateBang("Springfield");
+            var street = NonEmptyStringOO.CreateBang("742 Evergreen Terrace");
+            var city = NonEmptyStringOO.CreateBang("Springfield");
 
             var address1 = Address.CreateClassic(street, city, zipCode);
             var address2 = Address.CreateClassic(street, city, zipCode);
@@ -23,9 +23,9 @@ namespace Addressbook.Tests.ValueObjects
         public void Two_addresses_with_different_content_are_not_equal()
         {
             var zipCode = Zipcode.CreateBang("12345");
-            var street = NonEmptyString.CreateBang("742 Evergreen Terrace");
-            var city1 = NonEmptyString.CreateBang("Springfield");
-            var city2 = NonEmptyString.CreateBang("Shelbyville");
+            var street = NonEmptyStringOO.CreateBang("742 Evergreen Terrace");
+            var city1 = NonEmptyStringOO.CreateBang("Springfield");
+            var city2 = NonEmptyStringOO.CreateBang("Shelbyville");
 
             var address1 = Address.CreateClassic(street, city1, zipCode);
             var address2 = Address.CreateClassic(street, city2, zipCode);

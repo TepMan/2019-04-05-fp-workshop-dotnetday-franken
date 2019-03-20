@@ -7,7 +7,7 @@ namespace Addressbook.ValueObjects
 {
     public class Zipcode : ValueObject
     {
-        private Zipcode(NonEmptyString potentialZipcode)
+        private Zipcode(NonEmptyStringOO potentialZipcode)
         {
             if (!IsValid(potentialZipcode))
             {
@@ -20,10 +20,10 @@ namespace Addressbook.ValueObjects
         public string Value { get; }
 
         // Just another rule..
-        private static bool IsValid(NonEmptyString potentialZipcode) => 
+        private static bool IsValid(NonEmptyStringOO potentialZipcode) => 
             potentialZipcode.Value.Length >= 3;
 
-        public static Option<Zipcode> Create(NonEmptyString potentialZipcode)
+        public static Option<Zipcode> Create(NonEmptyStringOO potentialZipcode)
         {
             Option<Zipcode> result;
 
@@ -41,7 +41,7 @@ namespace Addressbook.ValueObjects
 
         public static Option<Zipcode> Create(string potentialZipcode)
         {
-            var option = NonEmptyString.CreateClassic(potentialZipcode);
+            var option = NonEmptyStringOO.Create(potentialZipcode);
             return option.Match(
                 () => None,
                 Create);
@@ -49,7 +49,7 @@ namespace Addressbook.ValueObjects
 
         public static Zipcode CreateBang(string potentialZipcode)
         {
-            return new Zipcode(NonEmptyString.CreateBang(potentialZipcode));
+            return new Zipcode(NonEmptyStringOO.CreateBang(potentialZipcode));
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

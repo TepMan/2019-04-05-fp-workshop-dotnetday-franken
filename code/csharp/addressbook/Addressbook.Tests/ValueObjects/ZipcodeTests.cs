@@ -16,7 +16,7 @@ namespace Addressbook.Tests.ValueObjects
         [InlineData("x", false)]
         public void Creating_a_zipcode_from_NonEmptyString_works(string input, bool isValid)
         {
-            var result = Zipcode.Create(NonEmptyString.CreateBang(input));
+            var result = Zipcode.Create(NonEmptyStringOO.CreateBang(input));
             if (isValid)
             {
                 result.Match(

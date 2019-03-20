@@ -6,10 +6,14 @@ using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
-    public class NonEmptyString : ValueObject
+    // Object-Oriented solution
+    // - Value Object
+    // - private ctor
+    // - validation in ctor
+    public class NonEmptyStringOO : ValueObject
     {
         [JsonConstructor] 
-        private NonEmptyString(string potentialString)
+        private NonEmptyStringOO(string potentialString)
         {
             if (!IsValid(potentialString))
                 throw new ArgumentException("String may not be empty or null!");
@@ -21,20 +25,13 @@ namespace Addressbook.ValueObjects
 
         public string Value { get; }
 
-        // smart ctor
-        public static Func<string, Option<NonEmptyString>> Create 
-            = s => IsValid(s)
-                ? Some(new NonEmptyString(s))
-                : None;
-
-        [Obsolete]
-        public static Option<NonEmptyString> CreateClassic(string potentialString)
+        public static Option<NonEmptyStringOO> Create(string potentialString)
         {
-            Option<NonEmptyString> result;
+            Option<NonEmptyStringOO> result;
 
             try
             {
-                result = Some(new NonEmptyString(potentialString));
+                result = Some(new NonEmptyStringOO(potentialString));
             }
             catch (Exception)
             {
@@ -44,9 +41,9 @@ namespace Addressbook.ValueObjects
             return result;
         }
 
-        public static NonEmptyString CreateBang(string potentialString)
+        public static NonEmptyStringOO CreateBang(string potentialString)
         {
-            return new NonEmptyString(potentialString);
+            return new NonEmptyStringOO(potentialString);
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

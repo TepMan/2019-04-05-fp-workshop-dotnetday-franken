@@ -12,11 +12,11 @@ namespace Addressbook.Tests
         [Fact]
         public void Adding_new_contact_works()
         {
-            var firstname = NonEmptyString.CreateBang("Homer");
-            var lastname = NonEmptyString.CreateBang("Simpson");
+            var firstname = NonEmptyStringOO.CreateBang("Homer");
+            var lastname = NonEmptyStringOO.CreateBang("Simpson");
             var id = Guid.NewGuid();
             var dob = Some(new DateTime(1956, 5, 12));
-            var twitterProfileUrl = NonEmptyString.CreateClassic("https://twitter.com/homerjsimpson");
+            var twitterProfileUrl = NonEmptyStringOO.Create("https://twitter.com/homerjsimpson");
             var address = None;
             
             var contact = new Contact(

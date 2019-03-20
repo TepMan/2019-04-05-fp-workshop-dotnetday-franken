@@ -15,10 +15,10 @@ namespace Addressbook
     public class Contact
     {
         public Contact(Guid id,
-            NonEmptyString firstname,
-            NonEmptyString lastname,
+            NonEmptyStringOO firstname,
+            NonEmptyStringOO lastname,
             Option<DateTime> dateOfBirth,
-            Option<NonEmptyString> twitterProfileUrl,
+            Option<NonEmptyStringOO> twitterProfileUrl,
             Option<Address> address,
             ContactMethod contactMethod)
         {
@@ -32,14 +32,14 @@ namespace Addressbook
         }
 
         public Guid Id { get; }
-        public NonEmptyString FirstName { get; private set; }
-        public NonEmptyString LastName { get; private set; }
-        public Option<NonEmptyString> TwitterProfileUrl { get; private set; }
+        public NonEmptyStringOO FirstName { get; private set; }
+        public NonEmptyStringOO LastName { get; private set; }
+        public Option<NonEmptyStringOO> TwitterProfileUrl { get; private set; }
         public Option<DateTime> DateOfBirth { get; private set; }
         public ContactMethod ContactMethod { get; }
         public Option<Address> Address { get; private set; }
         
-        public Contact ChangeFirstName(Option<NonEmptyString> optFirstName)
+        public Contact ChangeFirstName(Option<NonEmptyStringOO> optFirstName)
         {
             optFirstName.Match(
                 () => Unit(),
@@ -48,7 +48,7 @@ namespace Addressbook
             return this;
         }
         
-        public Contact ChangeLastName(Option<NonEmptyString> optLastName)
+        public Contact ChangeLastName(Option<NonEmptyStringOO> optLastName)
         {
             optLastName.Match(
                 () => Unit(),
@@ -57,7 +57,7 @@ namespace Addressbook
             return this;
         }
         
-        public Contact ChangeTwitterUrl(Option<NonEmptyString> optTwitterUrl)
+        public Contact ChangeTwitterUrl(Option<NonEmptyStringOO> optTwitterUrl)
         {
             TwitterProfileUrl = optTwitterUrl;
             return this;

@@ -7,11 +7,11 @@ namespace Addressbook.ValueObjects
 {
     public class Address : ValueObject
     {
-        public NonEmptyString Street { get; }
-        public NonEmptyString City { get; }
+        public NonEmptyStringOO Street { get; }
+        public NonEmptyStringOO City { get; }
         public Zipcode Zipcode { get; }
 
-        private Address(NonEmptyString street, NonEmptyString city, Zipcode zipcode)
+        private Address(NonEmptyStringOO street, NonEmptyStringOO city, Zipcode zipcode)
         {
             Street = street;
             City = city;
@@ -19,12 +19,12 @@ namespace Addressbook.ValueObjects
         }
 
         // smart ctor
-        public static Func<NonEmptyString, NonEmptyString, Zipcode, Address> Create 
+        public static Func<NonEmptyStringOO, NonEmptyStringOO, Zipcode, Address> Create 
             = (street, city, zipcode) => new Address(street, city, zipcode);
 
         public static Address CreateClassic(
-            NonEmptyString street, 
-            NonEmptyString city, 
+            NonEmptyStringOO street, 
+            NonEmptyStringOO city, 
             Zipcode zipcode)
         {
             return new Address(street, city, zipcode);

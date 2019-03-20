@@ -20,7 +20,7 @@ namespace Addressbook.Tests
             contact.LastName.Value.Should().Be("Simpson");
             contact.DateOfBirth.Should().BeEquivalentTo(Some(new DateTime(1956, 5, 12)));
             contact.TwitterProfileUrl.Should()
-                .BeEquivalentTo(Some(NonEmptyString.CreateBang("https://twitter.com/homerjsimpson")));
+                .BeEquivalentTo(Some(NonEmptyStringOO.CreateBang("https://twitter.com/homerjsimpson")));
             contact.ContactMethod.Should().BeOfType<EmailContact>();
         }
 
@@ -37,8 +37,8 @@ namespace Addressbook.Tests
 
             // Act
             var result = contact
-                .ChangeFirstName(NonEmptyString.CreateClassic(newFirstName))
-                .ChangeLastName(NonEmptyString.CreateClassic(newLastName));
+                .ChangeFirstName(NonEmptyStringOO.Create(newFirstName))
+                .ChangeLastName(NonEmptyStringOO.Create(newLastName));
 
             // Assert
             result.FirstName.Value.Should().Be(isFirstNameValid ? newFirstName : contact.FirstName.Value);
@@ -53,7 +53,7 @@ namespace Addressbook.Tests
         {
             // Arrange
             var contact = CreateHomer();
-            var twitterUrl = NonEmptyString.CreateClassic(newTwitterUrl);
+            var twitterUrl = NonEmptyStringOO.Create(newTwitterUrl);
 
             // Act
             var result = contact.ChangeTwitterUrl(twitterUrl);
@@ -101,15 +101,15 @@ namespace Addressbook.Tests
         
         private static Contact CreateHomer()
         {
-            var firstname = NonEmptyString.CreateBang("Homer");
-            var lastname = NonEmptyString.CreateBang("Simpson");
+            var firstname = NonEmptyStringOO.CreateBang("Homer");
+            var lastname = NonEmptyStringOO.CreateBang("Simpson");
 
             var id = Guid.NewGuid();
 
             var dateOfBirth = new DateTime(1956, 5, 12);
             var dob = Some(dateOfBirth);
 
-            var twitterProfileUrl = NonEmptyString.CreateClassic("https://twitter.com/homerjsimpson");
+            var twitterProfileUrl = NonEmptyStringOO.Create("https://twitter.com/homerjsimpson");
 
             var address = None;
             
@@ -121,8 +121,8 @@ namespace Addressbook.Tests
         private static Address CreateAddress()
         {
             var zipCode = Zipcode.CreateBang("58008");
-            var street = NonEmptyString.CreateBang("742 Evergreen Terrace");
-            var city = NonEmptyString.CreateBang("Springfield");
+            var street = NonEmptyStringOO.CreateBang("742 Evergreen Terrace");
+            var city = NonEmptyStringOO.CreateBang("Springfield");
 
             var address = Address.CreateClassic(street, city, zipCode);
             return address;
