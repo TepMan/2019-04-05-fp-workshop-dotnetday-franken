@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using LaYumba.Functional;
 using static LaYumba.Functional.F;
 
@@ -8,7 +9,7 @@ namespace Addressbook.ValueObjects
     // - private ctor
     // - smart ctor
     // - no validation inside ctor
-    public class NonEmptyStringFP
+    public class NonEmptyStringFP : ValueObject
     {
         public string Value { get; }
 
@@ -19,5 +20,10 @@ namespace Addressbook.ValueObjects
             = s => !string.IsNullOrWhiteSpace(s)
                 ? Some(new NonEmptyStringFP(s))
                 : None;
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Value;
+        }
     }
 }
