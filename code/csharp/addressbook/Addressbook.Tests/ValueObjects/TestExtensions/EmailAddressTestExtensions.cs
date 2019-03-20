@@ -4,7 +4,7 @@ using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 using LaYumba.Functional;
 
-namespace Addressbook.Tests.ValueObjects
+namespace Addressbook.Tests.ValueObjects.TestExtensions
 {
     public static class EmailAddressTestExtensions
     {

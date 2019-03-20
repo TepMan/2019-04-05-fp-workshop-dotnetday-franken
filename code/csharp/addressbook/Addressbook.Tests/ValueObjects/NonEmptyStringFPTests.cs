@@ -1,5 +1,6 @@
 using System;
 using Addressbook.ValueObjects;
+using Addressbook.Tests.ValueObjects.TestExtensions;
 using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
@@ -25,6 +26,17 @@ namespace Addressbook.Tests.ValueObjects
             result.Match(
                 () => isValid.Should().BeFalse(),
                 x => x.Value.Should().Be(isValid ? input : null));
+        }
+
+        [Fact]
+        public void NonEmptyStringFP_extension_handles_input_as_expected()
+        {
+            var result = NonEmptyStringFP.Create("a");
+            result.Should().BeEqualToNonEmptyString("a");
+            result.Should().NotBeEqualNonEmptyString("b");
+
+            NonEmptyStringFP.Create("").Should().BeNone();
+            NonEmptyStringFP.Create(null).Should().BeNone();
         }
     }
 }

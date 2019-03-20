@@ -3,6 +3,7 @@ using Addressbook.ValueObjects;
 using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
+using Addressbook.Tests.ValueObjects.TestExtensions;
 using static LaYumba.Functional.F;
 
 namespace Addressbook.Tests.ValueObjects
@@ -49,6 +50,25 @@ namespace Addressbook.Tests.ValueObjects
             {
                 Action action = () => NonEmptyStringOO.CreateBang(input);
                 action.Should().Throw<ArgumentException>().WithMessage("String may not be empty or null!");
+            }
+        }
+
+        // just testing if the extension method works
+        [Theory]
+        [InlineData("x", true)]
+        [InlineData("", false)]
+        public void NonEmptyStringOO_extension_handles_input_as_expected(string input, bool shouldPass)
+        {
+            var result = NonEmptyStringOO.Create(input);
+
+            if (shouldPass)
+            {
+                result.Should().BeEqualToNonEmptyString(input);
+                result.Should().NotBeEqualNonEmptyString(input + "x");
+            }
+            else
+            {
+                result.Should().BeNone();
             }
         }
     }
