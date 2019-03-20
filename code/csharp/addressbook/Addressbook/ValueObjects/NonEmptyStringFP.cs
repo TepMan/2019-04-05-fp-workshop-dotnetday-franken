@@ -7,7 +7,7 @@ namespace Addressbook.ValueObjects
 {
     // Functional solution
     // - private ctor
-    // - smart ctor
+    // - smart ctor `Create`
     // - no validation inside ctor
     public class NonEmptyStringFP : ValueObject
     {

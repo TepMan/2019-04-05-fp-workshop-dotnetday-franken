@@ -7,51 +7,39 @@ using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
-    // This class mimics a "record type" wrapped in a Maybe (also called Option).
+    // This class mimics a "record type" wrapped in an Option (also called Maybe).
     //
     // An instance can only be created using the static "Create" method. 
     //
-    // The static "Create" method returns a "Maybe<EmailAddress>"
+    // The static "Create" method returns a "Option<EmailAddress>"
     //
-    // The "Create" method will always return a valid answer of type Maybe<EmailAddress> (and not throw an exception).
+    // The "Create" method will always return a valid answer of type Option<EmailAddress> (and not throw an exception).
     // Consumers of this class must handle the result.
     //
     // Other alternative: EmailAddressSimple -> throws Exception
     //
     public class EmailAddress : ValueObject
     {
-        private EmailAddress(string potentialEmailAddress)
+        private EmailAddress(string validatedEmailAddress)
         {
-            if (!IsValid(potentialEmailAddress))
-                throw new ArgumentException($"Invalid email address: {potentialEmailAddress}");
-
-            Value = potentialEmailAddress;
+            Value = validatedEmailAddress;
         }
 
         public string Value { get; }
 
-        public static Option<EmailAddress> Create(string potentialEmailAddress)
-        {
-            Option<EmailAddress> result;
+        // smart ctor
+        public static Func<string, Option<EmailAddress>> CreateInternalValidation
+            = s => IsValid(s)
+                ? Some(new EmailAddress(s))
+                : None;
 
-            try
-            {
-                result = Some(new EmailAddress(potentialEmailAddress));
-            }
-            catch (Exception)
-            {
-                result = None;
-            }
+        // smart ctor
+        // public static Func<string, bool, Option<EmailAddress>> Create
+        //     => f => 
 
-            return result;
-        }
-
-        public static object CreateBang(string input)
-        {
-            return new EmailAddress(input);
-        }
-
-        private bool IsValid(string potentialEmailAddress)
+        
+        // This validation method can be injected
+        public static bool IsValid(string potentialEmailAddress)
         {
             if (string.IsNullOrWhiteSpace(potentialEmailAddress)) return false;
 
@@ -72,7 +60,6 @@ namespace Addressbook.ValueObjects
             yield return Value;
         }
 
-        // Syntactic sugar...
         public static implicit operator string(EmailAddress emailAddress)
         {
             return emailAddress.Value;

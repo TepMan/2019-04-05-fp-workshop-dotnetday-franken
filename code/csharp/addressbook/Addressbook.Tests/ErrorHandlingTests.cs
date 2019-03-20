@@ -18,7 +18,7 @@ namespace Addressbook.Tests
         [Fact]
         public void Chain_of_validations_returns_after_first_error()
         {
-            var optMail1 = EmailAddress.Create("homer.simpson@springfield.com");
+            var optMail1 = EmailAddress.CreateInternalValidation("homer.simpson@springfield.com");
 
             var result = optMail1
                 .ToValidation("ups1")
