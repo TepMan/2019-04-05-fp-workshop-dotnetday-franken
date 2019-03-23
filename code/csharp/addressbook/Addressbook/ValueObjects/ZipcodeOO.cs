@@ -5,9 +5,13 @@ using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
-    public class Zipcode : ValueObject
+    // Object-Oriented solution
+    // - Value Object
+    // - private ctor
+    // - validation in ctor
+    public class ZipcodeOO : ValueObject
     {
-        private Zipcode(NonEmptyStringOO potentialZipcode)
+        private ZipcodeOO(NonEmptyStringOO potentialZipcode)
         {
             if (!IsValid(potentialZipcode))
             {
@@ -23,13 +27,13 @@ namespace Addressbook.ValueObjects
         private static bool IsValid(NonEmptyStringOO potentialZipcode) => 
             potentialZipcode.Value.Length >= 3;
 
-        public static Option<Zipcode> Create(NonEmptyStringOO potentialZipcode)
+        public static Option<ZipcodeOO> Create(NonEmptyStringOO potentialZipcode)
         {
-            Option<Zipcode> result;
+            Option<ZipcodeOO> result;
 
             try
             {
-                result = Some(new Zipcode(potentialZipcode));
+                result = Some(new ZipcodeOO(potentialZipcode));
             }
             catch (Exception)
             {
@@ -39,7 +43,7 @@ namespace Addressbook.ValueObjects
             return result;
         }
 
-        public static Option<Zipcode> Create(string potentialZipcode)
+        public static Option<ZipcodeOO> Create(string potentialZipcode)
         {
             var option = NonEmptyStringOO.Create(potentialZipcode);
             return option.Match(
@@ -47,9 +51,9 @@ namespace Addressbook.ValueObjects
                 Create);
         }
 
-        public static Zipcode CreateBang(string potentialZipcode)
+        public static ZipcodeOO CreateBang(string potentialZipcode)
         {
-            return new Zipcode(NonEmptyStringOO.CreateBang(potentialZipcode));
+            return new ZipcodeOO(NonEmptyStringOO.CreateBang(potentialZipcode));
         }
 
         protected override IEnumerable<object> GetEqualityComponents()
@@ -100,4 +104,5 @@ namespace Addressbook.ValueObjects
 //            return new Zipcode2(potentialZipcode);
 //        }
 //    }
+
 }

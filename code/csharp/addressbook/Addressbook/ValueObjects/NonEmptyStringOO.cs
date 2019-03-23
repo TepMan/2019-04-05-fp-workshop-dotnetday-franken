@@ -21,7 +21,7 @@ namespace Addressbook.ValueObjects
             Value = potentialString;
         }
 
-        private static bool IsValid(string potentialString) => !string.IsNullOrWhiteSpace(potentialString);
+        private static bool IsValid(string potentialString) => potentialString.IsNonEmpty();
 
         public string Value { get; }
 

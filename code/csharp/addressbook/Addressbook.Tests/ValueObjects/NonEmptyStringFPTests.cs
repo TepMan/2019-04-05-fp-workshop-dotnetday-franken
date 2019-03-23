@@ -1,4 +1,3 @@
-using System;
 using Addressbook.ValueObjects;
 using Addressbook.Tests.ValueObjects.TestExtensions;
 using FluentAssertions;

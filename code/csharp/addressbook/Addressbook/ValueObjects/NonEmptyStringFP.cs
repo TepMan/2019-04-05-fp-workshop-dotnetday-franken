@@ -17,13 +17,18 @@ namespace Addressbook.ValueObjects
 
         // smart ctor
         public static Func<string, Option<NonEmptyStringFP>> Create 
-            = s => !string.IsNullOrWhiteSpace(s)
+            = s => s.IsNonEmpty()
                 ? Some(new NonEmptyStringFP(s))
                 : None;
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;
+        }
+
+        public static implicit operator string(NonEmptyStringFP nonEmptyStringFP)
+        {
+            return nonEmptyStringFP.Value;
         }
     }
 }

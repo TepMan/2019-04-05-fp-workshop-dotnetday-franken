@@ -120,7 +120,7 @@ namespace Addressbook.Tests
 
         private static Address CreateAddress()
         {
-            var zipCode = Zipcode.CreateBang("58008");
+            var zipCode = ZipcodeOO.CreateBang("58008");
             var street = NonEmptyStringOO.CreateBang("742 Evergreen Terrace");
             var city = NonEmptyStringOO.CreateBang("Springfield");
 

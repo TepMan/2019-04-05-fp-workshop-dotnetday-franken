@@ -4,7 +4,6 @@ using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
 using Addressbook.Tests.ValueObjects.TestExtensions;
-using static LaYumba.Functional.F;
 
 namespace Addressbook.Tests.ValueObjects
 {
