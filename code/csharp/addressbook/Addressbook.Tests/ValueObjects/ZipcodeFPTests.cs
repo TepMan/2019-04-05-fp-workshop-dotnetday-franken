@@ -35,7 +35,9 @@ namespace Addressbook.Tests.ValueObjects
         public void Creating_a_zipcode_from_None_works()
         {
             var result = ZipcodeFP.Create(F.None);
-            result.Should().BeOfType<Option<ZipcodeFP>>();
+            result.Match(
+                () => NoneIsTrue(),
+                x => false.Should().BeTrue());
         }
 
     }
