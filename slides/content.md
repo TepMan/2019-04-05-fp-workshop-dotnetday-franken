@@ -105,25 +105,6 @@ Diese Notizen erscheinen nur als Speaker Notes (optional)
 
 ---
 
-## FP History
-
-- 1920: Lambda Calculus
-- 1950: LISP
-- 1970: Scheme (OO & FP)
-- ...
-- XXXX: Haskell
-- XXXX: Scala
-- XXXX: F#
-- XXXX: ...
-
----
-
-## FP Overview
-
-Typed vs Untyped FP
-
----
-
 ## FP 101
 
 - Immutability
@@ -271,12 +252,10 @@ Einträge
   - optionale Felder
     - Geburtstag
     - Twitter-Link
-    - weitere Kontaktmethoden 
 
 ----
 
 - Eintrag wird serialisiert und in Datei abgelegt
-- APIs: Kommandozeile, Datei
 
 ---
 
@@ -303,9 +282,43 @@ In FP unterscheidet man die Wrapper-Klassen (zB IEnumerable) anhand der Funktion
 
 ---
 
-## FP-Jargon: Verschiedene Arten von Funktionen, die angewendet werden
+## FP-Konzepte
 
-- Functor: Funktion auf jedes Element anwenden (Map)
+- Gängige Vorgehensweise: Kleine Funktionen werden zu immer größeren Funktionalitäten zusammengesteckt
+- Problem: Nicht alle Funktionen passen gut zusammen
+
+---
+
+## Mappable
+```fsharp
+let toUpper s = String.toUpperCase s
+
+let stringToOption s =
+    if String.IsNullOrWhitespace s then
+        None
+    else
+        Some s
+
+let nonEmptyStringToUpper s =
+    let nonEmpty = stringToOption s
+    // passt nicht: "string" erwartet, aber "string option" bekommen
+    let nonEmptyUpper = toUpper nonEmpty
+```
+
+---
+
+## Mappable
+- Bild map Funktion
+
+---
+
+## Mappable
+- Container mit "map" Funktion (die bestimmten Regeln folgt): Mappable
+- Bezeichnung in der FP-Welt: **Funktor**
+- Andere Bezeichnungen für "map": fmap, Select
+
+---
+
 - Monad: ...
 - Applicative: ...
 
