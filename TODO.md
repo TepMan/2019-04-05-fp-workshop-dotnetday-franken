@@ -13,10 +13,13 @@ Allgemein: "Fahrplan" fuer Workshop ausprobieren.
 - Applicative zum Fehlersammeln bei Validierung
 - delete
 - List
+- Port persistence to C#
 
 ### F#
 
-- Features gleichziehen
+- Edit und Delete in Persistence ergänzen
+- Tests schreiben
+- Aufräumen
 
 ### UI
 
@@ -29,7 +32,7 @@ Allgemein: "Fahrplan" fuer Workshop ausprobieren.
 ### Persistence
 
 In C#: Erstmal weglassen... DUs sind schwer abzubilden.
-Waere in F# einfach.
+Waere in F# einfach - oder auch nicht.
 
 ## Slides
 
