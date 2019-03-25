@@ -1,52 +1,45 @@
-using System;
 using System.Collections.Generic;
-using LaYumba.Functional;
-using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
-    public class Address : ValueObject
+    public class AddressOO : ValueObject
     {
         public NonEmptyStringOO Street { get; }
         public NonEmptyStringOO City { get; }
         public ZipcodeOO Zipcode { get; }
 
-        private Address(NonEmptyStringOO street, NonEmptyStringOO city, ZipcodeOO zipcode)
+        private AddressOO(NonEmptyStringOO street, NonEmptyStringOO city, ZipcodeOO zipcode)
         {
             Street = street;
             City = city;
             Zipcode = zipcode;
         }
-
-        // smart ctor
-        public static Func<NonEmptyStringOO, NonEmptyStringOO, ZipcodeOO, Address> Create 
-            = (street, city, zipcode) => new Address(street, city, zipcode);
-
-        public static Address CreateClassic(
+       
+        public static AddressOO Create(
             NonEmptyStringOO street, 
             NonEmptyStringOO city, 
             ZipcodeOO zipcode)
         {
-            return new Address(street, city, zipcode);
+            return new AddressOO(street, city, zipcode);
         }
 
-        public static Option<Address> CreateOption(
-            string street, 
-            string city, 
-            string zipcode)
-        {
-            // TODO
-            return None;
-        }
+        //public static Option<AddressOO> CreateOption(
+        //    string street, 
+        //    string city, 
+        //    string zipcode)
+        //{
+        //    // TODO
+        //    return None;
+        //}
 
-        public static Either<string, Address> CreateSimpleEither(
-            string street, 
-            string city, 
-            string zipcode)
-        {
-            // TODO
-            return Left("x");
-        }
+        //public static Either<string, AddressOO> CreateSimpleEither(
+        //    string street, 
+        //    string city, 
+        //    string zipcode)
+        //{
+        //    // TODO
+        //    return Left("x");
+        //}
 
         // TODO Use Error types -> Railway Oriented Programming
 //        public static Either<Error, Address> CreateSimpleEither(

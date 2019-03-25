@@ -118,13 +118,13 @@ namespace Addressbook.Tests
             return contact;
         }
 
-        private static Address CreateAddress()
+        private static AddressOO CreateAddress()
         {
             var zipCode = ZipcodeOO.CreateBang("58008");
             var street = NonEmptyStringOO.CreateBang("742 Evergreen Terrace");
             var city = NonEmptyStringOO.CreateBang("Springfield");
 
-            var address = Address.CreateClassic(street, city, zipCode);
+            var address = AddressOO.Create(street, city, zipCode);
             return address;
         }
     }

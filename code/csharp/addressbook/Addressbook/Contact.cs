@@ -19,7 +19,7 @@ namespace Addressbook
             NonEmptyStringOO lastname,
             Option<DateTime> dateOfBirth,
             Option<NonEmptyStringOO> twitterProfileUrl,
-            Option<Address> address,
+            Option<AddressOO> address,
             ContactMethod contactMethod)
         {
             Id = id;
@@ -37,7 +37,7 @@ namespace Addressbook
         public Option<NonEmptyStringOO> TwitterProfileUrl { get; private set; }
         public Option<DateTime> DateOfBirth { get; private set; }
         public ContactMethod ContactMethod { get; }
-        public Option<Address> Address { get; private set; }
+        public Option<AddressOO> Address { get; private set; }
         
         public Contact ChangeFirstName(Option<NonEmptyStringOO> optFirstName)
         {
@@ -69,7 +69,7 @@ namespace Addressbook
             return this;
         }
 
-        public Contact ChangeAddress(Option<Address> optAddress)
+        public Contact ChangeAddress(Option<AddressOO> optAddress)
         {
             Address = optAddress;
             return this;
