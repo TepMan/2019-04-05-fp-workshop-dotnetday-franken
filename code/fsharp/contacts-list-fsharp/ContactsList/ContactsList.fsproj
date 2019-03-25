@@ -15,7 +15,10 @@
     <Compile Include="PostalAddress.fs" />
     <Compile Include="Domain.fs" />
     <Compile Include="Contact.fs" />
+    <Compile Include="AddressDataDto.fs" />
+    <Compile Include="ContactMethodDto.fs" />
     <Compile Include="Filters.fs" />
+    <Compile Include="ContactDto.fs" />
     <Compile Include="Formatters.fs" />
     <Compile Include="Printer.fs" />
     <Compile Include="Persistence.fs" />

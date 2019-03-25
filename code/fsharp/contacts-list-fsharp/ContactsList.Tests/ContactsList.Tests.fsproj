@@ -11,7 +11,9 @@
     <Compile Include="EMailAddressTests.fs" />
     <Compile Include="GermanZipCodeTests.fs" />
     <Compile Include="PositiveNumberTests.fs" />
+    <Compile Include="TestContacts.fs" />
     <Compile Include="WorkflowsTests.fs" />
+    <Compile Include="PersistenceTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FsUnit.Xunit" Version="3.4.0" />
