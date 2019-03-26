@@ -6,9 +6,9 @@ namespace Addressbook
     [Serializable]
     public class Addressbook
     {
-        public List<Contact> Contacts { get; } = new List<Contact>();
+        public List<ContactOO> Contacts { get; } = new List<ContactOO>();
         
-        public void AddContact(Contact contact)
+        public void AddContact(ContactOO contact)
         {
             Contacts.Add(contact);
         }

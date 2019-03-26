@@ -7,14 +7,10 @@ using static LaYumba.Functional.F;
 
 namespace Addressbook
 {
-    // Mmh, not sure yet if this class should also be a Value Object...
-    // Probably not, because this object has an identity, and therefore is an entity (not a value object)
     
-    // TODO Add an actual address ;-)
-    [Serializable]
-    public class Contact
+    public class ContactOO
     {
-        public Contact(Guid id,
+        public ContactOO(Guid id,
             NonEmptyStringOO firstname,
             NonEmptyStringOO lastname,
             Option<DateTime> dateOfBirth,
@@ -39,7 +35,7 @@ namespace Addressbook
         public ContactMethod ContactMethod { get; }
         public Option<AddressOO> Address { get; private set; }
         
-        public Contact ChangeFirstName(Option<NonEmptyStringOO> optFirstName)
+        public ContactOO ChangeFirstName(Option<NonEmptyStringOO> optFirstName)
         {
             optFirstName.Match(
                 () => Unit(),
@@ -48,7 +44,7 @@ namespace Addressbook
             return this;
         }
         
-        public Contact ChangeLastName(Option<NonEmptyStringOO> optLastName)
+        public ContactOO ChangeLastName(Option<NonEmptyStringOO> optLastName)
         {
             optLastName.Match(
                 () => Unit(),
@@ -57,19 +53,19 @@ namespace Addressbook
             return this;
         }
         
-        public Contact ChangeTwitterUrl(Option<NonEmptyStringOO> optTwitterUrl)
+        public ContactOO ChangeTwitterUrl(Option<NonEmptyStringOO> optTwitterUrl)
         {
             TwitterProfileUrl = optTwitterUrl;
             return this;
         }
 
-        public Contact ChangeDateOfBirth(Option<DateTime> optDateOfBirth)
+        public ContactOO ChangeDateOfBirth(Option<DateTime> optDateOfBirth)
         {
             DateOfBirth = optDateOfBirth;
             return this;
         }
 
-        public Contact ChangeAddress(Option<AddressOO> optAddress)
+        public ContactOO ChangeAddress(Option<AddressOO> optAddress)
         {
             Address = optAddress;
             return this;
