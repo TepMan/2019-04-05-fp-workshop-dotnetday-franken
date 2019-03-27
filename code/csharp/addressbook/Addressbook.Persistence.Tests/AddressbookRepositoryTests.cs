@@ -37,7 +37,7 @@ namespace Addressbook.Persistence.Tests
 
             var address = None;
             
-            var contact = new Contact(
+            var contact = new ContactOO(
                 id,
                 firstname,
                 lastname,

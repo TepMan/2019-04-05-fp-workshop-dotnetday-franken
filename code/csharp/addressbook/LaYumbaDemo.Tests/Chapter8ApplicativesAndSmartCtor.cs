@@ -93,7 +93,6 @@ namespace LaYumbaDemo.Tests
     public class Number
     {
         // smart ctor
-        // ISet<string> -> string -> Option<Number>
         public static Func<string, Option<Number>> Create
             = s => Long.Parse(s)
                .Map(_ => s) // <- "map": extract value from Option..

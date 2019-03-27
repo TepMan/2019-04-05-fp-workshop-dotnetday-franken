@@ -19,7 +19,7 @@ namespace Addressbook.Tests
             var twitterProfileUrl = NonEmptyStringOO.Create("https://twitter.com/homerjsimpson");
             var address = None;
             
-            var contact = new Contact(
+            var contact = new ContactOO(
                 id,
                 firstname,
                 lastname,

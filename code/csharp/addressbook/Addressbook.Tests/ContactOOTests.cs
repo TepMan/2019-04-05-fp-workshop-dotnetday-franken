@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Addressbook.ValueObjects;
 using FluentAssertions;
 using LaYumba.Functional;
@@ -9,7 +8,7 @@ using static LaYumba.Functional.F;
 
 namespace Addressbook.Tests
 {
-    public class ContactTests
+    public class ContactOOTests
     {
         [Fact]
         public void Creating_a_new_contact_happy_path()
@@ -99,7 +98,7 @@ namespace Addressbook.Tests
             result.Id.Should().Be(contact.Id);
         }
         
-        private static Contact CreateHomer()
+        private static ContactOO CreateHomer()
         {
             var firstname = NonEmptyStringOO.CreateBang("Homer");
             var lastname = NonEmptyStringOO.CreateBang("Simpson");
@@ -113,18 +112,18 @@ namespace Addressbook.Tests
 
             var address = None;
             
-            var contact = new Contact(id, firstname, lastname,
+            var contact = new ContactOO(id, firstname, lastname,
                 dob, twitterProfileUrl, address, new EmailContact());
             return contact;
         }
 
-        private static Address CreateAddress()
+        private static AddressOO CreateAddress()
         {
             var zipCode = ZipcodeOO.CreateBang("58008");
             var street = NonEmptyStringOO.CreateBang("742 Evergreen Terrace");
             var city = NonEmptyStringOO.CreateBang("Springfield");
 
-            var address = Address.CreateClassic(street, city, zipCode);
+            var address = AddressOO.Create(street, city, zipCode);
             return address;
         }
     }

@@ -30,5 +30,7 @@ namespace Addressbook.ValueObjects
         {
             return nonEmptyStringFP.Value;
         }
+
+        public override string ToString() => Value;
     }
 }

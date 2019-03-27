@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using LaYumba.Functional;
-using Newtonsoft.Json;
 using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
@@ -12,7 +11,6 @@ namespace Addressbook.ValueObjects
     // - validation in ctor
     public class NonEmptyStringOO : ValueObject
     {
-        [JsonConstructor] 
         private NonEmptyStringOO(string potentialString)
         {
             if (!IsValid(potentialString))

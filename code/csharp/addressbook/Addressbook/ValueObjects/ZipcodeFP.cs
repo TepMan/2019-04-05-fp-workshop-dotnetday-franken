@@ -11,7 +11,7 @@ namespace Addressbook.ValueObjects
         private ZipcodeFP(NonEmptyStringFP zipcode) => Value = zipcode;
 
         // smart ctor
-        public static Func<Option<NonEmptyStringFP>, Option<ZipcodeFP>> Create
+        public static readonly Func<Option<NonEmptyStringFP>, Option<ZipcodeFP>> Create
             = optNonEmpty => optNonEmpty.Match(
                 () => None,
                 nonEmptyStringFP 
