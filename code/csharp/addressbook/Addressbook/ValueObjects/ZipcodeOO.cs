@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using LaYumba.Functional;
-using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
@@ -33,11 +32,11 @@ namespace Addressbook.ValueObjects
 
             try
             {
-                result = Some(new ZipcodeOO(potentialZipcode));
+                result = F.Some(new ZipcodeOO(potentialZipcode));
             }
             catch (Exception)
             {
-                result = None;
+                result = F.None;
             }
 
             return result;
@@ -47,7 +46,7 @@ namespace Addressbook.ValueObjects
         {
             var option = NonEmptyStringOO.Create(potentialZipcode);
             return option.Match(
-                () => None,
+                () => F.None,
                 Create);
         }
 

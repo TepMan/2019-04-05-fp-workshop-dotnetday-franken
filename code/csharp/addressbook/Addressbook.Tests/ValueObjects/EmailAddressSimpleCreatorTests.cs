@@ -1,7 +1,6 @@
 using Addressbook.ValueObjects;
-using LaYumba.Functional;
-
 using FluentAssertions;
+using LaYumba.Functional;
 using Xunit;
 
 namespace Addressbook.Tests.ValueObjects

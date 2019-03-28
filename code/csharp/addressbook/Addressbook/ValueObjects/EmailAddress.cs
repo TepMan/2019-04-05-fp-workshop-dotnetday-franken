@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Net.Mail;
 using LaYumba.Functional;
 
-using static LaYumba.Functional.F;
-
 namespace Addressbook.ValueObjects
 {
     // This class mimics a "record type" wrapped in an Option (also called Maybe).
@@ -30,8 +28,8 @@ namespace Addressbook.ValueObjects
         // smart ctor
         public static Func<string, Option<EmailAddress>> CreateInternalValidation
             = s => IsValid(s)
-                ? Some(new EmailAddress(s))
-                : None;
+                ? F.Some(new EmailAddress(s))
+                : F.None;
 
         // smart ctor
         // public static Func<string, bool, Option<EmailAddress>> Create

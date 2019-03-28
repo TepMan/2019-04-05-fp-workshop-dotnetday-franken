@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using LaYumba.Functional;
-using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
@@ -29,11 +28,11 @@ namespace Addressbook.ValueObjects
 
             try
             {
-                result = Some(new NonEmptyStringOO(potentialString));
+                result = F.Some(new NonEmptyStringOO(potentialString));
             }
             catch (Exception)
             {
-                result = None;
+                result = F.None;
             }
 
             return result;

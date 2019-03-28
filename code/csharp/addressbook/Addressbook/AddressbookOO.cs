@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Addressbook
 {
     [Serializable]
-    public class Addressbook
+    public class AddressbookOO
     {
         public List<ContactOO> Contacts { get; } = new List<ContactOO>();
         

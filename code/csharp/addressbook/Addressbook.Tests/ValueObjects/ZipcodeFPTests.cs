@@ -1,10 +1,8 @@
+using System;
 using Addressbook.ValueObjects;
 using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
-using static Addressbook.Tests.ValueObjects.AssertionHelper;
-using static LaYumba.Functional.F;
-using System;
 
 namespace Addressbook.Tests.ValueObjects
 {
@@ -21,13 +19,13 @@ namespace Addressbook.Tests.ValueObjects
             if (isValid)
             {
                 result.Match(
-                    NoneFails,
+                    AssertionHelper.NoneFails,
                     x => x.ToString().Should().Be(input));
             }
             else
             {
                 result.Match(
-                    NoneIsTrue,
+                    AssertionHelper.NoneIsTrue,
                     x => x.ToString().Should().NotBe(input));
             }
         }
@@ -35,16 +33,16 @@ namespace Addressbook.Tests.ValueObjects
         [Fact]
         public void Creating_a_zipcode_from_None_works()
         {
-            var result = ZipcodeFP.Create(None);
+            var result = ZipcodeFP.Create(F.None);
             result.Match(
-                () => NoneIsTrue(),
+                () => AssertionHelper.NoneIsTrue(),
                 x => false.Should().BeTrue());
         }
 
         [Fact]
         public void Mapping_Option_of_DateTime_works()
         {
-            var optDt = Some(DateTime.Now);
+            var optDt = F.Some(DateTime.Now);
             optDt.Map(toDate).Should().NotBeNull();
         }
 

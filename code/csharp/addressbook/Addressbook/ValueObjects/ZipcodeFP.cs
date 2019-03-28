@@ -1,6 +1,5 @@
 using System;
 using LaYumba.Functional;
-using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
@@ -13,11 +12,11 @@ namespace Addressbook.ValueObjects
         // smart ctor
         public static readonly Func<Option<NonEmptyStringFP>, Option<ZipcodeFP>> Create
             = optNonEmpty => optNonEmpty.Match(
-                () => None,
+                () => F.None,
                 nonEmptyStringFP 
                     => nonEmptyStringFP.Value.IsValidZipcode()
-                        ? Some(new ZipcodeFP(nonEmptyStringFP))
-                        : None);
+                        ? F.Some(new ZipcodeFP(nonEmptyStringFP))
+                        : F.None);
 
         public override string ToString() => Value.Value;
     }

@@ -3,8 +3,6 @@ using Addressbook.ValueObjects;
 using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
-using static LaYumba.Functional.F;
-
 
 namespace Addressbook.Tests
 {
@@ -17,9 +15,9 @@ namespace Addressbook.Tests
 
             contact.FirstName.Value.Should().Be("Homer");
             contact.LastName.Value.Should().Be("Simpson");
-            contact.DateOfBirth.Should().BeEquivalentTo(Some(new DateTime(1956, 5, 12)));
+            contact.DateOfBirth.Should().BeEquivalentTo(F.Some(new DateTime(1956, 5, 12)));
             contact.TwitterProfileUrl.Should()
-                .BeEquivalentTo(Some(NonEmptyStringOO.CreateBang("https://twitter.com/homerjsimpson")));
+                .BeEquivalentTo(F.Some(NonEmptyStringOO.CreateBang("https://twitter.com/homerjsimpson")));
             contact.ContactMethod.Should().BeOfType<EmailContact>();
         }
 
@@ -58,7 +56,7 @@ namespace Addressbook.Tests
             var result = contact.ChangeTwitterUrl(twitterUrl);
 
             // Assert
-            result.TwitterProfileUrl.Should().Be(isValid ? twitterUrl : None);
+            result.TwitterProfileUrl.Should().Be(isValid ? twitterUrl : F.None);
             result.Id.Should().Be(contact.Id);
         }
 
@@ -73,7 +71,7 @@ namespace Addressbook.Tests
             var result = contact.ChangeAddress(address);
 
             // Assert
-            result.Address.Should().Be(Some(CreateAddress()));
+            result.Address.Should().Be(F.Some(CreateAddress()));
             result.Id.Should().Be(contact.Id);
         }
 
@@ -85,16 +83,16 @@ namespace Addressbook.Tests
         {
             // Arrange
             var contact = CreateHomer();
-            Option<DateTime> dateOfBirth = None;
+            Option<DateTime> dateOfBirth = F.None;
             // ReSharper disable PossibleInvalidOperationException
-            if (isValid) dateOfBirth = Some(new DateTime(year.Value, month.Value, day.Value));
+            if (isValid) dateOfBirth = F.Some(new DateTime(year.Value, month.Value, day.Value));
             // ReSharper restore PossibleInvalidOperationException
 
             // Act
-            var result = contact.ChangeDateOfBirth(isValid ? dateOfBirth : None);
+            var result = contact.ChangeDateOfBirth(isValid ? dateOfBirth : F.None);
 
             // Assert
-            result.DateOfBirth.Should().Be(isValid ? dateOfBirth : None);
+            result.DateOfBirth.Should().Be(isValid ? dateOfBirth : F.None);
             result.Id.Should().Be(contact.Id);
         }
         
@@ -106,11 +104,11 @@ namespace Addressbook.Tests
             var id = Guid.NewGuid();
 
             var dateOfBirth = new DateTime(1956, 5, 12);
-            var dob = Some(dateOfBirth);
+            var dob = F.Some(dateOfBirth);
 
             var twitterProfileUrl = NonEmptyStringOO.Create("https://twitter.com/homerjsimpson");
 
-            var address = None;
+            var address = F.None;
             
             var contact = new ContactOO(id, firstname, lastname,
                 dob, twitterProfileUrl, address, new EmailContact());

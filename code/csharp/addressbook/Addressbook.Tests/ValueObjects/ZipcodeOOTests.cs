@@ -3,7 +3,6 @@ using Addressbook.ValueObjects;
 using FluentAssertions;
 using FluentAssertions.Primitives;
 using Xunit;
-using static Addressbook.Tests.ValueObjects.AssertionHelper;
 
 namespace Addressbook.Tests.ValueObjects
 {
@@ -20,13 +19,13 @@ namespace Addressbook.Tests.ValueObjects
             if (isValid)
             {
                 result.Match(
-                    NoneFails,
+                    AssertionHelper.NoneFails,
                     SomeWithStringValueShouldBe(input));
             }
             else
             {
                 result.Match(
-                    NoneIsTrue,
+                    AssertionHelper.NoneIsTrue,
                     SomeWithStringValueShouldFail());
             }
         }
@@ -41,13 +40,13 @@ namespace Addressbook.Tests.ValueObjects
             if (isValid)
             {
                 result.Match(
-                    NoneFails,
+                    AssertionHelper.NoneFails,
                     SomeWithStringValueShouldBe(input));
             }
             else
             {
                 result.Match(
-                    NoneIsTrue,
+                    AssertionHelper.NoneIsTrue,
                     SomeWithStringValueShouldFail());
             }
         }

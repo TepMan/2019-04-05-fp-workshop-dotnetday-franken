@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using LaYumba.Functional;
-using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
@@ -24,25 +23,25 @@ namespace Addressbook.ValueObjects
 
         // Applicative validation
         public static Validation<AddressFP> CreateValidAddress(string street, string city, string zipcode)
-            => Valid(Create)
+            => F.Valid(Create)
                 .Apply(ValidStreet(street))
                 .Apply(ValidCity(city))
                 .Apply(ValidZipCode(zipcode));
 
         private static readonly Func<string, Validation<NonEmptyStringFP>> ValidStreet
             = s => NonEmptyStringFP.Create(s).Match(
-                () => Error($"Invalid street: '{s}'"),
-                validStreet => Valid(validStreet));
+                () => F.Error($"Invalid street: '{s}'"),
+                validStreet => F.Valid(validStreet));
 
         private static readonly Func<string, Validation<NonEmptyStringFP>> ValidCity
             = c => NonEmptyStringFP.Create(c).Match(
-                () => Error($"Invalid city: '{c}'"),
-                validCity => Valid(validCity));
+                () => F.Error($"Invalid city: '{c}'"),
+                validCity => F.Valid(validCity));
 
         private static readonly Func<string, Validation<ZipcodeFP>> ValidZipCode
             = z => ZipcodeFP.Create(NonEmptyStringFP.Create(z)).Match(
-                () => Error($"Invalid zipcode: '{z}'"),
-                validZipCode => Valid(validZipCode));
+                () => F.Error($"Invalid zipcode: '{z}'"),
+                validZipCode => F.Valid(validZipCode));
 
         public override string ToString() 
             => $"Street: {Street}; City: {City}; Zipcode: {Zipcode}";

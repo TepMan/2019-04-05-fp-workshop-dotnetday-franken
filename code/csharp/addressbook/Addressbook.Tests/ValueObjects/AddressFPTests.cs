@@ -2,7 +2,6 @@ using Addressbook.ValueObjects;
 using FluentAssertions;
 using Xunit;
 
-
 namespace Addressbook.Tests.ValueObjects
 {
     public class AddressFPTests

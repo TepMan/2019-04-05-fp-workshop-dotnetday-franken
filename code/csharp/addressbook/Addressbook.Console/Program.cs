@@ -1,4 +1,4 @@
-﻿namespace Addressbook.Console
+﻿namespace AddressbookOO.Console
 {
     internal class Program
     {

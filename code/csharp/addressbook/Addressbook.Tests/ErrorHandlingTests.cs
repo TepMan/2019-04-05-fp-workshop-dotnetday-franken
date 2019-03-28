@@ -3,7 +3,6 @@ using Addressbook.ValueObjects;
 using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
-using static LaYumba.Functional.F;
 
 namespace Addressbook.Tests
 {
@@ -23,11 +22,11 @@ namespace Addressbook.Tests
             var result = optMail1
                 .ToValidation("ups1")
                 .Bind(mail => mail.Value.StartsWith("x")
-                    ? Valid(mail)
-                    : Invalid("does not start with x"))
+                    ? F.Valid(mail)
+                    : F.Invalid("does not start with x"))
                 .Bind(mail => mail.Value.Contains("homer")
-                    ? Valid(mail)
-                    : Invalid("does not contain homer"))
+                    ? F.Valid(mail)
+                    : F.Invalid("does not contain homer"))
                 .Match(
                 e => e.Aggregate((a,b) => $"{a},{b}"),
                 x => x.Value
@@ -61,7 +60,7 @@ namespace Addressbook.Tests
             (this Option<T> opt, string msg) 
                 =>
                     opt.Match(
-                        () => Invalid(msg),
-                        Valid);
+                        () => F.Invalid(msg),
+                        F.Valid);
     }
 }

@@ -1,8 +1,8 @@
-using LaYumba.Functional;
+using Addressbook.ValueObjects;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
-using Addressbook.ValueObjects;
+using LaYumba.Functional;
 
 namespace Addressbook.Tests.ValueObjects.TestExtensions
 {

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Addressbook.ValueObjects;
 using FluentAssertions;
 using Xunit;
@@ -7,7 +6,7 @@ using static LaYumba.Functional.F;
 
 namespace Addressbook.Tests
 {
-    public class AddressbookTests
+    public class AddressbookOOTests
     {
         [Fact]
         public void Adding_new_contact_works()
@@ -28,7 +27,7 @@ namespace Addressbook.Tests
                 address,
                 new EmailContact());
 
-            var sut = new Addressbook();
+            var sut = new AddressbookOO();
 
             // important design decision: do we have state in Addressbook or not?
             // should the following code return a modified list or have internal state?

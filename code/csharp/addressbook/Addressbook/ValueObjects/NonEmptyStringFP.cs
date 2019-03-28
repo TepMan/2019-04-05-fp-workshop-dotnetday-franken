@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using LaYumba.Functional;
-using static LaYumba.Functional.F;
 
 namespace Addressbook.ValueObjects
 {
@@ -18,8 +17,8 @@ namespace Addressbook.ValueObjects
         // smart ctor
         public static Func<string, Option<NonEmptyStringFP>> Create 
             = s => s.IsNonEmpty()
-                ? Some(new NonEmptyStringFP(s))
-                : None;
+                ? F.Some(new NonEmptyStringFP(s))
+                : F.None;
 
         protected override IEnumerable<object> GetEqualityComponents()
         {

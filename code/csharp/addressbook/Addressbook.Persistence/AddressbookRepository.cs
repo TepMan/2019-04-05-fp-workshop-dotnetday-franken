@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using Addressbook.Persistence.Contracts;
 using Newtonsoft.Json;
 
@@ -21,18 +20,18 @@ namespace Addressbook.Persistence
                 : addressbookJson;
         }
 
-        public Addressbook GetAddressbook()
+        public AddressbookOO GetAddressbook()
         {
             // https://www.newtonsoft.com/json/help/html/DeserializeWithJsonSerializerFromFile.htm
             using (var file = File.OpenText(_addressbookJson))
             {
                 var serializer = new JsonSerializer();
-                var addressbook = (Addressbook)serializer.Deserialize(file, typeof(Addressbook));
+                var addressbook = (AddressbookOO)serializer.Deserialize(file, typeof(AddressbookOO));
                 return addressbook;
             }
         }
 
-        public void Save(Addressbook addressbook)
+        public void Save(AddressbookOO addressbook)
         {
             using (var file = File.CreateText(_addressbookJson))
             {

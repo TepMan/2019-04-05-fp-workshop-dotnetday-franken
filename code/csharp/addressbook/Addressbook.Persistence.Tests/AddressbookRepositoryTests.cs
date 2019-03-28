@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 using Addressbook.ValueObjects;
 using FluentAssertions;
+using LaYumba.Functional;
 using Xunit;
-using static LaYumba.Functional.F;
 
 namespace Addressbook.Persistence.Tests
 {
@@ -27,15 +26,15 @@ namespace Addressbook.Persistence.Tests
             result.Should().NotBeNull();
         }
 
-        private static Addressbook CreateAddressbook()
+        private static AddressbookOO CreateAddressbook()
         {
             var firstname = NonEmptyStringOO.CreateBang("Homer");
             var lastname = NonEmptyStringOO.CreateBang("Simpson");
             var id = Guid.NewGuid();
-            var dob = Some(new DateTime(1956, 5, 12));
+            var dob = F.Some(new DateTime(1956, 5, 12));
             var twitterProfileUrl = NonEmptyStringOO.Create("https://twitter.com/homerjsimpson");
 
-            var address = None;
+            var address = F.None;
             
             var contact = new ContactOO(
                 id,
@@ -46,7 +45,7 @@ namespace Addressbook.Persistence.Tests
                 address,
                 new EmailContact());
 
-            var addressbook = new Addressbook();
+            var addressbook = new AddressbookOO();
             addressbook.AddContact(contact);
             return addressbook;
         }

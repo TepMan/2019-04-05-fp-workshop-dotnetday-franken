@@ -2,7 +2,7 @@
 {
     public interface IAddressbookRepository
     {
-        Addressbook GetAddressbook();
-        void Save(Addressbook addressbook);
+        AddressbookOO GetAddressbook();
+        void Save(AddressbookOO addressbook);
     }
 }

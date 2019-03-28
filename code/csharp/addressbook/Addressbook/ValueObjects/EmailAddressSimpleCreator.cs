@@ -1,7 +1,6 @@
 using System;
-using LaYumba.Functional; // <-- !! Not built into C#; provides "Option" !!
-
-using static LaYumba.Functional.F;
+using LaYumba.Functional;
+// <-- !! Not built into C#; provides "Option" !!
 
 namespace Addressbook.ValueObjects
 {
@@ -13,11 +12,11 @@ namespace Addressbook.ValueObjects
 
             try
             {
-                result = Some(new EmailAddressSimple(potentialEmail));
+                result = F.Some(new EmailAddressSimple(potentialEmail));
             }
             catch (Exception)
             {
-                result = None;
+                result = F.None;
             }
 
             return result;

@@ -1,9 +1,9 @@
 using System;
+using Addressbook.Tests.ValueObjects.TestExtensions;
 using Addressbook.ValueObjects;
 using FluentAssertions;
 using LaYumba.Functional;
 using Xunit;
-using Addressbook.Tests.ValueObjects.TestExtensions;
 
 namespace Addressbook.Tests.ValueObjects
 {
