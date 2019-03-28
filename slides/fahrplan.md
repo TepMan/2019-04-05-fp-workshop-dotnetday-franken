@@ -14,11 +14,11 @@
     - Semantik für "vorhanden oder nicht"
     - Code-Beispiel vorbereiten
 
-2) LaYumba vorstellen
+2) PD: LaYumba vorstellen
 3) Wie erzeuge ich mir eine Option von DateTime?
 4) PO will schnell neue Funktion haben: Das Datum muss als String ausgebbar sein, egal ob es da ist oder nicht
 5) Funktion schreiben: DateTime option -> string (String.Empty falls None)
-6) Pattern Matching mit LaYumba einführen
+6) PD: Pattern Matching mit LaYumba einführen
    - Code-Beispiel vorbereiten
 
 7) Neue Anforderung: Das Datum darf nur eine Datumskomponente enthalten, keine Zeitkomponente
@@ -27,9 +27,9 @@
 10) Funktion implementieren und mit map verbinden
 11) Nächster Fokus: Vorname
 12) Vorname darf nicht leer sein - string sagt darüber aber nichts aus
-13) ValueObject to the rescue
-14) \<Insert Value Object Knowledge von Patrick\>
-15) ValueObject erstmal mit Konstruktor und Exception, wenn was schief geht
+13) PD: ValueObject to the rescue
+14) PD: \<Insert Value Object Knowledge von Patrick\>
+15) PD: ValueObject erstmal mit Konstruktor und Exception, wenn was schief geht
 16) Umbau Datenmodell auf NonEmptyStrings für Vorname und Nachname
 17) Schwenk auf F#, damit man da auch mal was von sieht
 18) Vorstellung Grundlegende Syntax (let, Expressions, |>, Pattern Matching)
@@ -45,13 +45,13 @@
 27) Result (Either) vorstellen
 28) Monade einführen
 29) Beispiel mit String Validierung ausprogrammieren
-30) Railway Oriented Programming vorstellen
+30) PD: Railway Oriented Programming vorstellen
 31) Ausprogrammieren: Kontakt kann gespeichert werden, und nach erfolgreichem Speichern wird eine Benachrichtigung verschickt
 32) Rückgabe für den User notwendig: Funktion, die auf Result am Ende der Kette pattern matching macht und jeweils Strings ausgibt
 33) Intermezzo: Funktionale Architektur(en)
 34) Datenmodell in F# erweitern auf Kontaktmethode
 35) Einführung Discriminated Unions
-36) Wie kann man das in C# nachbilden? Nicht ohne zusätzliche Bibliothek
+36) PD: Wie kann man das in C# nachbilden? Nicht ohne zusätzliche Bibliothek
 37) Neue Anforderung: Fehler beim Erzeugen eines Kontakts (Validierung) sollen gesammelt werden, nicht beim Ersten abgebrochen wie beim Speichern
 38) Applicative einführen
 39) Ausprogrammieren: Fehler beim Erzeugen eines Kontakts (Validierung) sollen gesammelt werden, nicht beim Ersten abgebrochen wie beim Speichern
