@@ -23,6 +23,7 @@
     <Compile Include="Formatters.fs" />
     <Compile Include="Printer.fs" />
     <Compile Include="Persistence.fs" />
+    <Compile Include="StringValidation.fs" />
     <Compile Include="Workflows.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

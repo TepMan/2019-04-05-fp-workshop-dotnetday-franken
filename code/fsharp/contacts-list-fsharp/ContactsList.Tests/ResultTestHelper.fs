@@ -1,5 +1,5 @@
 module Result
-   
+
 let isOkAndEquals getFn compareTo result =
     match result with
     | Error _ -> false

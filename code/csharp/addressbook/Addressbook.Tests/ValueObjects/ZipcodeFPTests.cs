@@ -4,6 +4,7 @@ using LaYumba.Functional;
 using Xunit;
 using static Addressbook.Tests.ValueObjects.AssertionHelper;
 using static LaYumba.Functional.F;
+using System;
 
 namespace Addressbook.Tests.ValueObjects
 {
@@ -39,6 +40,15 @@ namespace Addressbook.Tests.ValueObjects
                 () => NoneIsTrue(),
                 x => false.Should().BeTrue());
         }
+
+        [Fact]
+        public void Mapping_Option_of_DateTime_works()
+        {
+            var optDt = Some(DateTime.Now);
+            optDt.Map(toDate).Should().NotBeNull();
+        }
+
+        private DateTime toDate(DateTime dt) => dt.Date;
 
     }
 }

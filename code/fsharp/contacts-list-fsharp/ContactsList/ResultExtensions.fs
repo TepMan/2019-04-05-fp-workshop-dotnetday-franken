@@ -19,3 +19,8 @@ let lift a = Ok a
 let (<!>) = Result.map
 let (<*>) = apply
 let map3 f a b c = f <!> a <*> b <*> c
+
+let runExceptional fn =
+    try
+        Ok(fn())
+    with ex -> Error ex.Message

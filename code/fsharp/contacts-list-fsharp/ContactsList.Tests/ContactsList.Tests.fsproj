@@ -14,6 +14,7 @@
     <Compile Include="TestContacts.fs" />
     <Compile Include="WorkflowsTests.fs" />
     <Compile Include="PersistenceTests.fs" />
+    <Compile Include="StringValidationTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FsUnit.Xunit" Version="3.4.0" />
