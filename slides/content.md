@@ -280,6 +280,8 @@ Bsp:
 - Result -> Liste mit 2 Werten (Left und Right)
 - etc.
 
+---
+
 In FP unterscheidet man die Wrapper-Klassen (zB IEnumerable) anhand der Funktionen, die sie bereitstellen
 
 ---
