@@ -141,6 +141,44 @@ public class Customer
 
 ---
 
+Syntax matters!
+
+Classic C#
+
+```csharp
+int Add(int a, int b)
+{
+  return a + b;
+}
+```
+
+Expression body
+
+```csharp
+int Add(int a, int b) => a + b;
+```
+---
+
+Syntax matters!
+
+Classic C#
+
+```csharp
+int Add(int a, int b)
+{
+  Console.WriteLine("bla"); // <- side effect!
+  return a + b;
+}
+```
+
+Expression body: side effects are less likely
+
+```csharp
+int Add(int a, int b) => a + b;
+```
+
+---
+
 #### 1st class functions in C# #
 
 
