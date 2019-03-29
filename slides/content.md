@@ -367,7 +367,8 @@ let nonEmptyStringToUpper s =
 ## Mappable
 - Container mit "map" Funktion (die bestimmten Regeln folgt): Mappable
 - Bezeichnung in der FP-Welt: **Funktor**
-- ```fsharp
+- 
+```fsharp
   map: (a -> b) -> F a -> F b
 ```
 - Andere Bezeichnungen für "map": fmap (z.B. in Haskell), Select (LINQ), <$>, <!>
@@ -493,7 +494,8 @@ let addTwoNumbers a b =
 ## Applicative
 - Container mit "apply" Funktion (die bestimmten Regeln folgt): Applicative
 - Bezeichnung in der FP-Welt: **Applicative Functor**
-- ```fsharp
+- 
+```fsharp
   apply: AF (a -> b) -> AF a -> AF b
 ```
 - Andere Bezeichnungen für "apply": ap, <*>
