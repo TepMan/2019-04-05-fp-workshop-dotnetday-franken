@@ -370,6 +370,17 @@ In FP unterscheidet man die Wrapper-Klassen (zB IEnumerable) anhand der Funktion
 - kann nicht alles
 - Fokus: Didaktik (Aehnlichkeit mit F#, Haskell)
 
+----
+
+### LaYumba
+
+alle C# Beispiele haben..
+
+```csharp
+using LaYumba.Functional;           // <- lib
+using static LaYumba.Functional.F;  // <- extensions
+```
+
 ---
 
 ## FP-Konzepte
