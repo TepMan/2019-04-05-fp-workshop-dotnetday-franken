@@ -26,6 +26,10 @@ FILE: layumba.md
 
 ---
 
+FILE: value-objects.md
+
+---
+
 FILE: content.md
 
 ---
