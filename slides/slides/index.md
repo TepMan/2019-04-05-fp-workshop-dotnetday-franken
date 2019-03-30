@@ -14,6 +14,20 @@ FILE: 01-intro.md
 
 ---
 
+FILE: 02-fp-basics.md
+
+---
+
+FILE: demo-app-intro.md
+
+---
+
+FILE: layumba.md
+
+---
+
 FILE: content.md
 
 ---
+
+FILE: 99-exit.md
