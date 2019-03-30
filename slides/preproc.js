@@ -15,7 +15,7 @@ const preprocess = async (markdown, options) =>
         .split(LINE_SEPARATOR)
         .map(line => 
                 isFileReference(line) 
-                    ? loadFileContent(line, options.initialDir) 
+                    ? loadFileContent(line, options.includeDir) 
                     : line)
         .join(LINE_SEPARATOR);
 
