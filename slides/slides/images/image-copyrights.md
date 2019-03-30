@@ -2,4 +2,4 @@
 - [road-3478977_1920.jpg](https://pixabay.com/de/straße-landschaft-horizont-gerade-3478977/)
 - [fsharp*.png](http://foundation.fsharp.org/logo)
 - [mob-programming-setup.png](TODO: Maaret Pyhäjärvi and Llewellyn Falco; The Mob Programming Guide Book)
-- 
+- [wikipedia-value-objects.png](https://en.wikipedia.org/wiki/Value_object) Screenshot 2019-03-30
