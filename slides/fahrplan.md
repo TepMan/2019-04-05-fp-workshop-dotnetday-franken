@@ -23,7 +23,7 @@
 
 7) Neue Anforderung: Das Datum darf nur eine Datumskomponente enthalten, keine Zeitkomponente
 8) Problem: Wir haben keine Funktion zur Verfügung, die mit Option<DateTime> umgehen kann
-9)  Einführung Mappable (Funktor)
+9)  MG: Einführung Mappable (Funktor)
 10) Funktion implementieren und mit map verbinden
 11) Nächster Fokus: Vorname
 12) Vorname darf nicht leer sein - string sagt darüber aber nichts aus
@@ -32,12 +32,12 @@
 15) PD: ValueObject erstmal mit Konstruktor und Exception, wenn was schief geht
 16) Umbau Datenmodell auf NonEmptyStrings für Vorname und Nachname
 17) Schwenk auf F#, damit man da auch mal was von sieht
-18) Vorstellung Grundlegende Syntax (let, Expressions, |>, Pattern Matching)
-19) Record Types
-20) Unterschiede und Gemeinsamkeiten Record Type vs. Value Object
-21) Partial Application / Currying
-22) Bisheriges Datenmodell in F# modellieren
-23) Funktionen für DateTime option -> string und für map auch implementieren 
+18) MG: Vorstellung Grundlegende Syntax (let, Expressions, |>, Pattern Matching)
+19) MG: Record Types
+20) MG: Unterschiede und Gemeinsamkeiten Record Type vs. Value Object
+21) MG: Partial Application / Currying
+22) MG: Bisheriges Datenmodell in F# modellieren
+23) MG: Funktionen für DateTime option -> string und für map auch implementieren 
     1)  option schon eingebaut
 24) Nächste Anforderung: Ein Kontakt kann gespeichert werden, und nach erfolgreichem Speichern wird eine Benachrichtigung verschickt
 25) Speichern kann fehlschlagen: Wie drücken wir aus, dass es klappen oder fehlschlagen kann?

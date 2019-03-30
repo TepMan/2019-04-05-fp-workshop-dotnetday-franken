@@ -148,3 +148,11 @@ Schränken uns diese FP Paradigmen ein?
 ---
 
 Wie kann man mit diesem "Purismus" Software schreiben, die etwas tut?
+
+--- 
+
+## Kleine Funktionen zu größeren verbinden
+
+- Gängige Vorgehensweise: Kleine Funktionen werden zu immer größeren Funktionalitäten zusammengesteckt
+- Problem: Nicht alle Funktionen passen gut zusammen
+- Zu Lösungsmöglichkeiten dafür kommen wir später noch

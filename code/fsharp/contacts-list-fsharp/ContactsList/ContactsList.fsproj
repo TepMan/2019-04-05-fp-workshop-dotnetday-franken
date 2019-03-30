@@ -25,6 +25,7 @@
     <Compile Include="Persistence.fs" />
     <Compile Include="StringValidation.fs" />
     <Compile Include="Workflows.fs" />
+    <Compile Include="Scratchpad.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
