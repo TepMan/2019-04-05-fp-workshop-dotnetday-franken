@@ -31,6 +31,7 @@ namespace ScratchTests
             }
         }
 
+
         public class OptionDemo
         {
             Option<string> DoMagic(string s) => s.Length < 5 ? Some(s) : None;
@@ -49,6 +50,27 @@ namespace ScratchTests
                     .Should().Be(expected ? s : "ups");
             }
         }
+
+        public class PatternMatching
+        {
+            private static Option<string> IsNonEmpty(string s)
+                => string.IsNullOrWhiteSpace(s)
+                    ? None
+                    : Some(s);
+
+            [Fact]
+            public void PatternMatchingIntro()
+            {
+                var opt = IsNonEmpty("a");
+
+                var result = opt.Match(
+                    () => "string is empty",
+                    x => x);
+
+                result.Should().Be("a");
+            }
+        }
+
 
         public class ChainingOptions
         {
