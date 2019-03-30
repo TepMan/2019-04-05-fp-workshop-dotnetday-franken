@@ -8,7 +8,7 @@
     "demo-index": "reveal-md slidesdemo/demoindex.md",
     "start": "reveal-md slides/index.md -w --template reveal.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pdf": "decktape --chrome-arg=--no-sandbox -s 1920x1080 -p 50 --load-pause 50 reveal http://localhost:1948/content.md#/ pdf/dotnetdayfranken-fp-workshop.pdf"
+    "pdf": "decktape --chrome-arg=--no-sandbox -s 1920x1080 -p 50 --load-pause 50 reveal http://localhost:1948/index.md#/ pdf/dotnetdayfranken-fp-workshop.pdf"
   },
   "keywords": [
     "Functional Programming",
