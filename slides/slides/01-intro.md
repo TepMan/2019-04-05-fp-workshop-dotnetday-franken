@@ -16,7 +16,7 @@ Diese Notizen erscheinen nur als Speaker Notes (optional)
   <h4>Patrick Drechsler</h4>
   <ul class="small-font" >
     <li>Software Entwickler / Architekt</li>
-    <li>Beruflich: C# (und TS/JS)</li>
+    <li>Beruflich: C#</li>
     <li>Interessen:</li>
     <ul>
       <li>Software Crafting</li>
