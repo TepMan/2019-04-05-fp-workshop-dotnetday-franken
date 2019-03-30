@@ -3,3 +3,4 @@
 - [fsharp*.png](http://foundation.fsharp.org/logo)
 - [mob-programming-setup.png](TODO: Maaret Pyhäjärvi and Llewellyn Falco; The Mob Programming Guide Book)
 - [wikipedia-value-objects.png](https://en.wikipedia.org/wiki/Value_object) Screenshot 2019-03-30
+- [fp-languages-overview.png](Get Programming with F#, Isaac Abraham, fig. 1, page 4)
