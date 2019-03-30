@@ -5,7 +5,7 @@
   "main": "reveal.html",
   "scripts": {
     "demo": "cat demo.md content2.md > final-demo.md && reveal-md final-demo.md -w --template reveal.html",
-    "demo-index": "reveal-md -P preproc.js demo-index.md",
+    "demo-index": "reveal-md slidesdemo/demoindex.md",
     "start": "reveal-md content.md -w --template reveal.html",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pdf": "decktape --chrome-arg=--no-sandbox -s 1920x1080 -p 50 --load-pause 50 reveal http://localhost:1948/content.md#/ pdf/dotnetdayfranken-fp-workshop.pdf"
@@ -21,6 +21,6 @@
   "license": "ISC",
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "reveal-md": "^2.4.1"
+    "reveal-md": "^3.0.4"
   }
 }
