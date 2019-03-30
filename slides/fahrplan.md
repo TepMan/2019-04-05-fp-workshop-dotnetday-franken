@@ -48,9 +48,9 @@
 30) PD: Railway Oriented Programming vorstellen
 31) Ausprogrammieren: Kontakt kann gespeichert werden, und nach erfolgreichem Speichern wird eine Benachrichtigung verschickt
 32) Rückgabe für den User notwendig: Funktion, die auf Result am Ende der Kette pattern matching macht und jeweils Strings ausgibt
-33) Intermezzo: Funktionale Architektur(en)
-34) Datenmodell in F# erweitern auf Kontaktmethode
-35) Einführung Discriminated Unions
+33) MG: Intermezzo: Funktionale Architektur(en)
+34) MG: Datenmodell in F# erweitern auf Kontaktmethode
+35) MG: Wiederholung Discriminated Unions (eingeführt schon im F# Basics Teil)
 36) PD: Wie kann man das in C# nachbilden? Nicht ohne zusätzliche Bibliothek
 37) Neue Anforderung: Fehler beim Erzeugen eines Kontakts (Validierung) sollen gesammelt werden, nicht beim Ersten abgebrochen wie beim Speichern
 38) Applicative einführen

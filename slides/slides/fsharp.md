@@ -6,7 +6,10 @@
 - inspiriert von OCaml
 - Multi-Paradigma
 - Fokus auf funktionale Programmierung im .NET Umfeld
+- erzwingt keine puren Funktionen, sondern erlaubt Seiteneffekte
 - Statisch typisiert
+- voll integriert ins .NET Ökosystem
+- C# / VB.net Interop
 
 ---
 
@@ -18,9 +21,9 @@
 --
 ## Immutability als Default
 ```fsharp
-// Zuweisungen statt Variablen - unveränderlich (Immutability)
+// Achtung: = ist hier keine Zuweisung, sondern heißt "linke und rechte Seite sind wirklich gleich und bleiben es auch immer"
+// "Referential transparency"
 let x = 3
-// Rechte Seite immer eine Expression - Wert, Funktion, ...
 let add a b = a + b
 let m = if 3 > 0 then 7 else 42
 
