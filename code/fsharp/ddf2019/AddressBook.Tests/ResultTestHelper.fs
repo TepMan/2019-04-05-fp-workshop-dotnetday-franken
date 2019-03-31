@@ -9,5 +9,3 @@ let isError result =
     match result with
     | Error _ -> true
     | Ok _ -> false
-
-let fail = true |> should equal false
