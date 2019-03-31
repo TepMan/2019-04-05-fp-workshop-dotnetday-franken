@@ -28,3 +28,7 @@ TODO
 [Twitter](https://twitter.com/mobilgroma)
 [Blog](https://elm.finde-ich-super.de/)
 
+---
+
+## Feedback
+

@@ -46,14 +46,12 @@ Diese Notizen erscheinen nur als Speaker Notes (optional)
   <h4>Martin Grotz</h4>
   <ul class="small-font" >
     <li>Software Entwickler</li>
+    <li>Beruflich: Angular mit TypeScript</li>
     <li>Interessen:</li>
     <ul>
-      <li>Software Crafting</li>
-      <li>Domain-Driven-Design</li>
       <li>Funktionale Programmierung</li>
+      <li>Software-Architektur</li>
     </ul>
-    
-    <li>...</li>
   </ul>
 </div>
 
