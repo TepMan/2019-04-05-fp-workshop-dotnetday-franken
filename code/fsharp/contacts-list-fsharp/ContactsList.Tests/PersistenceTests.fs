@@ -8,7 +8,7 @@ open TestContacts
 open Persistence
 
 [<Fact>]
-let ``Does a thing when I give it a thing``() =
+let ``adding an entry to an empty 'file' adds the entry``() =
     let readFile = "[]"
     let writeFile p s =
         ()
@@ -21,7 +21,7 @@ let ``Does a thing when I give it a thing``() =
     | Error _ -> false |> should equal true
 
 [<Fact>]
-let ``Does a thing when I give it a thing again``() =
+let ``adding an entry to existing entries adds the entry``() =
     let mutable finalString = ""
     let readFile = """[{"id":"bba52030-19ce-4c02-b1dd-792b0120855b","firstName":"Homer","lastName":"Simpson","twitterProfileUrl":null,"dateOfBirth":null,"primaryContactMethod":{"EmailAddress":{"Case":"Some","Fields":["a@b.c"]},"PostalAddress":null},"iq":50}]"""
     let writeFile p s =

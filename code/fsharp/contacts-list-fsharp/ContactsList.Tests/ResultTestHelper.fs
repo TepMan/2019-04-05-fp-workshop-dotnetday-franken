@@ -1,5 +1,7 @@
 module Result
 
+open FsUnit.Xunit
+
 let isOkAndEquals getFn compareTo result =
     match result with
     | Error _ -> false
