@@ -25,42 +25,38 @@ let changeFileContent readFile writeFile isFilePresent filePath
     with
     ex -> Error [ ex.Message ]
 
-let addNewContactToList (contact : Result<Contact, 'a>) : ContactDto list -> Result<ContactDto list, 'a>
+let addNewContactToList (contact : Result<Contact, 'a list>) : ContactDto list -> Result<ContactDto list, 'a list>
         =
-        let conc (newEle : Result<ContactDto, 'b list>) oldList =
-                match newEle with
-                | Ok e -> (e :: oldList) |> Ok
-                | Error err -> Error err
+        let addNewElementToExistingList (newEle : Result<ContactDto, 'b list>) oldList =
+                Result.map (fun e -> e :: oldList) newEle
 
         Result.map ContactDto.fromDomain contact
-        |> conc
-        // >>= (Ok ((@) []))
-        // = Result.map (ContactDto.fromDomain) contact
-        // |> Result.map (fun c -> ((@) [ c ]))
+        |> addNewElementToExistingList
 
 let add readFile writeFile isFilePresent filePath (contact : Contact) : Result<unit, string list> =
-    let ac = (addNewContactToList (Ok contact))
+    changeFileContent readFile writeFile isFilePresent filePath
+        (addNewContactToList (Ok contact))
 
-    changeFileContent readFile writeFile isFilePresent filePath ac
-
-
-let edit readFile writeFile isFilePresent filePath oldContactId (changedContact : Contact) : Result<Contact, string list> =
-    let editContact changed oldContacts =
-        let failIfNotFound filteredContacts =
+let editContact oldContactId changed oldContacts =
+        let errorIfNotFound filteredContacts =
                 if List.length filteredContacts = List.length oldContacts then
-                        Error "Contact to edit not found"
+                        Error [ "Contact to edit not found" ]
                 else
                         Ok filteredContacts
         let compareById (c : ContactDto) =
                 c.id = oldContactId
-        List.filter compareById oldContacts
-        |> failIfNotFound
-        |> Result.map (List.except oldContacts)
-        |> Result.map (addNewContactToList changed)
 
-    changeFileContent readFile writeFile isFilePresent filePath
-        ((editContact changedContact))
+        List.filter compareById oldContacts
+        |> errorIfNotFound
+        |> Result.map (List.except oldContacts)
+        |> Result.bind (addNewContactToList (Ok changed))
+
+let edit readFile writeFile isFilePresent filePath oldContactId (changedContact : Contact) : Result<Contact, string list> =
+        let editContact' = (editContact oldContactId changedContact)
+
+        changeFileContent readFile writeFile isFilePresent filePath editContact'
         |> Result.map (fun _ -> changedContact)
+
 
 
 

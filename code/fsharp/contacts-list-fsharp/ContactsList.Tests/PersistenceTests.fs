@@ -6,6 +6,7 @@ open FsUnit.Xunit
 open TestContacts
 
 open Persistence
+open Result
 
 [<Fact>]
 let ``adding an entry to an empty 'file' adds the entry``() =
@@ -18,7 +19,7 @@ let ``adding an entry to an empty 'file' adds the entry``() =
     let fn = Persistence.add readFile writeFile isFilePresent filePath
     match Result.map fn homer with
     | Ok _ -> true |> should equal true
-    | Error _ -> false |> should equal true
+    | Error _ -> fail
 
 [<Fact>]
 let ``adding an entry to existing entries adds the entry``() =
@@ -33,4 +34,17 @@ let ``adding an entry to existing entries adds the entry``() =
     let fn = Persistence.add readFile writeFile isFilePresent filePath
     match Result.map fn lisa with
     | Ok _ -> (String.length finalString) |> should be (greaterThan (String.length readFile))
-    | Error _ -> false |> should equal true
+    | Error _ -> fail
+
+[<Fact>]
+let ``editing a non-existing entry results in an Error``() =
+    let readFile = "[]"
+    let writeFile p s =
+        ()
+    let isFilePresent p = true
+    let filePath = "dontcare"
+
+    let fn Persistence.edit readFile writeFile isFilePresent filePath =
+        
+
+
