@@ -38,7 +38,7 @@ let add readFile writeFile isFilePresent filePath (contact : Contact) : Result<u
         (addNewContactToList (Ok contact))
 
 let editContact oldContactId changed oldContacts =
-        let errorIfNotFound filteredContacts =
+        let errorIfNoOldEntryWasRemoved filteredContacts =
                 if List.length filteredContacts = List.length oldContacts then
                         Error [ "Contact to edit not found" ]
                 else
@@ -47,8 +47,8 @@ let editContact oldContactId changed oldContacts =
                 c.id = oldContactId
 
         List.filter compareById oldContacts
-        |> errorIfNotFound
-        |> Result.map (List.except oldContacts)
+        |> List.except oldContacts
+        |> errorIfNoOldEntryWasRemoved
         |> Result.bind (addNewContactToList (Ok changed))
 
 let edit readFile writeFile isFilePresent filePath oldContactId (changedContact : Contact) : Result<Contact, string list> =
