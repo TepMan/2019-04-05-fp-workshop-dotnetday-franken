@@ -12,7 +12,6 @@
 
 
 ## FP Grundlagen
-- ++ PG: filter map reduce
 - ++ MG: Option Folien
 - (Smart Constructor als Stretch Goal des Workshops)
 
