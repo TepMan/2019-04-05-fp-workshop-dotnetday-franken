@@ -10,3 +10,10 @@
         </p>
     </div>
 </div> 
+
+----
+
+## Persistenz
+- Eintrag wird serialisiert und in Datei abgelegt
+- Eine Datei für alle Einträge
+- In der Praxis problematisch: Gleichzeitiger Zugriff auf die gleiche Datei

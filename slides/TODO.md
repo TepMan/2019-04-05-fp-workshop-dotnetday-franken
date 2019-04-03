@@ -1,41 +1,37 @@
-TODO
+# TODO
 
 - logo on each slide
 - twitter hashtags on each slide
 - conference name on title slide
 - conference logo on title slide
 
-CONTENT
-## FP Grundlagen
-- Funktionen als Argumente und Rückgabewerte
-    - Besteht die Möglichkeit, auf der Folie dann immer gleich C# und F# Syntax für das Feature zu zeigen? 
-- Partial Application und Currying
-    - Besteht die Möglichkeit, auf der Folie dann immer gleich C# und F# Syntax für das Feature zu zeigen?
+- MG: Überschriften-Level kontrollieren/vereinheitlichen
 
-- p Immutability
-- p filter map reduce
-- Konkrete Beispiele: Option und Result
-- m Funktor, Monade, Applicative
-- Smart Constructor als Stretch Goal des Workshops
+# CONTENT
+- fahrplan.md an index.md anpassen
+
+
+## FP Grundlagen
+- ++ PG: filter map reduce
+- ++ MG: Option Folien
+- (Smart Constructor als Stretch Goal des Workshops)
 
 ## FP Jargon "Plakat"
-- p Name der Funktion oder des Dings (Select, map, fmap; ...; Discriminated Union, ADT, ...)
+- ++ PD: Name der Funktion oder des Dings (Select, map, fmap; ...; Discriminated Union, ADT, ...)
 
 ## C#
-- p LINQ als FP
-- p Value Objects für Immutability
-- Fahrplan ausarbeiten
 
 ## F#
-- m Syntax erklären (let, mutable, Pipe, match, Composition, Record Types (und Records als Value Objects), Discriminated Unions)
-- m Eigenheiten erklären (Reihenfolge der Files und Inhalte in den Files!)
-- m Typ-Inferenz und explizite Angaben
-- "How to introduce F# at your workplace"
+- + MG: Screenshots der verschiedenen Bibliotheken und Tools machen
+- + MG: Scott Wlaschin Buch Screenshot verkleinern
 
 ## Resources
-- Links
-- Bücher
-- Veranstaltungen
+- ++ Links C#
+- ++ Bücher C#
+- ++ MG: Veranstaltungen
+  - BusConf
+  - Lambda Lounge
+  - Softwerkskammer
 
 
 EXAMPLES in demo.md:

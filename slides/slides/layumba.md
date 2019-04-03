@@ -43,13 +43,13 @@
 
 - NuGet Paket
 - kann nicht alles
-- Fokus: Didaktik (Aehnlichkeit mit F#, Haskell)
+- Fokus: Didaktik (Ähnlichkeit mit F#, Haskell)
 
 ----
 
 ### LaYumba
 
-alle C# Beispiele haben..
+alle C# Beispiele haben...
 
 ```csharp
 using LaYumba.Functional;           // <- lib

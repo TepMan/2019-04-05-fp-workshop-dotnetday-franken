@@ -1,7 +1,7 @@
 ## FP 101
 
+- **Functions as First Class Citizens**
 - Immutability
-- Functions as First Class Citizens
 - Pure Functions (see Immutability)
 
 That's it!
@@ -96,39 +96,6 @@ var greetingMessage = Greet(formatGreeting, "dodnedder");
 - haben niemals Seiteneffekte!
 - sollten immer nach `static` umwandelbar sein
 
-----
-
-```csharp
-// method signature lies!
-int Add(int a, int b)
-{
-  Console.WriteLine("foo"); // <- side effect!
-  return a + b;
-}
-```
-
-----
-
-```csharp
-int Add(int a, int b)
-{
-  Console.WriteLine("foo");
-  return a + b;
-}
-```
-
-```csharp
-int Add(int a, int b)
-{
-  return a + b;
-}
-```
-
-Expression body syntax:
-```csharp
-int Add(int a, int b) => a + b;
-```
-
 ---
 
 Und was hat es mit
@@ -149,7 +116,7 @@ Schränken uns diese FP Paradigmen ein?
 
 Wie kann man mit diesem "Purismus" Software schreiben, die etwas tut?
 
---- 
+---
 
 ## Kleine Funktionen zu größeren verbinden
 

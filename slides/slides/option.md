@@ -1,3 +1,7 @@
+# TODO: Option und Pattern Matching
+
+----
+
 ## LINQ - fuer Listen (IEnumerable in C#)
 
 Allg.: Funktionen, die auf eine Liste angewendet werden

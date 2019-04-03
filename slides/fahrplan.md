@@ -6,57 +6,59 @@
 6) Was ist Mob-Programming?
 7) Vorstellung Aufgabenstellung/Domäne
 8) Naive Implementierung des Datenmodells für einen Kontakt (string, DateTime?, int)
-9)  Fokus auf Geburtsdatum
+9) FP Basics
+10) MG: PO will neue Funktion haben: Das Datum muss als String ausgebbar sein, egal ob es da ist oder nicht
+11) Zurück zum Modell: Fokus auf Geburtsdatum
 
     - DateTime? ganz gut, weil schon "da oder nicht drin steckt", aber wäre es nicht schöner, ohne ständige Null-Checks und auch für Domänenexperten verständlich ausdrücken zu können?
 
-10) Vorstellung von Option
+12) Vorstellung von Option
     - Semantik für "vorhanden oder nicht"
     - Code-Beispiel vorbereiten
 
-11) PD: LaYumba vorstellen
-12) Wie erzeuge ich mir eine Option von DateTime?
-13) MG: PO will schnell neue Funktion haben: Das Datum muss als String ausgebbar sein, egal ob es da ist oder nicht
-14) Funktion schreiben: DateTime option -> string (String.Empty falls None)
-15) PD: Pattern Matching mit LaYumba einführen
-   - Code-Beispiel vorbereiten
+13) PD: LaYumba vorstellen
+14) Wie erzeuge ich mir eine Option von DateTime?
 
-17) MG: Neue Anforderung: Das Datum darf nur eine Datumskomponente enthalten, keine Zeitkomponente
-18) Problem: Wir haben keine Funktion zur Verfügung, die mit Option<DateTime> umgehen kann
-19) MG: Einführung Mappable (Funktor)
-20) Funktion implementieren und mit map verbinden
-21) Nächster Fokus: Vorname
-22) Vorname darf nicht leer sein - string sagt darüber aber nichts aus
-23) PD: ValueObject to the rescue
-24) PD: \<Insert Value Object Knowledge von Patrick\>
-25) PD: ValueObject erstmal mit Konstruktor und Exception, wenn was schief geht
-26) Umbau Datenmodell auf NonEmptyStrings für Vorname und Nachname
-27) Schwenk auf F#, damit man da auch mal was von sieht
-28) MG: Vorstellung Grundlegende Syntax (let, Expressions, |>, Pattern Matching)
-29) MG: Record Types
-30) MG: Unterschiede und Gemeinsamkeiten Record Type vs. Value Object
-31) MG: Partial Application / Currying
-32) MG: Bisheriges Datenmodell in F# modellieren
-33) MG: Funktionen für DateTime option -> string und für map auch implementieren 
+15) Funktion schreiben: DateTime option -> string (String.Empty falls None)
+
+16) MG: Neue Anforderung: Das Datum darf nur eine Datumskomponente enthalten, keine Zeitkomponente
+17) Problem: Wir haben keine Funktion zur Verfügung, die mit Option<DateTime> umgehen kann
+18) MG: Einführung Mappable (Funktor)
+19) Funktion implementieren und mit map verbinden
+20) Nächster Fokus: Vorname
+21) Vorname darf nicht leer sein - string sagt darüber aber nichts aus
+22) PD: ValueObject to the rescue
+23) PD: \<Insert Value Object Knowledge von Patrick\>
+24) PD: ValueObject erstmal mit Konstruktor und Exception, wenn was schief geht
+25) Umbau Datenmodell auf NonEmptyStrings für Vorname und Nachname
+26) Schwenk auf F#, damit man da auch mal was von sieht
+27) MG: Vorstellung Grundlegende Syntax (let, Expressions, |>, Pattern Matching)
+28) MG: Record Types
+29) MG: Unterschiede und Gemeinsamkeiten Record Type vs. Value Object
+30) MG: Partial Application / Currying
+31) MG: Bisheriges Datenmodell in F# modellieren
+32) MG: Funktionen für DateTime option -> string und für map auch implementieren 
     1)  option schon eingebaut
-34) MG: Nächste Anforderung: Ein Kontakt kann gespeichert werden, und nach erfolgreichem Speichern wird eine Benachrichtigung verschickt
-35) Speichern kann fehlschlagen: Wie drücken wir aus, dass es klappen oder fehlschlagen kann?
-36) Ergebnis ist entweder ein Erfolg oder ein Fehlschlag -> Result
-37) Result (Either) vorstellen
-38) Monade einführen
-39) Beispiel mit String Validierung ausprogrammieren
-40) PD: Railway Oriented Programming vorstellen
-41) Ausprogrammieren: Kontakt kann gespeichert werden, und nach erfolgreichem Speichern wird eine Benachrichtigung verschickt
-42) MG: Neue Anforderung: Rückgabe für den User notwendig: Funktion, die auf Result am Ende der Kette pattern matching macht und jeweils Strings ausgibt
-43) MG: Intermezzo: Funktionale Architektur(en)
-44) MG: Datenmodell in F# erweitern auf Kontaktmethode
-45) MG: Wiederholung Discriminated Unions (eingeführt schon im F# Basics Teil)
-46) PD: Wie kann man das in C# nachbilden? Nicht ohne zusätzliche Bibliothek
-47) MG: Neue Anforderung: Fehler beim Erzeugen eines Kontakts (Validierung) sollen gesammelt werden, nicht beim Ersten abgebrochen wie beim Speichern
-48) Applicative einführen
-49) Ausprogrammieren: Fehler beim Erzeugen eines Kontakts (Validierung) sollen gesammelt werden, nicht beim Ersten abgebrochen wie beim Speichern
-50) MG: Exkurs: How to introduce F# into YOUR project
-51) Zusammenfassung des Gelernten
-52) Falls noch Zeit ist: Einfach am Projekt weiterprogrammieren und die Konzepte anwenden/vertiefen
-53) Feedbackrunde
-54) Verabschiedung
+33) MG: Nächste Anforderung: Ein Kontakt kann gespeichert werden, und nach erfolgreichem Speichern wird eine Benachrichtigung verschickt
+34) Speichern kann fehlschlagen: Wie drücken wir aus, dass es klappen oder fehlschlagen kann?
+35) Ergebnis ist entweder ein Erfolg oder ein Fehlschlag -> Result
+36) Result (Either) vorstellen
+37) Monade einführen
+39) PD: Railway Oriented Programming vorstellen
+38) Beispiel mit String Validierung ausprogrammieren
+40) Ausprogrammieren: Kontakt kann gespeichert werden, und nach erfolgreichem Speichern wird eine Benachrichtigung verschickt
+41) MG: Neue Anforderung: Rückgabe für den User notwendig: Funktion, die auf Result am Ende der Kette pattern matching macht und jeweils Strings ausgibt
+46) MG: Neue Anforderung: Fehler beim Erzeugen eines Kontakts (Validierung) sollen gesammelt werden, nicht beim Ersten abgebrochen wie beim Speichern
+47) Applicative einführen
+48) Ausprogrammieren: Fehler beim Erzeugen eines Kontakts (Validierung) sollen gesammelt werden, nicht beim Ersten abgebrochen wie beim Speichern
+49) MG: Exkurs: How to introduce F# into YOUR project
+50) Zusammenfassung des Gelernten
+51) Falls noch Zeit ist: Einfach am Projekt weiterprogrammieren und die Konzepte anwenden/vertiefen
+52) Feedbackrunde
+53) Verabschiedung
+54) BONUS
+    1)  Smart Constructor
+    2)  MG: Intermezzo: Funktionale Architektur(en)
+    3)  MG: Datenmodell in F# erweitern auf Kontaktmethode
+    4)  MG: Wiederholung Discriminated Unions (eingeführt schon im F# Basics Teil)
+    5)  PD: Wie kann man das in C# nachbilden? Nicht ohne zusätzliche Bibliothek

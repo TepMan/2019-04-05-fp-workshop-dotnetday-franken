@@ -64,28 +64,3 @@ Diese Notizen erscheinen nur als Speaker Notes (optional)
 ## Vorstellungsrunde
 ## &
 ## Erwartungen
-
----
-
-## Mob Programming
-
-- wir lernen gemeinsam
-- Pair Programming in der Gruppe
-
-
-----
-
-<img src="images/mob-programming-setup.png" class="borderless" style="height: 50%;">
-
-----
-
-- Driver: Sitzt an der Tastatur (darf nicht denken)
-- Navigator: Sagt dem Driver, was zu tun ist
-- Mob: Unterstuetzt den Navigator
-- Regelmaessiger Wechsel (3-5min)
-
-----
-
-### "Assisted" Mob Programming
-
-- Facilitator unterstuetzt den Navigator

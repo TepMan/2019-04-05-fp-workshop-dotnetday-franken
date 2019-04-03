@@ -1,9 +1,3 @@
----
-
-## Wert in Container, Funktion passt nicht
-
-----
-
 F#
 
 ```fsharp
@@ -22,6 +16,10 @@ let nonEmptyStringToUpper s =
     // passt nicht: "string" erwartet, aber "string option" bekommen
     let nonEmptyUpper = toUpper nonEmpty
 ```
+
+----
+
+## Wert in Container, Funktion passt nicht
 
 ----
 
@@ -47,7 +45,7 @@ static class X
 }
 ```
 
----
+----
 
 ## Mappable
 ![img](./resources/Funktor_1.png)
@@ -63,7 +61,7 @@ static class X
 ```
 - Andere Bezeichnungen für "map": fmap (z.B. in Haskell), Select (LINQ), <$>, <!>
 
----
+----
 
 ## Wert in Container, Funktion passt nicht
 ```fsharp
@@ -79,5 +77,3 @@ let nonEmptyStringToUpper s =
     let nonEmpty = stringToOption s
     let nonEmptyUpper = Option.map toUpper nonEmpty
 ```
-
----

@@ -1,28 +1,31 @@
----
-
-## F#
+## F# #
 - Ursprünglich: Microsoft Forschungsprojekt
 - Heute: Community-driven
 - inspiriert von OCaml
 - Multi-Paradigma
-- Fokus auf funktionale Programmierung im .NET Umfeld
+- Fokus auf funktionale Programmierung
+
+----
+
+## F# #
 - erzwingt keine puren Funktionen, sondern erlaubt Seiteneffekte
 - Statisch typisiert
 - voll integriert ins .NET Ökosystem
 - C# / VB.net Interop
 
----
+----
 
 ## Besonderheiten
 - Significant whitespace
 - Reihenfolge der Definitionen in Datei wichtig
 - Reihenfolge der Dateien im Projekt wichtig
 
---
+----
+
 ## Immutability als Default
 ```fsharp
-// Achtung: = ist hier keine Zuweisung, sondern heißt "linke und rechte Seite sind wirklich gleich und bleiben es auch immer"
-// "Referential transparency"
+// Achtung: = ist hier keine Zuweisung, sondern heißt 
+// "linke und rechte Seite sind gleich und bleiben es auch immer"
 let x = 3
 let add a b = a + b
 let m = if 3 > 0 then 7 else 42
@@ -32,7 +35,8 @@ let mutable y = 3
 y <- 42
 ```
 
----
+----
+
 ## Typ-Inferenz
 ```fsharp
 // Typen werden automatisch abgeleitet sofern möglich
@@ -42,17 +46,19 @@ let double a = a * 2 // int -> int
 let doubleExplicit (a: int) : int = a * 2
 ```
 
----
+----
+
 ## Currying
-> Currying ist die Umwandlung einer Funktion mit mehreren Argumenten in eine Funktion mit einem Argument.
-- ist ein Sprachfeature, das einige Sachen kompakter hinschreibbar macht
+> Currying ist die Umwandlung einer Funktion mit mehreren Argumenten in eine Funktion mit einem Argument, die wiederum eine Funktion zurückgibt mit dem Rest der Argumente.
+
 ```fsharp
 // int -> int -> int -> int
 // eigentlich: int -> (int -> (int -> int))
 let addThree a b c = a + b + c
 ```
 
----
+----
+
 ## Partial Application
 - Eine Funktion mit mehreren Parametern bekommt nur einen Teil ihrer Argumente übergeben - der Rest bleibt offen und kann später ausgefüllt werden
 ```fsharp
@@ -63,18 +69,19 @@ let six = add2 4 // (int)
 let ten = add2 8 // (int)
 ```
 
----
+----
 
 ## Pipe-Operator
 ```fsharp
-// der letzte Parameter kann mit dem Ergebnis der vorherigen Expression ausgefüllt werden
-// "Pipe-Operator"
+// der letzte Parameter kann mit dem Ergebnis 
+// der vorherigen Expression ausgefüllt werden
 let double a = a * 2
 4 |> double // ergibt 8
 4 |> double |> double // ergibt 16
 ```
 
----
+----
+
 ## Discriminated Unions
 ```fsharp
 // Discriminated Unions ("Tagged Union", "Sum Type", "Choice Type")
@@ -89,7 +96,8 @@ match vehicle with
 
 ```
 
----
+----
+
 ## Discriminated Unions mit Werten
 ```fsharp
 // auch mit unterschiedlichen(!) Daten an jedem Fall möglich
@@ -101,7 +109,9 @@ match c with
 | Circle radius -> radius * radius * System.Math.PI
 | Rectangle(width, height) -> width * height
 ```
----
+
+----
+
 ## Record Types
 ```fsharp
 // Record Type
@@ -119,8 +129,16 @@ let shoppingCart = {
 }
 ```
 
----
-## Standard: Structural Equality
+----
+
+## Record Types
+- Immutable by default
+- Unmöglich einen ungültigen Record zu erzeugen
+- Structural Equality
+
+----
+
+## Structural Equality
 ```fsharp
 // Structural Equality
 type Thing = {content: string; id: int}
@@ -130,7 +148,8 @@ let equal = (thing1 = thing2) // true
 ```
 
 - Record Types mit Structural Equality sind ideal, um sehr kompakt "Value Objects" ausdrücken zu können
----
+
+----
 
 ## Structural Equality vs. DDD Aggregates
 - Möchte man die Standard-Equality nicht, ist es best practice, Equality und Comparison zu verbieten
@@ -142,6 +161,3 @@ type NonEquatableNonComparable = {
     Id: int
 }
 ```
-
----
-

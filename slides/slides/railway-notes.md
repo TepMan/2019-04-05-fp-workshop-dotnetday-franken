@@ -1,6 +1,6 @@
 ## Railway Oriented Programming
 
-Funktionale Programmierung wird oft als das zusammenstöpseln von Funktionen dargestellt.
+Funktionale Programmierung wird oft als das "Zusammenstöpseln" von Funktionen dargestellt.
 
 Beispiel:
 
@@ -54,9 +54,9 @@ Note:
 
 Fazit: Funktionen sind einfach zu verketten, da die Ausgabe einer Funktion der Eingabe der folgenden Funktion entsprechen.
 
-Problem: Keine standartisierte Strategie für Fehlerbehandlung 
+Problem: Keine standardisierte Strategie für Fehlerbehandlung 
 
-Wenn wir davon ausgehen, dass Funktionen auch einen Fehlerfall haben, benoetigen wir einen neuen Datentyp, der das abbilden kann.
+Wenn wir davon ausgehen, dass Funktionen auch einen Fehlerfall haben, benötigen wir einen neuen Datentyp, der das abbilden kann.
 
 "Result" kann entweder das korrekte/erwartete Ergebniss beinhalten, oder aber einen Fehlerfall.
 
@@ -64,13 +64,13 @@ In Railway-Sprech bedeutet dass, dass man "2-gleissig" faehrt:
 
 Jede Funktion bekommt eine Eingabe, und hat "im Bauch" eine Weiche, die entscheidet ob auf das Fehlergleis oder auf das Erfolgsgleis umgeschaltet wird.
 
-Wenn man nun versucht Funktionen, die sowohl einen Erfolgs- als auch einen Fehlerfall zurueckgeben, zu verketten, schlaegt der uebliche FP-Mechanismus der Komposition fehl, da die Funktionen (bisher) nur den Erfolgsfall als Eingabe erlauben.
+Wenn man nun versucht Funktionen, die sowohl einen Erfolgs- als auch einen Fehlerfall zurueckgeben, zu verketten, schlägt der übliche FP-Mechanismus der Komposition fehl, da die Funktionen (bisher) nur den Erfolgsfall als Eingabe erlauben.
 
 In anderen Worten: die Funktionen haben aktuell 1 Eingabe (1 Gleis), und 2 Ausgaben (2 Gleise).
 
-Man benoetigt also einen Mechanismus, der eine 2-gleisige Eingabe so umwandelt, dass eine Funktion, die eine 1-gleisige Eingabe erwartet, damit umgehen kann.
+Man benötigt also einen Mechanismus, der eine 2-gleisige Eingabe so umwandelt, dass eine Funktion, die eine 1-gleisige Eingabe erwartet, damit umgehen kann.
 
-Was muss dieser Mechanismus koennen?
+Was muss dieser Mechanismus können?
 
 - wenn die Eingabe fehlerhaft ist, muss die Funktion nichts tun, und kann den Fehler weiterreichen
 - wenn die Eingabe nicht fehlerhaft ist, wird der Wert an die Funktion gegeben
@@ -98,6 +98,4 @@ Result besteht aus 2 Teilen:
 - Failure
 - Success
 
-Either/Result ist aehnlich zu Option: Option hat `Some` und `None`. `None` wird durch einen eigenen Typen dargestellt (frei waehlbar, zB selbst definierter Error Typ).
-
-
+Either/Result ist ähnlich zu Option: Option hat `Some` und `None`. `None` wird durch einen eigenen Typen dargestellt (frei wählbar, zB selbst definierter Error Typ).
