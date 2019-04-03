@@ -9,6 +9,7 @@ namespace AddressBook.Tests
         public void SmokeTest()
         {
             true.Should().BeTrue();
+            new Class1().SayHello("test").Should().Be("Hello, test!");
         }
     }
 }
