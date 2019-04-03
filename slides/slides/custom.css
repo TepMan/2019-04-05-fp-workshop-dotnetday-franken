@@ -63,3 +63,7 @@
 .reveal .small-font li {
   font-size: smaller;
 }
+
+.reveal pre code .highlightcode {
+  font-weight: bold;
+}
