@@ -9,12 +9,17 @@
 > by Scott Wlaschin
 ![DMMF Book](./resources/swdddf.jpg)
 
---- 
+---
 
-[F# Homepage](https://fsharp.org/)
-[F# for Fun and Profit](https://fsharpforfunandprofit.com/)
-[ploeh blog](https://blog.ploeh.dk/)
-[Railway Oriented Programming](https://fsharpforfunandprofit.com/rop/)
+- FP
+  - [Mark Seeman's Blog](https://blog.ploeh.dk/)
+- C#
+  - Book: [Functional Programming in C#](https://www.manning.com/books/functional-programming-in-c-sharp)
+  - Blog: [Vladimir Khorikov](https://enterprisecraftsmanship.com/)
+- F#
+  - [F# Homepage](https://fsharp.org/)
+  - [F# for Fun and Profit](https://fsharpforfunandprofit.com/)
+  - [Railway Oriented Programming](https://fsharpforfunandprofit.com/rop/)
 
 ---
 

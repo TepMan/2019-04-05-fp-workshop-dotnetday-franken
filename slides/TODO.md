@@ -25,8 +25,6 @@
 - + MG: Scott Wlaschin Buch Screenshot verkleinern
 
 ## Resources
-- ++ Links C#
-- ++ Bücher C#
 - ++ MG: Veranstaltungen
   - BusConf
   - Lambda Lounge
