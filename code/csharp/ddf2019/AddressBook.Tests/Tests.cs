@@ -31,9 +31,23 @@ namespace AddressBook.Tests
                 .Where(x => x.Age > 25)
                 .Select(x => x.Income)
                 .Average();
-            
+
+            var incomes = new List<int>();
+            foreach (var person in people)
+            {
+                if (person.Age > 25)
+                {
+                    incomes.Add(person.Income);
+                }
+            }
+
+            var numberOfEntries = incomes.Count;
+            var totalTmp = incomes.Sum();
+            var avg = totalTmp / numberOfEntries;
+
             // Assert
             averageIncomeAbove25.Should().Be(1200);
+            avg.Should().Be(1200);
         }
     }
 
