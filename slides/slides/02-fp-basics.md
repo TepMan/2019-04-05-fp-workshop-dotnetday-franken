@@ -100,13 +100,25 @@ var greetingMessage = Greet(formatGreeting, "dodnedder");
 
 Und was hat es mit
 
-Filter
-
-Map
-
-Reduce
+Filter / Map / Reduce
 
 auf sich?
+
+```csharp
+var people = new List<Person> {
+  new Person { Age = 20, Income = 1000 },
+  new Person { Age = 26, Income = 1100 },
+  new Person { Age = 35, Income = 1300 }
+}
+
+// Deklarativ: "Was will ich erreichen?"
+// (nicht imperativ: "Wie erreiche ich etwas?")
+// -> Keine For-Schleife(n)..
+var averageIncomeAbove25 = people
+  .Where(x => x.Age > 25) // "Filter"
+  .Select(x => x.Income)  // "Map"
+  .Average();             // "Reduce"
+```
 
 ---
 
