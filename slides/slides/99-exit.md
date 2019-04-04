@@ -16,15 +16,27 @@
 
 ---
 
-# Kontakt
-## Patrick Drechsler
-TODO
+### Kontakt
 
-## Martin Grotz
-[E-Mail](martin.grotz@redheads.de)
-[github](https://github.com/groma84)
-[Twitter](https://twitter.com/mobilgroma)
-[Blog](https://elm.finde-ich-super.de/)
+<div style="position: absolute; top: 100px; left: -150px; height: 500px">
+  <h4>Patrick Drechsler</h4>
+  <ul class="small-font" >
+    <li>patrick.drechsler@redheads.de</li>
+    <li>Github: https://github.com/draptik</li>
+    <li>Twitter: @drechsler</li>
+    <li>Blog: http://draptik.github.io</li>
+  </ul>
+</div>
+
+<div style="position: absolute; top: 100px; left: 400px; height: 500px; width:800px;">
+  <h4>Martin Grotz</h4>
+  <ul class="small-font" >
+    <li>martin.grotz@redheads.de</li>
+    <li>Github: https://github.com/groma84</li>
+    <li>Twitter: @mobilgroma</li>
+    <li>Blog: https://elm.finde-ich-super.de</li>
+  </ul>
+</div>
 
 ---
 
