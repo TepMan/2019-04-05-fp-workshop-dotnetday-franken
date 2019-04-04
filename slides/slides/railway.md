@@ -81,7 +81,13 @@ Problem: Keine standardisierte Strategie für Fehlerbehandlung
 
 - In anderen Worten: die Funktionen haben aktuell 1 Eingabe (1 Gleis), und 2 Ausgaben (2 Gleise)
 
+![img](./resources/rop-tracks-Page-2.png)
+
+----
+
 - Man benötigt also einen Mechanismus, der eine 2-gleisige Eingabe so umwandelt, dass eine Funktion, die eine 1-gleisige Eingabe erwartet, damit umgehen kann
+
+![img](./resources/rop-tracks-Page-4.png)
 
 ----
 
