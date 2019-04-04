@@ -7,7 +7,7 @@
 7) Vorstellung Aufgabenstellung/Domäne
 8) Naive Implementierung des Datenmodells für einen Kontakt (string, DateTime?, int)
 9) FP Basics
-10) MG: PO will neue Funktion haben: Das Datum muss als String ausgebbar sein, egal ob es da ist oder nicht
+10) PO will Nullable loswerden für Verständlichkeit
 11) Zurück zum Modell: Fokus auf Geburtsdatum
 
     - DateTime? ganz gut, weil schon "da oder nicht drin steckt", aber wäre es nicht schöner, ohne ständige Null-Checks und auch für Domänenexperten verständlich ausdrücken zu können?
@@ -16,9 +16,8 @@
     - Semantik für "vorhanden oder nicht"
     
 13) PD: LaYumba vorstellen
-14) Wie erzeuge ich mir eine Option von DateTime?
-
-15) Funktion schreiben: DateTime option -> string (String.Empty falls None)
+10) MG: PO will neue Funktion haben: Das Datum muss als String ausgebbar sein, egal ob es da ist oder nicht
+15) Funktion schreiben mit Pattern Matching: DateTime option -> string (String.Empty falls None)
 16) MG: Einführung F#
 17) MG: Bisheriges Datenmodell in F# modellieren
 18) Neue Anforderung: Vorname darf niemals leer sein
