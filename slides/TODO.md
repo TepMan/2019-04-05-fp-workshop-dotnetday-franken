@@ -8,7 +8,6 @@
 # CONTENT
 
 ## FP Grundlagen
-- ++ MG: Option Folien
 - (Smart Constructor als Stretch Goal des Workshops)
 
 ## FP Jargon "Plakat"
