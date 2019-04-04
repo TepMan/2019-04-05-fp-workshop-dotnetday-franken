@@ -2,17 +2,10 @@
 
 ---
 
-# Ressourcen
-
-> Domain Modeling Made Functional
-> Tackle Software Complexity with Domain-Driven Design and F#
-> by Scott Wlaschin
-![DMMF Book](./resources/swdddf.jpg)
-
----
-
+## Ressourcen
 - FP
-  - [Mark Seeman's Blog](https://blog.ploeh.dk/)
+  - Blog: [Mark Seeman](https://blog.ploeh.dk/)
+  - Book: [Domain Modeling Made Functional](https://pragprog.com/book/swdddf/domain-modeling-made-functional)
 - C#
   - Book: [Functional Programming in C#](https://www.manning.com/books/functional-programming-in-c-sharp)
   - Blog: [Vladimir Khorikov](https://enterprisecraftsmanship.com/)

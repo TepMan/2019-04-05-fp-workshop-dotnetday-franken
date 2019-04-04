@@ -1,6 +1,4 @@
----
-
-## Funktion mit mehreren Parametern
+### Problem: Funktion mit mehreren eingepackten Parametern
 ```fsharp
 let add a b = a + b
 
@@ -25,13 +23,13 @@ let addTwoNumbers a b =
 
 ---
 
-## Applicative
+### Applicative
 
 ![img](./resources/Applicative_1_small.png)
 
 ---
 
-## Applicative
+### Applicative
 - Container mit "apply" Funktion (die bestimmten Regeln folgt): Applicative
 - Bezeichnung in der FP-Welt: **Applicative Functor**
 - 
@@ -42,7 +40,7 @@ let addTwoNumbers a b =
 
 ---
 
-## Funktion mit mehreren Parametern
+### Funktion mit mehreren Parametern
 
 ```fsharp
 let sum a b c = a + b + c

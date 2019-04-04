@@ -5,11 +5,7 @@
 - conference name on title slide
 - conference logo on title slide
 
-- MG: Überschriften-Level kontrollieren/vereinheitlichen
-
 # CONTENT
-- fahrplan.md an index.md anpassen
-
 
 ## FP Grundlagen
 - ++ MG: Option Folien
@@ -21,14 +17,8 @@
 ## C#
 
 ## F#
-- + MG: Screenshots der verschiedenen Bibliotheken und Tools machen
-- + MG: Scott Wlaschin Buch Screenshot verkleinern
 
 ## Resources
-- ++ MG: Veranstaltungen
-  - BusConf
-  - Lambda Lounge
-  - Softwerkskammer
 
 
 EXAMPLES in demo.md:

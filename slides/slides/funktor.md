@@ -1,6 +1,7 @@
-F#
+### Problem: Wert in Container, Funktion kann nichts damit anfangen
 
 ```fsharp
+// F#
 module X
 
 let toUpper (s : string) = s.ToUpper()
@@ -19,13 +20,8 @@ let nonEmptyStringToUpper s =
 
 ----
 
-## Wert in Container, Funktion passt nicht
-
-----
-
-C#
-
 ```csharp
+// C#
 using LaYumba.Functional;
 using static LaYumba.Functional.F;
 
@@ -47,13 +43,13 @@ static class X
 
 ----
 
-## Mappable
+### Funktor ("Mappable")
 ![img](./resources/Funktor_1.png)
 
----
+----
 
-## Mappable
-- Container mit "map" Funktion (die bestimmten Regeln folgt): Mappable
+### Funktor ("Mappable")
+- Container mit "map" Funktion (die bestimmten Regeln folgt): "Mappable"
 - Bezeichnung in der FP-Welt: **Funktor**
 - 
 ```fsharp
@@ -63,7 +59,7 @@ static class X
 
 ----
 
-## Wert in Container, Funktion passt nicht
+### Wert in Container, Funktion passt nicht
 ```fsharp
 let toUpper (s : string) = s.ToUpper()
 

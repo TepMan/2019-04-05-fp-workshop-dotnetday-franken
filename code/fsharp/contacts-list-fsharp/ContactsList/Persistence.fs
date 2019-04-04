@@ -23,7 +23,7 @@ let changeFileContent readFile writeFile isFilePresent filePath
         |> Result.map Newtonsoft.Json.JsonConvert.SerializeObject
         |> Result.map (writeFile filePath)
     with
-    ex -> Error [ ex.Message ]
+        ex -> Error [ ex.Message ]
 
 let addNewContactToList (contact : Result<Contact, 'a list>) : ContactDto list -> Result<ContactDto list, 'a list>
         =
