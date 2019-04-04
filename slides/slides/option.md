@@ -104,6 +104,3 @@ Bsp:
 ---
 
 In FP unterscheidet man die Wrapper-Klassen (zB IEnumerable) anhand der Funktionen, die sie bereitstellen
-
----
-
