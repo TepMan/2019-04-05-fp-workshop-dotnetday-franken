@@ -91,7 +91,7 @@ public string Stringify<T>(Option<T> data)
 
 ----
 
-## LINQ - fuer Listen (IEnumerable in C#)
+## LINQ - für Listen (IEnumerable in C#)
 
 Allg.: Funktionen, die auf eine Liste angewendet werden
 
