@@ -17,6 +17,7 @@ let changeFileContent readFile writeFile isFilePresent filePath
 
     try
         createEmptyFileIfNoFileIsPresent writeFile isFilePresent filePath
+        
         readFile
         |> Newtonsoft.Json.JsonConvert.DeserializeObject<ContactDto list>
         |> changeFn

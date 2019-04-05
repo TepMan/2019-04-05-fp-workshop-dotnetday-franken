@@ -9,14 +9,14 @@ namespace AddressBook
     {
         public string Value { get;}
 
-        public static Option<NonEmptyString> Create(string value)
+        public static Validation<NonEmptyString> Create(string value)
         {
             if (IsInvalid(value))
             {
-                return None;
+                return Error("empty");
             }
 
-            return Some(new NonEmptyString(value));
+            return Valid(new NonEmptyString(value));
         }
 
         private NonEmptyString(string value)

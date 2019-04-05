@@ -41,6 +41,16 @@ namespace LaYumbaDemo.Tests
                 .Apply(validCountryCode(countryCode))
                 .Apply(validNumber(number));
 
+        Validation<PhoneNumber> CreateValidPhoneNumber2(string type, string countryCode, string number)
+        {
+            Validation<Func<PhoneNumber.NumberType, CountryCode, Number, PhoneNumber>> validation = Valid(PhoneNumber.Create);
+
+            return validation
+                .Apply(validNumberType(type))
+                .Apply(validCountryCode(countryCode))
+                .Apply(validNumber(number));
+        }
+
         [Theory]
         [InlineData("Mobile", "ch", "123456", "Valid(Mobile: (ch) 123456)")]
         [InlineData("Mobile", "xx", "123456", "Invalid([xx is not a valid country code])")]

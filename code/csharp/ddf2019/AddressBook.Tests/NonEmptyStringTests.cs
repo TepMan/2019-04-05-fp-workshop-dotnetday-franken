@@ -14,7 +14,7 @@ namespace AddressBook.Tests
         {
             var optNonEmptyString = NonEmptyString.Create("a");
             optNonEmptyString.Match(
-                () => true.Should().BeFalse(),
+                _ => true.Should().BeFalse(),
                 x=>x.Value.Should().Be("a"));
         }
 
@@ -26,7 +26,7 @@ namespace AddressBook.Tests
         {
             var optNonEmptyString = NonEmptyString.Create(input);
             optNonEmptyString.Match(
-                () => true.Should().BeTrue(),
+                _ => true.Should().BeTrue(),
                 x=>x.Value.Should().Be(""));
         }
 
