@@ -150,6 +150,10 @@ var averageIncomeAbove25 = people
 
 ---
 
+<!-- .slide: data-background="images/fp-languages-overview.png" data-background-size="contain" -->
+
+---
+
 Schränken uns diese FP Paradigmen ein?
 
 ---
