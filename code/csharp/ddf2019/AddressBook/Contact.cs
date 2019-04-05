@@ -6,12 +6,12 @@ namespace AddressBook
 {
     public class Contact
     {
-        public string FirstName { get;  }
+        public NonEmptyString FirstName { get;  }
         public string LastName { get;  }
         public Option<DateTime> DateOfBirth { get; }
         public Option<string> TwitterHandler { get;  }
 
-        public Contact(string firstName, string lastName, DateTime? dateOfBirth, string twitterHandler)
+        public Contact(NonEmptyString firstName, string lastName, DateTime? dateOfBirth, string twitterHandler)
         {
             FirstName = firstName;
             LastName = lastName;
