@@ -11,14 +11,6 @@ namespace AddressBook.Tests
     public class Tests
     {
         [Fact]
-        public void SmokeTest()
-        {
-            true.Should().BeTrue();
-            new Contact().SayHello("test").Should().Be("Hello, test!");
-
-        }
-
-        [Fact]
         public void FilterMapReduce_imperative_Demo()
         {
             // Arrange
