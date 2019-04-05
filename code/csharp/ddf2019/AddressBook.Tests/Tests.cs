@@ -14,7 +14,7 @@ namespace AddressBook.Tests
         public void SmokeTest()
         {
             true.Should().BeTrue();
-            new Class1().SayHello("test").Should().Be("Hello, test!");
+            new Contact().SayHello("test").Should().Be("Hello, test!");
 
         }
 
@@ -102,11 +102,11 @@ namespace AddressBook.Tests
                         ? (Either<string, string>) Left("ups")
                         : Right(s);
 
-            Either<string, string> IsValidEither(Option<string> optS)
-                =>
-                    optS.Match(
-                        () => Left("ups"),
-                        x => Right(x));
+            //Either<string, string> IsValidEither(Option<string> optS)
+            //    =>
+            //        optS.Match(
+            //            () => Left("ups"),
+            //            x => Right(x));
         }
 
         class MyError
