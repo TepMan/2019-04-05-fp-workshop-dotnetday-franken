@@ -18,8 +18,9 @@ namespace AddressBook.Tests
         [Fact]
         public void FormatterTestNone()
         {
-            var input = None;
-            var result = DateFormatter.Format(input);
+            Option<DateTime> input = None;
+            //var result = DateFormatter.Format(input);
+            var result = input.Format();
             result.Should().Be("");
         }
     }
