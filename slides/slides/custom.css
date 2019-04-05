@@ -67,3 +67,7 @@
 .reveal pre code .highlightcode {
   font-weight: bold;
 }
+
+.dimmed .slide-background {
+  opacity: 0.10 !important;
+}
