@@ -41,15 +41,16 @@ namespace LaYumbaDemo.Tests
                 .Apply(validCountryCode(countryCode))
                 .Apply(validNumber(number));
 
-        Validation<PhoneNumber> CreateValidPhoneNumber2(string type, string countryCode, string number)
-        {
-            Validation<Func<PhoneNumber.NumberType, CountryCode, Number, PhoneNumber>> validation = Valid(PhoneNumber.Create);
+        //Validation<PhoneNumber> CreateValidPhoneNumber2(string type, string countryCode, string number)
+        //{
+        //    Validation<Func<PhoneNumber.NumberType, CountryCode, Number, PhoneNumber>> validation = Valid(PhoneNumber.Create);
 
-            return validation
-                .Apply(validNumberType(type))
-                .Apply(validCountryCode(countryCode))
-                .Apply(validNumber(number));
-        }
+        //    Validation<PhoneNumber.NumberType> numberType = validNumberType(type);
+        //    return validation.Ap
+        //        .Apply(numberType)
+        //        .Apply(validCountryCode(countryCode))
+        //        .Apply(validNumber(number));
+        //}
 
         [Theory]
         [InlineData("Mobile", "ch", "123456", "Valid(Mobile: (ch) 123456)")]
