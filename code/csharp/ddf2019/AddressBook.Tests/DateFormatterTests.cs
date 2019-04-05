@@ -23,5 +23,23 @@ namespace AddressBook.Tests
             var result = input.Format();
             result.Should().Be("");
         }
+
+        [Fact]
+        public void CutTimeWorks()
+        {
+            var input = Some(new DateTime(2019, 4, 5, 12, 34, 56));
+            input.CutTime().Match(
+                () => true.Should().BeFalse(),
+                dt => dt.Hour.Should().Be(0));
+        }
+
+        [Fact]
+        public void CutTimeNoneValue()
+        {
+            Option<DateTime> input = None;
+            input.CutTime().Match(
+                () => true.Should().BeTrue(),
+                dt => dt.Hour.Should().Be(0));
+        }
     }
 }

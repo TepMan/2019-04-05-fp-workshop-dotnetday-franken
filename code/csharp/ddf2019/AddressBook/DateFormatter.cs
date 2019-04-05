@@ -9,5 +9,8 @@ namespace AddressBook
             => optDateTime.Match(
                 () => "",
                 (dt) => dt.ToShortDateString());
+
+        public static Option<DateTime> CutTime(this Option<DateTime> optDateTime)
+            => optDateTime.Map(dt => dt.Date);
     }
 }
