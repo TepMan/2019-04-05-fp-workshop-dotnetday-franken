@@ -6,23 +6,23 @@ namespace AddressBook
 {
     public static class Persistenz
     {
-        public static Option<string> Save(this string content)
+        public static Either<string, string> Save(this string content)
         {
             if (content.StartsWith("x"))
-                return Some(content);
+                return Right(content);
 
-            return None;
+            return Left("Saving to database failed.");
         }
 
-        public static Option<string> SendMessage(this string content)
+        public static Either<string, string> SendMessage(this string content)
         {
             Console.WriteLine("Irgendwas");
-            return Some(content);
+            return Right(content);
         }
 
-        public static Option<string> SaveAndSendMessage(this string content)
+        public static Either<string,string> SaveAndSendMessage(this string content)
         {
-            Option<string> result1 = Save(content);
+            Either<string, string> result1 = Save(content);
             return result1.Bind(SendMessage);
         }
 

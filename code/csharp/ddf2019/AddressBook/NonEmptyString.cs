@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using LaYumba.Functional;
+using static LaYumba.Functional.F;
 
 namespace AddressBook
 {
@@ -7,15 +9,22 @@ namespace AddressBook
     {
         public string Value { get;}
 
-        public NonEmptyString(string value)
+        public static Option<NonEmptyString> Create(string value)
         {
             if (IsInvalid(value))
-                throw new ArgumentException("value must not be empty");
-            
+            {
+                return None;
+            }
+
+            return Some(new NonEmptyString(value));
+        }
+
+        private NonEmptyString(string value)
+        {
             Value = value;
         }
 
-        private bool IsInvalid(string value) 
+        private static bool IsInvalid(string value) 
             => string.IsNullOrWhiteSpace(value);
 
         protected override IEnumerable<object> GetEqualityComponents()
